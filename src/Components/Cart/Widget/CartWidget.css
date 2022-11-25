@@ -1,0 +1,19 @@
+.cartImg{
+    width: auto;
+    height: 3.5vh;
+    transition: transform 400ms;
+    fill: var(--grey);
+}
+
+.cartImg:hover{
+    animation-name: hovering;
+    animation-fill-mode: both;
+    animation-duration: 5ms;
+    transform: scale(1.1) rotate(-7deg);
+}
+
+@keyframes hovering {
+    to{
+        fill: var(--lightGreen);
+    }
+}

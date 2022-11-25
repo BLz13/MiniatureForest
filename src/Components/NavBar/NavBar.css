@@ -1,0 +1,28 @@
+.navBar{
+    padding: 0% 2%;
+    height: 10vh;
+    width: 96%;
+    background-color: var(--cream);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.items{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    width: 100%;
+    display: grid;
+    list-style: none;
+    justify-items: center;
+    align-items: center;
+}
+
+#menu{
+    padding-right: 70%;
+}
+
+#cart{
+    padding-left: 70%;
+}

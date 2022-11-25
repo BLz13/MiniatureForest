@@ -1,0 +1,16 @@
+.sideBar{
+    left: 0%;
+    top: 10vh;
+    width: 16%;
+    height: 85vh;
+    padding-top: 5%;
+    padding-left: 4%;
+    gap: 5%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    justify-items: center;
+    position: absolute;
+    list-style: none;
+    background-color: var(--darkCream);
+}
