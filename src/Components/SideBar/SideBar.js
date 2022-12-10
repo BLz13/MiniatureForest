@@ -2,14 +2,24 @@ import "./SideBar.css";
 
 import NavButton from "../NavButton/NavButton"
 
-function SideBar () {
+function SideBar (props) {
+
+    const {pages} = props;
+
     return (
         <ul
             className="sideBar"
         >
-            <NavButton innerText="About Us"/>
-            <NavButton innerText="Products"/>
-            <NavButton innerText="Contact"/>
+            {pages.map( (page) => (
+                <li key={`{page.id}-page`}>
+                    <NavLink
+                        to={page.id}
+                        className={( {isActive} ) => {isActive ? "link show" : "link"}}
+                    >
+                        {page.name}
+                    </NavLink>
+                </li>
+            ))}
         </ul>
     );
 };

@@ -1,13 +1,15 @@
+import { homedir } from "os";
+import { NavLink } from "react-router-dom";
 import "./MainLogo.css";
 
 function Logo () {
     return (
-        <p
+        <NavLink
+            to="home"
             className="logo"
         >
-            <h1>Shop-In</h1>
-            shop groceries the easy way
-        </p>
+            <p>MiniatureForest</p>                
+        </NavLink>
     );
 };
 

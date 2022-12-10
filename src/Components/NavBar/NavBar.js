@@ -2,8 +2,6 @@ import "./NavBar.css"
 
 import CartWidget from "../Cart/Widget/CartWidget"
 
-import CartListContainer from "../Cart/ItemList/ItemListConteiner"
-
 import Logo from "../Logo/MainLogo"
 
 import Menu from "../Menu/Menu"
