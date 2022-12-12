@@ -1,8 +1,6 @@
 .logo{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    text-transform: capitalize;
+    margin: 0%;
+    text-decoration: none;
     font-family: var(--serif);
     color: var(--green);
 }

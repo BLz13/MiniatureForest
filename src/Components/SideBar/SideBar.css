@@ -1,11 +1,12 @@
 .sideBar{
-    left: 0%;
+    left: -20%;
     top: 10vh;
     width: 16%;
     height: 85vh;
     padding-top: 5%;
     padding-left: 4%;
     gap: 5%;
+    opacity: 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;

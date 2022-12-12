@@ -1,8 +1,10 @@
 import "./Menu.css";
 
+import {ReactComponent as MenuLogo} from "../../Assets/Images/Menu.svg"
+
 function Menu () {
     return (
-        <p>Menu</p>
+        <MenuLogo className="logo"></MenuLogo>
     );
 };
 

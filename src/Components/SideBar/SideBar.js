@@ -1,6 +1,6 @@
-import "./SideBar.css";
+import { NavLink } from "react-router-dom";
 
-import NavButton from "../NavButton/NavButton"
+import "./SideBar.css";
 
 function SideBar (props) {
 
@@ -14,7 +14,7 @@ function SideBar (props) {
                 <li key={`{page.id}-page`}>
                     <NavLink
                         to={page.id}
-                        className={( {isActive} ) => {isActive ? "link show" : "link"}}
+                        className={( {isActive} ) => isActive ? "link show" : "link"}
                     >
                         {page.name}
                     </NavLink>

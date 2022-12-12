@@ -1,4 +1,4 @@
-@import url(./Assets/Fonts/fonts.css);
+@import url(../../Assets/Fonts/fonts.css);
 
 :root {
     
@@ -29,9 +29,11 @@
   padding: 0%;
 }
 
-.App {
+.layout {
  color: var(--darkGray);
  font-family: var(--sanSerif);
- height: auto;
+ height: max-content;
  width: 100vw;
+ display: flex;
+ flex-flow: column nowrap;
 }

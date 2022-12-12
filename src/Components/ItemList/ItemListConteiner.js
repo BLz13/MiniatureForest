@@ -1,16 +1,28 @@
 import "./ItemListContainer.css";
 
-function ItemListContainer (props) {
+import { NavLink } from "react-router-dom";
 
-    const {greeting} = props
+export default function ItemListContainer (props) {
+
+    const {items} = props
 
     return (
         <ul
-            className="cartItemList"
+        className="productsList"
         >
-            <li>{greeting}</li>
+            {items.map( (item) => (
+                <li 
+                    className="products"
+                    key={`{item.id}`}
+                >
+                    <NavLink
+                        className="item"
+                        to={items.id}
+                    >
+                        {item.name}
+                    </NavLink>
+                </li>
+            ))}
         </ul>
     );
 };
-
-export default ItemListContainer;

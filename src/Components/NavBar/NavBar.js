@@ -1,5 +1,7 @@
 import "./NavBar.css"
 
+import {PAGES} from "../../Utils/main-pages"
+
 import CartWidget from "../Cart/Widget/CartWidget"
 
 import Logo from "../Logo/MainLogo"
@@ -13,7 +15,7 @@ function NavBar() {
         <nav
         className="navBar"
         >
-            <SideBar />
+            <SideBar pages={PAGES} />
             <ul
                 className="items"
             >
@@ -30,7 +32,6 @@ function NavBar() {
                 >
                     <CartWidget />
                 </li>
-                <CartListContainer greeting="You haven't add anything to your cart yet, go spend some money" />
             </ul>
         </nav>
 

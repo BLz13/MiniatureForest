@@ -1,3 +1,37 @@
+@import url(../Assets/Fonts/fonts.css);
+
+:root {
+    
+  /* FONTS */
+
+  --serif : 'Arvo';
+
+  --sanSerif : 'Raleway';
+
+  /* COLOURS */
+
+  --cream : #E8E0C4;
+
+  --darkCream : #D7C998;
+
+  --grey : #7A6C66;
+
+  --darkGrey : #0C0F0A;
+
+  --lightGreen : #1A751B;
+
+  --green : #182518;
+
+}
+
+*{
+  margin: 0%;
+  padding: 0%;
+}
+
 .portfolio{
-    font-size: 10px;
+ color: var(--darkGray);
+ font-family: var(--sanSerif);
+ height: auto;
+ width: 100vw;
 }

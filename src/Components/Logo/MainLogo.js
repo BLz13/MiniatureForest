@@ -1,4 +1,3 @@
-import { homedir } from "os";
 import { NavLink } from "react-router-dom";
 import "./MainLogo.css";
 
