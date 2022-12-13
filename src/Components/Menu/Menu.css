@@ -5,3 +5,17 @@
     margin: 0%;
     padding: 0%;
 }
+
+.open{
+    transition: fill 1s;
+    fill: var(--green);
+}
+
+.close{
+    transition: fill 1s;
+    fill: #00000000;
+}
+
+.hide{
+    fill: #00000000;
+}

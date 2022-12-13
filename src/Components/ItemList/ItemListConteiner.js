@@ -1,6 +1,6 @@
 import "./ItemListContainer.css";
 
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ItemListContainer (props) {
 
@@ -15,12 +15,12 @@ export default function ItemListContainer (props) {
                     className="products"
                     key={`{item.id}`}
                 >
-                    <NavLink
+                    <Link
                         className="item"
-                        to={items.id}
+                        to={`/item/${item.id}`}
                     >
                         {item.name}
-                    </NavLink>
+                    </Link>
                 </li>
             ))}
         </ul>

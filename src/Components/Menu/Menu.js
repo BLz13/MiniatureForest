@@ -2,10 +2,14 @@ import "./Menu.css";
 
 import {ReactComponent as MenuLogo} from "../../Assets/Images/Menu.svg"
 
-function Menu () {
+export default function Menu (props) {
+
+    const {onClick} = props;
+
     return (
-        <MenuLogo className="logo"></MenuLogo>
+        <MenuLogo
+            className={"logo"}
+            onClick={onClick}
+        />
     );
 };
-
-export default Menu;

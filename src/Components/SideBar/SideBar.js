@@ -1,24 +1,38 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./SideBar.css";
 
+import {PAGES} from "../../Utils/main-pages"
+
+import {CATEGORIES} from "../../Utils/items"
+
 function SideBar (props) {
 
-    const {pages} = props;
+    const {sidebarState} = props;
+
+    const sidebarClass = sidebarState ? "hideSidebar" : "showSidebar";
 
     return (
-        <ul
-            className="sideBar"
-        >
-            {pages.map( (page) => (
-                <li key={`{page.id}-page`}>
-                    <NavLink
-                        to={page.id}
-                        className={( {isActive} ) => isActive ? "link show" : "link"}
-                    >
-                        {page.name}
-                    </NavLink>
-                </li>
+        <ul className={`sideBar ${sidebarClass}`}>
+            {PAGES.map( (page) => (
+                (page.id != "products") ? (
+                    <li key={`{page.id}-page`}>
+                        <Link to={`/${page.id}`}>
+                            {page.name}
+                        </Link>
+                    </li>
+                ) : (
+                    <ul>
+                        "Products"
+                        {CATEGORIES.map( (category) => (
+                            <li key={category.id}>
+                                <Link to={`/category/${category.id}`}>
+                                    {category.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                )
             ))}
         </ul>
     );

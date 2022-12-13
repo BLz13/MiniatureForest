@@ -2,11 +2,20 @@
     padding: 0% 2%;
     height: 10vh;
     width: 96%;
-    background-color: #00000000;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: center;
+}
+
+.transOn{
+    transition: background-color 1s;
+    background-color: #00000000;
+}
+
+.transOff{
+    transition: background-color 1s;
+    background-color:var(--darkCream);
 }
 
 .items{
@@ -19,10 +28,10 @@
     align-items: center;
 }
 
-#menu{
+.menu{
     padding-right: 70%;
 }
 
-#cart{
+.cart{
     padding-left: 70%;
 }

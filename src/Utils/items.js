@@ -66,3 +66,42 @@ export const ITEMS = [
         description:"Luma apiculata, the Chilean myrtle or temu, is a species of flowering plant in the myrtle family, native to the central Andes between Chile and Argentina, at 33 to 45° south latitude. Growing to 10–15 m (33–49 ft) tall and wide, it is a vigorous, bushy, evergreen tree with fragrant flowers",
     },
 ];
+
+export const CATEGORIES = [
+    {
+        id:"citrus",
+        name:"Citrus",
+    },
+    {
+        id:"prunus",
+        name:"Prunus",
+    },
+    {
+        id:"myrtaceae",
+        name:"Myrtaceae",
+    },
+    {
+        id:"pinus",
+        name:"Pinus",
+    },
+    {
+        id:"jacaranda",
+        name:"Jacaranda",
+    },
+    {
+        id:"ceratonia",
+        name:"Ceratonia",
+    },
+    {
+        id:"ceiba",
+        name:"Ceiba",
+    },
+    {
+        id:"erythrina",
+        name:"Erythrina",
+    },
+    {
+        id:"luma",
+        name:"Luma",
+    },
+];
