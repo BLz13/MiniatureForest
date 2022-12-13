@@ -3,6 +3,7 @@ import "./Portfolio.css";
 import Home from "../Pages/Home/Home";
 import About from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
+// import Products from "../Pages/Products/AllProducts";
 import NotFound from "../Pages/NotFound/NotFound";
 import Layout from "../Components/Layout/Layout";
 import ItemListContainer from "../Components/ItemList/ItemListConteiner";
@@ -17,16 +18,14 @@ function Portfolio() {
                 <Routes>
                     <Route path="/" element={<Home />} />                  
                     <Route path="/home" element={<Home />} /> 
-                    <Route path="/category" element={<Home />}>
-                        {/* <Route path="/:id" element={<ItemListContainer />} /> */}
-                    </Route>
-                    <Route path="/item" element={<Home />} >
-                        {/* <Route path="/:id" element={<ItemDetailContainer />} /> */}
-                    </Route>
-                    {/* <Route path="/aboutus" element={<About />} />                    */}
-                    {/* <Route path="/contact" element={<Contact />} />                    */}
+                    <Route path="/category" element={<Home />} />
+                    <Route path="/category/:id" element={<ItemListContainer />} />
+                    <Route path="/item" element={<Home />} />
+                    <Route path="/item/:id" element={<ItemDetailContainer />} />
+                    <Route path="/aboutus" element={<About />} />                   
+                    <Route path="/contact" element={<Contact />} />                   
                     {/* <Route path="/products" element={<Products />} />           */}
-                    {/* <Route path="*" element={<NotFound />} /> */}
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
         </div>

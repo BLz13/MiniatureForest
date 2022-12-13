@@ -1,17 +1,28 @@
 import "./ItemDetailContainer.css";
 
-export default function Item(props) {
+import {useParams} from "react-router-dom";
 
-    const {name, description} = props;
+import {getItem} from "../../Utils/functions"
+
+import { useEffect, useState } from "react";
+
+export default function Item() {
+
+    const [itemData, setItemData] = useState();
+
+    const {item} = useParams();
+
+    useEffect ( () => {
+        getItem(item).then((itemData => {
+            setItemData(itemData);
+        }));
+    }, []);
 
     return(
         <div>
-            <ul 
-                className="popUp"
-            >
-                <li>{name}</li>
-                <li>{description}</li>
-            </ul>      
+            <p>{itemData.name}</p>      
+            <p>{itemData.category}</p>
+            <p>{itemData.description}</p>
         </div>
     )
 }
