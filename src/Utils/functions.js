@@ -1,4 +1,4 @@
-import {ITEMS, CATEGORIES} from "./items";
+import {ITEMS, CATEGORIES} from "../Services/items";
 
 export function getItem(projectedId) {
     return new Promise ((resolve, reject) => {
@@ -12,5 +12,11 @@ export function getItem(projectedId) {
 export function getAllItems() {
     return new Promise ((resolve, reject) => {
         setTimeout(() => resolve(ITEMS), 500);
+    });
+}
+
+export function getAllCategories() {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => resolve(CATEGORIES), 500);
     });
 }

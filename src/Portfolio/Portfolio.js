@@ -3,7 +3,6 @@ import "./Portfolio.css";
 import Home from "../Pages/Home/Home";
 import About from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
-// import Products from "../Pages/Products/AllProducts";
 import NotFound from "../Pages/NotFound/NotFound";
 import Layout from "../Components/Layout/Layout";
 import ItemListContainer from "../Components/ItemList/ItemListConteiner";
@@ -24,7 +23,7 @@ function Portfolio() {
                     <Route path="/item/:id" element={<ItemDetailContainer />} />
                     <Route path="/aboutus" element={<About />} />                   
                     <Route path="/contact" element={<Contact />} />                   
-                    {/* <Route path="/products" element={<Products />} />           */}
+                    <Route path="/products" element={<ItemListContainer />} />          
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>

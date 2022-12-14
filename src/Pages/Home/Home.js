@@ -2,7 +2,7 @@ import "./Home.css";
 
 import ItemList from "../../Components/ItemList/ItemListConteiner"
 
-import {ITEMS} from "../../Utils/items"
+import {ITEMS} from "../../Services/items"
 
 export default function Portfolio() {
     return(

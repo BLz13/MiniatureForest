@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-
 import "./SideBar.css";
 
 import {PAGES} from "../../Utils/main-pages"
 
-import {CATEGORIES} from "../../Utils/items"
+import { NavLink } from "react-router-dom";
+
+import {CATEGORIES} from "../../Services/items"
 
 function SideBar (props) {
 
@@ -15,20 +15,20 @@ function SideBar (props) {
     return (
         <ul className={`sideBar ${sidebarClass}`}>
             {PAGES.map( (page) => (
-                (page.id != "products") ? (
-                    <li key={`{page.id}-page`}>
-                        <Link to={`/${page.id}`}>
+                (page.id !== "products") ? (
+                    <li key={`${page.id}-page`}>
+                        <NavLink to={`/${page.id}`}>
                             {page.name}
-                        </Link>
+                        </NavLink>
                     </li>
                 ) : (
-                    <ul>
+                    <ul key={`${page.id}-page`}>
                         "Products"
                         {CATEGORIES.map( (category) => (
-                            <li key={category.id}>
-                                <Link to={`/category/${category.id}`}>
+                            <li key={`${category.id}-category`}>
+                                <NavLink to={`/category/${category.id}`}>
                                     {category.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>

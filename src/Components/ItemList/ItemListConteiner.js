@@ -1,16 +1,16 @@
 import "./ItemListContainer.css";
 
-import { Link } from "react-router-dom";
-
-import { ITEMS } from "../../Utils/items";
+import { NavLink } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
 import {getAllItems} from "../../Utils/functions"
 
-export default function ItemListContainer (props) {
+export default function ItemListContainer () {
 
     const [items, setItems] = useState([]);
+
+    const [categoryFilter, setCategoryFilter] = useState(null);
 
     useEffect(() => {
         getAllItems().then((items) => setItems(items));
@@ -20,18 +20,22 @@ export default function ItemListContainer (props) {
         <div>
             <ul className="productsList">
                 {items.map( (item) => (
-                    <li 
-                        className="products"
-                        key={`{item.id}`}
-                    >
-                        <Link
-                            className="item"
-                            to={`/item/${item.id}`}
-                        >
-                            {item.name}
-                        </Link>
-                    </li>
-                ))}
+                    ((categoryFilter === null) || (categoryFilter === ("home")) || (categoryFilter === ("category")) || (categoryFilter === ("products"))) ? (
+                        <li className="products" key={item.id}>
+                            <NavLink className="item"  to={`/item/${item.id}`}>
+                                {item.name}
+                            </NavLink>
+                        </li>
+                    ) : (
+                        (categoryFilter === item.category) ? (
+                            <li className="products" key={item.id}>
+                                <NavLink className="item" to={`/item/${item.id}`}>
+                                    {item.name}
+                                </NavLink>
+                            </li>
+                        ) : null
+                    )
+                ))};
             </ul>
             {/* <div>
                 <Outlet />
