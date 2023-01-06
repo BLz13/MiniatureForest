@@ -1,6 +1,6 @@
 .navBar{
     padding: 0% 2%;
-    height: 10vh;
+    max-height: 6rem;
     width: 96%;
     display: flex;
     flex-flow: row nowrap;
@@ -29,9 +29,9 @@
 }
 
 .menu{
-    padding-right: 70%;
+    justify-self: flex-start;
 }
 
 .cart{
-    padding-left: 70%;
+    justify-self: flex-end;
 }

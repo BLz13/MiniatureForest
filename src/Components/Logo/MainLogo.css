@@ -4,3 +4,45 @@
     font-family: var(--serif);
     color: var(--green);
 }
+
+.circle{
+    max-height: 3rem;
+    top: 0.5rem;
+    right: 53vw;
+    width: auto;
+    position: fixed;
+    fill: var(--lightGreen);
+}
+
+.icon1{
+    max-width: 60px;
+    top: 0.1vh;
+    right: 53vw;
+    height: auto;
+    position: fixed;
+    fill: black;
+}
+
+.icon2{
+    max-width: 60px;
+    top: 0.1vh;
+    right: 53vw;
+    height: auto;
+    position: fixed;
+    fill: black;
+}
+
+.text{
+    font-family: var(--sanSerif);
+}
+
+.hide{
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+.showCircle{
+    transition: opacity 1s, transform 1s;
+    opacity: 1;
+    transform: rotate(360deg);
+}

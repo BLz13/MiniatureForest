@@ -1,0 +1,15 @@
+.footer{
+    position: fixed;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0%;
+    height: 10vh;
+    width: 96vw;
+    padding: 0.5vh 2vw;
+}
+
+.footerItems{
+    color: var(--grey);
+}

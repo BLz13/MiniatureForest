@@ -17,7 +17,10 @@ function SideBar (props) {
             {PAGES.map( (page) => (
                 (page.id !== "products") ? (
                     <li key={`${page.id}-page`}>
-                        <NavLink to={`/${page.id}`}>
+                        <NavLink 
+                            to={`/${page.id}`}
+                            className={( {isActive} ) => isActive ? "link is-active" : "link"}
+                        >
                             {page.name}
                         </NavLink>
                     </li>

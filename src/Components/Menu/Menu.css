@@ -1,9 +1,9 @@
 .logo{
     fill: var(--green);
-    width: 30%;
-    height: 100%;
-    margin: 0%;
-    padding: 0%;
+    width: 30px;
+    height: 90%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .open{

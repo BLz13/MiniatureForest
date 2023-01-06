@@ -12,7 +12,7 @@
     justify-items: center;
     position: absolute;
     list-style: none;
-    background-color: var(--darkCream);
+    background-color: var(--cream);
 }
 
 .hideSidebar{
