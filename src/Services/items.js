@@ -1,3 +1,26 @@
+const baseURL = 'https"//jsnoplaceholder.typicode.com';
+
+export function getAllItems () {
+    return fetch (`${baseURL}/items`)
+    .then((response) => response.json())
+    .then((parsedResponse) => parsedResponse)
+    .catch((error) => {
+        console.error("[getAllItems] - ERROR: ", error);
+        return [];
+    });
+}
+
+export function getItem (itemId) {
+    return fetch (`${baseURL}`)
+}
+
+export function getAllCategories () {
+    return fetch (`${baseURL}`)
+}
+
+
+
+
 export const ITEMS = [
     {
         id:"lemon",

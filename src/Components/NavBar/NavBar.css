@@ -1,6 +1,6 @@
 .navBar{
     padding: 0% 2%;
-    max-height: 6rem;
+    height: 5rem;
     width: 96%;
     display: flex;
     flex-flow: row nowrap;

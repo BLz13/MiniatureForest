@@ -3,46 +3,118 @@
     text-decoration: none;
     font-family: var(--serif);
     color: var(--green);
+    align-self: center;
+    justify-self: center;
 }
 
 .circle{
-    max-height: 3rem;
-    top: 0.5rem;
-    right: 53vw;
+    max-height: 3.7rem;
+    top: 0.37rem;
+    right: 52.3vw;
+    opacity: 1;
     width: auto;
     position: fixed;
     fill: var(--lightGreen);
 }
 
 .icon1{
-    max-width: 60px;
-    top: 0.1vh;
-    right: 53vw;
-    height: auto;
+    max-height: 3.7rem;
+    top: 0.37rem;
+    right: 52.3vw;
+    opacity: 1;
+    width: auto;
     position: fixed;
-    fill: black;
+    fill: var(--lightGreen);
 }
 
 .icon2{
-    max-width: 60px;
-    top: 0.1vh;
-    right: 53vw;
-    height: auto;
+    max-height: 3.7rem;
+    top: 0.37rem;
+    right: 52.3vw;
+    opacity: 1;
+    width: auto;
     position: fixed;
-    fill: black;
+    fill: var(--green);
 }
 
 .text{
     font-family: var(--sanSerif);
+    color: var(--green);
+    font-size: 0.9rem;
 }
 
 .hide{
-    transition: opacity 1s;
     opacity: 0;
 }
 
 .showCircle{
-    transition: opacity 1s, transform 1s;
-    opacity: 1;
-    transform: rotate(360deg);
+    animation-name: animationCircle;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+}
+
+@keyframes animationCircle {
+    from{
+        opacity: 0;
+    }   
+    to{
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+.showIcon1{
+    animation-name: animationIcon1;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+}
+
+@keyframes animationIcon1 {
+    from{
+        opacity: 0;
+    } 
+    to{
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}
+
+.showIcon2{
+    animation-name: animationIcon2;
+    opacity: 0;
+    animation-delay: 2000ms;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animationIcon2 {
+    from{
+        fill: var(--lightGreen);
+    } 
+    to{
+        opacity: 1;
+        fill: var(--green);
+        transform: rotate(-360deg);
+    }
+}
+
+.showText{
+    animation-name: animationText;
+    opacity: 0;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animationText {
+    from{
+        font-size: 0.8rem;
+    }
+    to{
+        opacity: 1;
+        font-size: 0.9rem;
+    }
 }

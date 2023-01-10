@@ -20,3 +20,7 @@ export function getAllCategories() {
         setTimeout(() => resolve(CATEGORIES), 500);
     });
 }
+
+export function isEmpty(targetArray) {
+    return targetArray.length === 0;
+}
