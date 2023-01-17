@@ -1,14 +1,14 @@
 import "./Portfolio.css";
 
-import Home from "../Pages/Home/Home";
+import { Route, Routes } from "react-router-dom";
+
 import About from "../Pages/AboutUs/AboutUs";
 import Contact from "../Pages/Contact/Contact";
-import NotFound from "../Pages/NotFound/NotFound";
-import Layout from "../Components/Layout/Layout";
-import ItemListContainer from "../Components/ItemList/ItemListConteiner";
+import Home from "../Pages/Home/Home";
 import ItemDetailContainer from "../Components/ItemDetailContainer/ItemDetailContainer"
-
-import { Routes, Route } from "react-router-dom";
+import ItemListContainer from "../Components/ItemList/ItemListConteiner";
+import Layout from "../Components/Layout/Layout";
+import NotFound from "../Pages/NotFound/NotFound";
 
 function Portfolio() {    
     return(
@@ -23,8 +23,8 @@ function Portfolio() {
                     <Route path="/item" element={<Home />}>
                         <Route path=":id" element={<ItemDetailContainer />} />
                     </Route>
-                    <Route path="/aboutus" element={<About />} />                   
-                    <Route path="/contact" element={<Contact />} />                   
+                    <Route path="/aboutus" element={<About />} />                 
+                    <Route path="/contact" element={<Contact />} />               
                     <Route path="/products" element={<ItemListContainer />} />          
                     <Route path="*" element={<NotFound />} />
                 </Routes>

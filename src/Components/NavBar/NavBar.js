@@ -1,17 +1,18 @@
 import "./NavBar.css"
 
-import CartWidget from "../Cart/Widget/CartWidget"
+import { useEffect, useRef, useState } from "react"
 
-import Logo from "../Logo/MainLogo"
-
-import Menu from "../Menu/Menu"
-
-import SideBar from "../SideBar/SideBar"
-
-import { useState, useEffect } from "react"
+import CartWidget from "./Cart/Widget/CartWidget"
+import Logo from "./Logo/MainLogo"
+import Menu from "./Menu/Menu"
+import SideBar from "./SideBar/SideBar"
 
 function NavBar() {
 
+    const sidebarRef = useRef();
+
+    const menuIconRef = useRef();
+    
     const [sidebarStatus, setSideBar] = useState(true)
 
     const navTrans = sidebarStatus ? "transOn" : "transOff"
@@ -20,7 +21,7 @@ function NavBar() {
         const lines = document.getElementById("Lines");
         lines.setAttribute("class", "hide")
     }, [])
-
+    
     const menuClickHandler = () => {
         setSideBar(!sidebarStatus)
         const filler = document.getElementById("Filler");
@@ -31,19 +32,24 @@ function NavBar() {
         lines.setAttribute("class", linesState)
     }
 
+    useEffect(() => {
+        if (sidebarStatus === false) {
+            document.onmousedown = (event) =>{
+                if ( (!sidebarRef.current.contains(event.target)) && (!menuIconRef.current.contains(event.target)) ){
+                    menuClickHandler();
+                    setSideBar(true);
+                }
+            }
+        }
+    })
+
     return(
         <nav className={`navBar ${navTrans}`}>
-            <SideBar sidebarState={sidebarStatus}/>
+            <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} setSideBar={setSideBar}/>
             <ul className="items">
-                <li className="menu">
-                    <Menu onClick={menuClickHandler} />
-                </li>
-                <li>
-                    <Logo />
-                </li>
-                <li className="cart">
-                    <CartWidget />
-                </li>
+                <li className="menu"> <Menu reference={menuIconRef} onClick={menuClickHandler} /> </li>
+                <li> <Logo /> </li>
+                <li className="cart"> <CartWidget /> </li>
             </ul>
         </nav>
 

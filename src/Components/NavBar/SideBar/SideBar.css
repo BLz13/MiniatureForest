@@ -1,0 +1,51 @@
+.sideBar{
+    left: -8.4rem;
+    top: 5rem;
+    width: 8.4rem;
+    height: 85vh;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    gap: 5%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    justify-items: center;
+    position: absolute;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    background-color: var(--cream);
+}
+
+.hideSidebar{
+    transform: translateX(-8.4rem);
+    opacity: 0;
+    transition: transform 1s, opacity 1s;
+}
+
+.showSidebar{
+    transform: translateX(8.4rem);
+    opacity: 1;
+    transition: transform 1s, opacity 1s;
+}
+
+.sidebarElements{
+    list-style: none;
+    position: relative;
+}
+
+.link{
+    transition: color 300ms, font-weight 300ms;
+    color: var(--grey);
+    font-weight: 300;
+}
+
+.link:hover{
+    color: var(--darkGrey);
+    font-weight: 500;
+}
+
+.is-active{
+    font-weight: 500;
+    color: var(--darkGrey);
+}

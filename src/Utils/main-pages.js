@@ -1,7 +1,7 @@
 export const PAGES = [
     {
         id:"about",
-        path:"/about",
+        path:"/aboutus",
         name:"About Us",
     },
     {

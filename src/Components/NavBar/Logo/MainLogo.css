@@ -1,46 +1,63 @@
+.link{
+    text-decoration: none;
+}
+
 .logo{
     margin: 0%;
-    text-decoration: none;
-    font-family: var(--serif);
-    color: var(--green);
+    width: 11rem;
+    height: 4rem;
     align-self: center;
-    justify-self: center;
+    position: relative;
 }
 
 .circle{
+    left: 2.4rem;
     max-height: 3.7rem;
-    top: 0.37rem;
-    right: 52.3vw;
     opacity: 1;
+    position: absolute;
     width: auto;
-    position: fixed;
     fill: var(--lightGreen);
 }
 
 .icon1{
+    left: 2.4rem;
     max-height: 3.7rem;
-    top: 0.37rem;
-    right: 52.3vw;
     opacity: 1;
+    position: absolute;
     width: auto;
-    position: fixed;
     fill: var(--lightGreen);
 }
 
 .icon2{
+    left: 2.4rem;
     max-height: 3.7rem;
-    top: 0.37rem;
-    right: 52.3vw;
     opacity: 1;
+    position: absolute;
     width: auto;
-    position: fixed;
     fill: var(--green);
 }
 
-.text{
+.text1{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
     font-family: var(--sanSerif);
     color: var(--green);
     font-size: 0.9rem;
+    top: 1.5rem;
+    left: 4.3rem;
+}
+
+
+.text2{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    font-family: var(--sanSerif);
+    color: var(--green);
+    font-size: 0.9rem;
+    top: 2.3rem;
+    left: 5.6rem;
 }
 
 .hide{

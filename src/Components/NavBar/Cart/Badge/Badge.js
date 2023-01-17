@@ -2,11 +2,7 @@ import "./Badge.css";
 
 function Badge () {
     return (
-        <p
-            className="badge"
-        >
-            0
-        </p>
+        <p className="badge">0</p>
     );
 };
 
