@@ -1,15 +1,14 @@
-export default function CartData() {
-    
-    const CartProducts = [];
-    
+import {CARTPRODUCTS} from "../../../Services/cart"
+
+export default function CartData() {  
     return(
         <div>
             <ul>
-                {CartProducts.map( (product) => (
+                {CARTPRODUCTS.map( (product) => (
                     <li>
-                        <p>{product.title}</p>
+                        <p>{product.name}</p>
                         <span>{product.amount}</span>
-                        <img>{product.img}</img>
+                        <img>{`${product.img}1`}</img>
                     </li>
                 ))}
 
