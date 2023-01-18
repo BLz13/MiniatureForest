@@ -1,0 +1,28 @@
+.notFound{
+    display: grid;
+    grid-template-rows: 70vh;
+}
+
+.notFoundText{
+    text-shadow: 1px 1px 1px;
+    font-size: 1rem;
+    opacity: 0;
+    font-weight: 500;
+    font-family: var(--serif);
+    color: var(--grey);
+    animation-name: notFoundTextAnimation;
+    animation-delay: 2s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    text-transform: capitalize;
+    align-self: center;
+    justify-self: center;
+}
+
+@keyframes notFoundTextAnimation {
+    to{
+        text-shadow: 10px 10px 10px;
+        font-size: 1.3rem;
+        opacity: 1;
+    }
+}

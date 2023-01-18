@@ -1,19 +1,39 @@
+.cartContainer{
+    position: relative;
+    height: inherit;
+}
+
 .cartImg{
-    width: auto;
-    height: 3.5vh;
-    transition: transform 400ms;
-    fill: var(--grey);
+    cursor: pointer;
+    width: 2.5rem;
+    height: inherit;
+    transition: transform 500ms, fill 500ms;
+    fill: var(--darkGrey);
 }
 
 .cartImg:hover{
-    animation-name: hovering;
-    animation-fill-mode: both;
-    animation-duration: 5ms;
+    fill: var(--grey);
     transform: scale(1.1) rotate(-7deg);
 }
 
-@keyframes hovering {
-    to{
-        fill: var(--lightGreen);
-    }
+.badge{
+    text-align: center;
+    position: absolute;
+    display: grid;    
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    border-radius: 1rem;
+    left: 0rem;
+    bottom: 0rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.7rem;
+    z-index: 5;
+    background-color: var(--darkGrey);
+    color: var(--cream);
+    transition: transform 500ms;
+}
+
+.cartImg:hover ~ p{
+    transform: scale(1.1);
 }

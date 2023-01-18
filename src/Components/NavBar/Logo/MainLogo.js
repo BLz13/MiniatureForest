@@ -37,7 +37,7 @@ export default function Logo () {
 
     
     return (
-        <NavLink to="home" className={"link"}>
+        <NavLink to="home">
             <div className="logo">
                 <Circle className="circle" />
                 <Icon1 className="icon1 hide" />

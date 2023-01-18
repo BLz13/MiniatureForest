@@ -41,37 +41,18 @@ function SideBar (props) {
         <ul ref={reference} className={`sideBar ${sidebarClass}`}>
             {PAGES.map( (page) => (
                 (page.id !== "products") ? (
-                    <li 
-                        key={`${page.id}-page`}
-                        className="sidebarElements"
-                    >
-                        <NavLink
-                            onClick={sidebarClickHandler}
-                            to={`/${page.id}`} 
-                            className={( {isActive} ) => isActive ? "link is-active" : "link"}
-                        >
+                    <li key={`${page.id}-page`} className="sidebarElements" >
+                        <NavLink onClick={sidebarClickHandler} to={page.path} className={( {isActive} ) => isActive ? "link is-active" : "link"} >
                             {page.name}
                         </NavLink>
                     </li>
                 ) : (
-                    <li 
-                        key={`${page.id}-page`}
-                        className="sidebarElements"
-                    > 
-                        <NavLink 
-                            onClick={sidebarClickHandler}
-                            to={`/${page.id}`}
-                            className={( {isActive} ) => isActive ? "link is-active" : "link"}
-                        >
+                    <li key={`${page.id}-page`} className="sidebarElements" > 
+                        <NavLink onClick={sidebarClickHandler} to={page.path} className={( {isActive} ) => isActive ? "link is-active" : "link"} >
                             Categories
                         </NavLink>
-                        <DropDownMenuContainer
-                            arrowStateHandler={arrowStateHandler}
-                        >
-                            <SidebarCategories 
-                                onClick={sidebarClickHandler}
-                                reference={sideCategoriesRef}
-                            />
+                        <DropDownMenuContainer arrowStateHandler={arrowStateHandler} >
+                            <SidebarCategories onClick={sidebarClickHandler} reference={sideCategoriesRef} />
                         </DropDownMenuContainer>
                     </li>
                 )

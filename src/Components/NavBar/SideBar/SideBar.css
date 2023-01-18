@@ -33,19 +33,3 @@
     list-style: none;
     position: relative;
 }
-
-.link{
-    transition: color 300ms, font-weight 300ms;
-    color: var(--grey);
-    font-weight: 300;
-}
-
-.link:hover{
-    color: var(--darkGrey);
-    font-weight: 500;
-}
-
-.is-active{
-    font-weight: 500;
-    color: var(--darkGrey);
-}

@@ -2,7 +2,7 @@ import "./Portfolio.css";
 
 import { Route, Routes } from "react-router-dom";
 
-import About from "../Pages/AboutUs/AboutUs";
+import About from "../Pages/AboutUs/AboutUsContainer";
 import Contact from "../Pages/Contact/Contact";
 import Home from "../Pages/Home/Home";
 import ItemDetailContainer from "../Components/ItemDetailContainer/ItemDetailContainer"
