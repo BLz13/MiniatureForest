@@ -1,6 +1,6 @@
-import "./Categories.css"
+import "./NavDropdown.css"
 
-import {CATEGORIES} from "../../../../../Services/items"
+import {CATEGORIES} from "../../../Services/items"
 import { NavLink } from "react-router-dom";
 
 export default function SidebarCategories(props) {

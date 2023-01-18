@@ -1,0 +1,17 @@
+.aboutUs{
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: center;
+    min-height: 80vh;
+    max-width: 75ch;
+    padding: 5ch;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-top: 2vh;
+    border-radius: 1rem;
+    background-color: var(--cream);
+}
+
+h1{
+    font-size: 2rem;
+}

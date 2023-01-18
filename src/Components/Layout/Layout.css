@@ -32,7 +32,6 @@
 .layout {
  color: var(--darkGray);
  font-family: var(--sanSerif);
- height: max-content;
  width: 100vw;
  display: flex;
  flex-flow: column nowrap;

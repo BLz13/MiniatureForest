@@ -45,11 +45,11 @@ function NavBar() {
 
     return(
         <nav className={`navBar ${navTrans}`}>
-            <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} setSideBar={setSideBar}/>
+            <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} menuClick={menuClickHandler}/>
             <ul className="items">
-                <li className="menu"> <Menu reference={menuIconRef} onClick={menuClickHandler} /> </li>
+                <li className="menuBox"> <Menu reference={menuIconRef} onClick={menuClickHandler} /> </li>
                 <li> <Logo /> </li>
-                <li className="cart"> <CartWidget /> </li>
+                <li className="cartBox"> <CartWidget /> </li>
             </ul>
         </nav>
 

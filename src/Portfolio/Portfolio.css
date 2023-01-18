@@ -26,15 +26,11 @@
 
 ::-webkit-scrollbar {
   width: 0.3rem;
-}
-
-::-webkit-scrollbar-button{
-  color: var(--cream);
+  background: #00000000;
 }
 
 ::-webkit-scrollbar-track {
-  background: #00000000;
-  border-radius: 1rem;
+  background-color: var(--cream);
 }
 
 ::-webkit-scrollbar-corner{
@@ -44,11 +40,6 @@
 ::-webkit-scrollbar-thumb {
   background-color: var(--darkCream);
   border-radius: 1rem;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--cream);
-  transition: background-color 1s;
 }
 
 /* 

@@ -1,0 +1,23 @@
+.navDropdownContainer{
+    list-style: none;
+}
+
+.dropmenu{
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    transition: height 1s, opacity 1s, top 1s, left 1s;
+}
+
+.openDropMenu{
+    top: 0.5rem;
+    left: 0rem;
+    opacity: 1;
+    height: 11rem;
+}
+
+.closeDropMenu{
+    left: -2rem;
+    opacity: 0;
+    height: 0vh;
+}

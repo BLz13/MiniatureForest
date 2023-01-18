@@ -1,14 +1,13 @@
 import "./DropDownMenuContainer.css";
 
-import { ReactComponent as Arrow } from "../../../../Assets/Images/Arrow.svg";
+import { ReactComponent as Arrow } from "../../Assets/Images/Arrow.svg";
 
-export default function DropDownMenuContainer(props) {
+export default function DropdownMenuContainer(props) {
 
-  const {children, title, arrowStateHandler} = props;
+  const {children, arrowStateHandler} = props;
 
   return (
     <div className="dropMenuContainer">
-        {title}
         <Arrow
           id="sidebarArrow"
           onClick={arrowStateHandler}

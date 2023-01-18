@@ -1,7 +1,7 @@
 .menuIcon{
+    height: inherit;
     fill: var(--green);
     width: 1.7rem;
-    max-height: 90%;
     margin: 0px;
     padding: 0px;
 }

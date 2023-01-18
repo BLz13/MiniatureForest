@@ -24,7 +24,7 @@
 
 .items{
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 10vh;
+    grid-template-rows: 8vh;
     width: 100%;
     display: grid;
     list-style: none;
@@ -32,11 +32,15 @@
     align-items: center;
 }
 
-.menu{
+.menuBox{
     justify-self: flex-start;
 }
 
-.cart{
+.mainLogoBox a{
+    height: 100%;
+}
+
+.cartBox{
     justify-self: flex-end;
 }
 

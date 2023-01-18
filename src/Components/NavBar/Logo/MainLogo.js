@@ -3,7 +3,7 @@ import "./MainLogo.css";
 import {ReactComponent as Circle} from "../../../Assets/Images/Circle.svg"
 import {ReactComponent as Icon1} from "../../../Assets/Images/Logo1.svg";
 import {ReactComponent as Icon2} from "../../../Assets/Images/Logo2.svg";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function Logo () {
@@ -37,14 +37,12 @@ export default function Logo () {
 
     
     return (
-        <NavLink to="home">
-            <div className="logo">
-                <Circle className="circle" />
-                <Icon1 className="icon1 hide" />
-                <Icon2 className="icon2" />
-                <p id="logoText1" className="text1 hide">Miniature</p>
-                <p id="logoText2" className="text2 hide">Forest</p>
-            </div>
-        </NavLink>
+        <Link to="home" className="logo">
+            <Circle className="circle" />
+            <Icon1 className="icon1 hide" />
+            <Icon2 className="icon2" />
+            <p id="logoText1" className="text1 hide">Miniature</p>
+            <p id="logoText2" className="text2 hide">Forest</p>
+        </Link>
     );
 };

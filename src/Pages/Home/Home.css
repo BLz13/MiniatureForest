@@ -3,4 +3,5 @@
     flex-flow: column nowrap;
     align-items: center;
     margin-top: 10vh;
+    min-height: 87vh;
 }
