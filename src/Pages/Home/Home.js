@@ -1,15 +1,27 @@
-import "./Home.css";
+import "./Home.css"
 
-import ItemList from "../../Components/ItemList/ItemListConteiner"
+import {HeroText} from "../../Services/homeData"
+import ItemListContainer from "../../Components/ItemList/ItemListConteiner"
 
-import {ITEMS} from "../../Services/items"
+export default function HomeData() {
+    
+    const homeBoxClass="homeBox"
+    const heroBoxClass="heroBox"
+    const heroTextBoxClass="heroTextBox"
+    const heroTitleClass="heroTitle"
+    const heroTextClass="heroText"
 
-export default function Portfolio() {
     return(
-        <div
-            className="home"
-        >
-            <ItemList items={ITEMS}/>
+        <div className={homeBoxClass} >
+            {HeroText.map( (text) => (
+                <div className={heroBoxClass} key={`hero-${text.id}`}>
+                    <div className={heroTextBoxClass}>
+                        <p className={heroTitleClass}>{text.title}</p>
+                        <p className={heroTextClass}>{text.paragraph}</p>
+                    </div>
+                </div>
+            ))}
+            <ItemListContainer/>
         </div>
     );
 }

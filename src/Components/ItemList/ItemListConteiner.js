@@ -1,9 +1,8 @@
 import "./ItemListContainer.css";
 
-import { NavLink } from "react-router-dom";
-
 import { useEffect, useState } from "react";
 
+import { NavLink } from "react-router-dom";
 import {getAllItems} from "../../Utils/functions"
 
 export default function ItemListContainer () {

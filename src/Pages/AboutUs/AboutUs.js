@@ -1,4 +1,4 @@
-import {ABOUTUSINFO} from "../../Services/aboutUsInfo"
+import {ABOUTUSINFO} from "../../Services/aboutUsData"
 
 export default function AboutUs() {
     return(
