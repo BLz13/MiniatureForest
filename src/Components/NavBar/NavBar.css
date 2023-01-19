@@ -19,7 +19,7 @@
 
 .transOff{
     transition: background-color 1s;
-    background-color:var(--darkCream);
+    background-color:var(--darkGrey);
 }
 
 .items{
@@ -34,6 +34,7 @@
 
 .menuBox{
     justify-self: flex-start;
+    width: 1.7rem;
 }
 
 .mainLogoBox a{
@@ -46,17 +47,17 @@
 
 .link{
     text-decoration: none;
-    transition: color 300ms, font-weight 300ms;
-    color: var(--grey);
+    transition: color 500ms, font-weight 500ms;
+    color: var(--cream);
     font-weight: 300;
 }
 
 .link:hover{
-    color: var(--darkGrey);
+    color: var(--darkCream);
     font-weight: 500;
 }
 
 .is-active{
     font-weight: 500;
-    color: var(--darkGrey);
+    color: var(--darkCream);
 }

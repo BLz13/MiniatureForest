@@ -12,7 +12,6 @@
 }
 
 .cartImg:hover{
-    fill: var(--grey);
     transform: scale(1.1) rotate(-7deg);
 }
 
@@ -36,4 +35,16 @@
 
 .cartImg:hover ~ p{
     transform: scale(1.1);
+}
+
+.navOpenCart{
+    transition: 500ms;
+    fill: white;
+}
+
+.navOpenBadge{
+    transition: 500ms;
+    background-color: white;
+    font-weight: bolder;
+    color: var(--darkGrey);
 }

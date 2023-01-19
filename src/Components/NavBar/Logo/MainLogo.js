@@ -6,7 +6,18 @@ import {ReactComponent as Icon2} from "../../../Assets/Images/Logo2.svg";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Logo () {
+export default function Logo (props) {
+
+    const {navbarStatus} = props;
+
+    useEffect(() => {
+        const icon2 = document.getElementById("icon2");
+        const text1 = document.getElementById("logoText1");
+        const text2 = document.getElementById("logoText2");        
+        text1.classList.toggle("logoOpenNav");        
+        text2.classList.toggle("logoOpenNav");
+        icon2.classList.toggle("logoOpenNav");
+    },[navbarStatus]);
 
     useEffect(() => {
         const circle = document.getElementById("circle");

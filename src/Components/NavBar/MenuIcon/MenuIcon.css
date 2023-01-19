@@ -1,0 +1,34 @@
+.menuIcon{
+    transition: fill 500ms;
+    height: inherit;
+    fill: var(--darkGrey);
+    margin: 0px;
+    padding: 0px;
+}
+
+.menuIconNavON{
+    margin: 0px;
+    padding: 0px;
+    transition: fill 500ms;
+    fill: white;
+}
+
+.open{
+    transition: fill 500ms;
+    fill: white;
+}
+
+.close{
+    transition: fill 500ms;
+    fill: var(--darkGrey);
+}
+
+.closeNavON{
+    transition: fill 500ms;
+    fill: white;
+}
+
+.hide{
+    transition: fill 500ms;
+    fill: #00000000;
+}

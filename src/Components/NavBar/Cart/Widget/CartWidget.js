@@ -1,12 +1,22 @@
 import "./CartWidget.css";
 
+import { useEffect, useState } from "react";
+
 import Badge from "./Badge";
 import CartData from "../CartData";
 import {ReactComponent as CartIcon} from "../../../../Assets/Images/CartIcon.svg";
 import DropdownMenuContainer from "../../../DropdownMenuContainer/DropdownMenuContainer";
-import { useState } from "react";
 
-function CartWidget () {
+function CartWidget (props) {
+
+    const {navbarStatus} = props;
+
+    useEffect( () => {
+        const cartIcon = document.querySelector(".cartImg")
+        const cartBadge = document.querySelector(".badge")
+        cartIcon.classList.toggle("navOpenCart")
+        cartBadge.classList.toggle("navOpenBadge")
+    },[navbarStatus])
 
     const {dropmenuStatus, setDropmenu} = useState(false)
 
