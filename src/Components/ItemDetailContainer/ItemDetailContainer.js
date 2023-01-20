@@ -1,28 +1,32 @@
 import "./ItemDetailContainer.css";
 
-import {useParams} from "react-router-dom";
-
-import {getItem} from "../../Utils/functions"
-
 import { useEffect, useState } from "react";
 
-export default function Item() {
+import {getProduct} from "../../Utils/functions"
+import {useParams} from "react-router-dom";
 
-    const [itemData, setItemData] = useState();
+export default function ItemDetailContainer() {
 
-    const {item} = useParams();
+    const [productData, setProductData] = useState();
+
+    const {product} = useParams();
 
     useEffect ( () => {
-        getItem(item).then((itemData => {
-            setItemData(itemData);
+        getProduct(product)
+        .then((productData => {
+            setProductData(productData);
         }));
-    }, []);
+    }, [product]);
 
     return(
-        <div>
-            <p>{itemData.name}</p>      
-            <p>{itemData.category}</p>
-            <p>{itemData.description}</p>
-        </div>
+        productData ? (
+            <div>
+                <div>{productData.name}</div>      
+                <div>{productData.category}</div>
+                <div>{productData.description}</div>
+            </div>
+        ) : (
+            <p>Loading....</p>
+        )
     )
 }

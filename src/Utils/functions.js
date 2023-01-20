@@ -1,10 +1,8 @@
-import {ITEMS, CATEGORIES} from "../Services/items";
+import {CATEGORIES, ITEMS} from "../Services/items";
 
-export function getItem(projectedId) {
+export function getProduct(productData) {
     return new Promise ((resolve, reject) => {
-        const targetItem = ITEMS.find(
-            (item) => item.id === projectedId
-        );
+        const targetItem = ITEMS.find((item) => item.id === productData);
         setTimeout(() => resolve(targetItem), 500);
     });
 }

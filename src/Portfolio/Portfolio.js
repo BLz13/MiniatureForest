@@ -20,12 +20,11 @@ function Portfolio() {
                     <Route path="/category" element={<Home />}>
                         <Route path=":id" element={<ItemListContainer />} />
                     </Route>
-                    <Route path="/item" element={<Home />}>
-                        <Route path=":id" element={<ItemDetailContainer />} />
-                    </Route>
                     <Route path="/aboutus" element={<About />} />                 
                     <Route path="/contact" element={<Contact />} />               
-                    <Route path="/products" element={<ItemListContainer />} />          
+                    <Route path="/products" element={<ItemListContainer />}>          
+                        <Route path=":product" element={<ItemDetailContainer />} />          
+                    </Route>
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </Layout>
