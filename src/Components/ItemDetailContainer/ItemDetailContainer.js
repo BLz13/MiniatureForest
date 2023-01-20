@@ -1,8 +1,8 @@
 import "./ItemDetailContainer.css";
 
+import {getProduct, isEmpty} from "../../Utils/functions"
 import { useEffect, useState } from "react";
 
-import {getProduct} from "../../Utils/functions"
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
@@ -19,14 +19,14 @@ export default function ItemDetailContainer() {
     }, [product]);
 
     return(
-        productData ? (
+        isEmpty(productData) ? (
+            <p>Loading....</p>
+        ) : (
             <div>
                 <div>{productData.name}</div>      
                 <div>{productData.category}</div>
                 <div>{productData.description}</div>
             </div>
-        ) : (
-            <p>Loading....</p>
         )
     )
 }
