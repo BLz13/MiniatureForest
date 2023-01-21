@@ -1,44 +1,70 @@
 import "./ItemListContainer.css";
 
 import { NavLink, Outlet } from "react-router-dom";
+import{
+    QuerySnapshot,
+    collection,
+    getDocs
+} from "firebase/firestore"
 import { useEffect, useState } from "react";
 
-import {getAllItems} from "../../Utils/functions"
+import { fireDatabase } from "../../Firebase/config";
+import {getAllProducts} from "../../Firebase/api"
 
 export default function ItemListContainer () {
 
-    const [items, setItems] = useState([]);
+    const [products, setProducts] = useState([]);
 
     const [categoryFilter, setCategoryFilter] = useState(null);
 
+    const productsCollection = collection(fireDatabase, "/products")
+
     useEffect(() => {
-        getAllItems().then((items) => setItems(items));
-    }, []);
+        getDocs(productsCollection)
+        .then ((QuerySnapshot) => {
+            const productsList = [];
+            
+            QuerySnapshot.forEach( product => {
+                productsList.push(product.data())   
+             });
+        setProducts(productsList);
+        });
+    },[]);
+
+    // useEffect(() => {
+    //     getAllProducts()
+    //     .then((products) => setProducts(products));
+    // }, []);
 
     return (
-        <div>
+        products.length===0 ? (
+            <p>Loading...</p>
+
+        ) : (
+            <div>
             <ul className="productsList">
-                {items.map( (item) => (
+                {products.map( (product) => (
                     ((categoryFilter === null) || (categoryFilter === ("home")) || (categoryFilter === ("category")) || (categoryFilter === ("products"))) ? (
-                        <li className="products" key={item.id}>
-                            <NavLink className="item"  to={`/products/${item.id}`}>
-                                {item.name}
+                        <li className="productsItems" key={product.id}>
+                            <NavLink className="product"  to={`${product.id}`}>
+                                {product.name}
                             </NavLink>
                         </li>
                     ) : (
-                        (categoryFilter === item.category) ? (
-                            <li className="products" key={item.id}>
-                                <NavLink className="item" to={`/products/${item.id}`}>
-                                    {item.name}
+                        (categoryFilter === product.category) ? (
+                            <li className="productsItems" key={product.id}>
+                                <NavLink className="product" to={`${product.id}`}>
+                                    {product.name}
                                 </NavLink>
                             </li>
                         ) : null
                     )
                 ))};
             </ul>
-        <div>
-            <Outlet />
-        </div>
-        </div>
+            <div>
+                <Outlet />
+            </div>
+            </div>
+        )
     )
 }

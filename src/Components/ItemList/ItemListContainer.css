@@ -11,13 +11,13 @@
     background-color: var(--grey);
 }
 
-.products{
+.productsItems{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 }
 
-.item{
+.product{
     text-decoration: none;
     color: var(--cream);
 }

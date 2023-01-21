@@ -15,14 +15,18 @@ function Portfolio() {
         <div className="portfolio">
             <Layout>
                 <Routes>
-                    <Route path="/" element={<Home />} />                  
-                    <Route path="/home" element={<Home />} /> 
+                    <Route path="/" element={<Home />}>
+                        <Route path=":product" element={<ItemDetailContainer />} />
+                    </Route>
+                    <Route path="/home" element={<Home />}>
+                        <Route path=":product" element={<ItemDetailContainer />} />
+                    </Route>
                     <Route path="/category" element={<Home />}>
                         <Route path=":id" element={<ItemListContainer />} />
                     </Route>
-                    <Route path="/aboutus" element={<About />} />                 
-                    <Route path="/contact" element={<Contact />} />               
-                    <Route path="/products" element={<ItemListContainer />}>          
+                    <Route path="/aboutus" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/products" element={<ItemListContainer />}>
                         <Route path=":product" element={<ItemDetailContainer />} />          
                     </Route>
                     <Route path="*" element={<NotFound />} />

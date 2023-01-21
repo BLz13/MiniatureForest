@@ -1,12 +1,11 @@
 import './index.css';
 
+import Portfolio from './Portfolio/Portfolio';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-
-import Portfolio from './Portfolio/Portfolio';
-
+import {store} from "./Firebase/config";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

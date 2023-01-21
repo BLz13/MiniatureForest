@@ -1,4 +1,4 @@
-const baseURL = 'https"//jsnoplaceholder.typicode.com';
+const baseURL = "https://jsonplaceholder.typicode.com";
 
 export function getAllItems () {
     return fetch (`${baseURL}/items`)

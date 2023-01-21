@@ -1,18 +1,19 @@
 import "./ItemDetailContainer.css";
 
-import {getProduct, isEmpty} from "../../Utils/functions"
 import { useEffect, useState } from "react";
 
+import {getAllProducts} from "../../Firebase/api"
+import {isEmpty} from "../../Utils/functions"
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
 
-    const [productData, setProductData] = useState();
+    const [productData, setProductData] = useState([]);
 
     const {product} = useParams();
 
     useEffect ( () => {
-        getProduct(product)
+        getAllProducts(product)
         .then((productData => {
             setProductData(productData);
         }));
