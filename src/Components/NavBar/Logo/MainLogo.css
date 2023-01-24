@@ -15,7 +15,7 @@
     opacity: 1;
     position: absolute;
     width: auto;
-    fill: var(--lightGreen);
+    fill: var(--darkGreen);
 }
 
 .icon1{
@@ -25,7 +25,7 @@
     opacity: 1;
     position: absolute;
     width: auto;
-    fill: var(--lightGreen);
+    fill: var(--darkGreen);
 }
 
 .icon2{
@@ -35,13 +35,13 @@
     opacity: 1;
     position: absolute;
     width: auto;
-    fill: var(--green);
+    fill: var(--darkGreen);
 }
 
 .text1{
     position: absolute;
     font-family: var(--sanSerif);
-    color: var(--green);
+    color: var(--darkGreen);
     font-size: 0.9rem;
     top: -0.4rem;
     left: 4.26rem;
@@ -51,7 +51,7 @@
 .text2{
     position: absolute;
     font-family: var(--sanSerif);
-    color: var(--green);
+    color: var(--darkGreen);
     font-size: 0.9rem;
     top: 0.5rem;
     left: 5.78rem;
@@ -113,11 +113,11 @@
 
 @keyframes animationIcon2 {
     from{
-        fill: var(--lightGreen);
+        fill: var(--green);
     } 
     to{
         opacity: 1;
-        fill: var(--green);
+        fill: var(--darkGreen);
         transform: rotate(-360deg);
     }
 }

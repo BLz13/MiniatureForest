@@ -82,3 +82,20 @@
  height: auto;
  width: 100vw;
 }
+
+.link{
+  text-decoration: none;
+  transition: color 500ms, font-weight 500ms;
+  color: var(--cream);
+  font-weight: 300;
+}
+
+.link:hover{
+  color: var(--darkCream);
+  font-weight: 500;
+}
+
+.is-active{
+  font-weight: 500;
+  color: var(--darkCream);
+}

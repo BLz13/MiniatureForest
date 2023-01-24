@@ -16,21 +16,12 @@ function CartWidget (props) {
         const cartBadge = document.querySelector(".badge")
         cartIcon.classList.toggle("navOpenCart")
         cartBadge.classList.toggle("navOpenBadge")
-    },[navbarStatus])
-
-    const {dropmenuStatus, setDropmenu} = useState(false)
-
-    const DropmenuCartHandler = () => {
-        setDropmenu(!dropmenuStatus)
-        const dropMenu = document.getElementById("dropmenu");
-        const dropmenuClass = dropmenuStatus ? "openDropmenu" : "closeDropmenu";
-        dropMenu.setAttribute("class", `dropmenu ${dropmenuClass}`)
-    }
+    },[navbarStatus]);
 
     return (
-        <div onClick={DropmenuCartHandler} className="cartContainer">
+        <div className="cartContainer">
             <CartIcon className="cartImg" />
-            <Badge amountItems="4" className="badge" />
+            <Badge amountItems="0" className="badge" />
             <DropdownMenuContainer>
                 <CartData />
             </DropdownMenuContainer>

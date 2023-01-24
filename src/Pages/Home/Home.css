@@ -1,12 +1,17 @@
 .homeBox{
     position: relative;
     display: grid;
+    justify-items: center;
 }
 
 .heroBox{
-    background-image: url(../../Assets/Images/hero.jpg);
+    background-image:   linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)),
+                        url("../../Assets/Images/hero.jpg")
+    ;
+    background-blend-mode:luminosity;
     font-family: var(--hero);
     height: 100vh;
+    width: 100vw;
     top: -5rem;
     background-size: cover;
     position: relative;

@@ -2,9 +2,10 @@
     list-style: none;
     display: grid;
     align-items: center;
-    margin: 0%;
-    width: 25vw;
-    height: 50vh;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 5vh 2rem;
+    width: 70vw;
+    min-height: 80vh;
     border-radius: 2rem;
     padding: 2%;
     opacity: 1;
@@ -12,6 +13,7 @@
 }
 
 .productsItems{
+    grid-column: 1;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -20,4 +22,9 @@
 .product{
     text-decoration: none;
     color: var(--cream);
+}
+
+.productDetail{
+    grid-column: 2;
+    grid-row: 1 / span 10;
 }

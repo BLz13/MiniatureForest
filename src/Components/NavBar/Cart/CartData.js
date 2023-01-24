@@ -1,18 +1,22 @@
-import {CARTPRODUCTS} from "../../../Services/cart"
+import "./CartData.css"
 
-export default function CartData() {  
+import {CARTPRODUCTS} from "../../../Services/cart";
+
+export default function CartData() {
+
     return(
-        <div>
-            <ul>
-                {CARTPRODUCTS.map( (product) => (
+        CARTPRODUCTS.length ? (
+            <p className="emptyCartDrp">Your cart is empty</p>            
+        ) : (
+            <ul className="cartDropmenu">
+                {CARTPRODUCTS.map( (product) => {
                     <li>
-                        <p>{product.name}</p>
-                        <span>{product.amount}</span>
-                        <img>{`${product.img}1`}</img>
+                        {product.name}
+                        {product.amount}
                     </li>
-                ))}
-
+                })}
             </ul>
-        </div>
+        )
+        
     )
 }
