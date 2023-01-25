@@ -1,5 +1,3 @@
-import "./Portfolio.css";
-
 import { Route, Routes } from "react-router-dom";
 
 import About from "../Pages/AboutUs/AboutUsContainer";
@@ -9,31 +7,33 @@ import ItemDetailContainer from "../Components/ItemDetailContainer/ItemDetailCon
 import ItemListContainer from "../Components/ItemList/ItemListConteiner";
 import Layout from "../Components/Layout/Layout";
 import NotFound from "../Pages/NotFound/NotFound";
+import Provider from "../Provider/Provider";
 
-function Portfolio() {    
+export default function Portfolio() {
+
     return(
-        <div className="portfolio">
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />}>
-                        <Route path=":product" element={<ItemDetailContainer />} />
-                    </Route>
-                    <Route path="/home" element={<Home />}>
-                        <Route path=":product" element={<ItemDetailContainer />} />
-                    </Route>
-                    <Route path="/category" element={<Home />}>
-                        <Route path=":id" element={<ItemListContainer />} />
-                    </Route>
-                    <Route path="/aboutus" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/products" element={<ItemListContainer />}>
-                        <Route path=":product" element={<ItemDetailContainer />} />          
-                    </Route>
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-            </Layout>
-        </div>
+        <>
+            <Provider>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home />}>
+                            <Route path=":product" element={<ItemDetailContainer />} />
+                        </Route>
+                        <Route path="/home" element={<Home />}>
+                            <Route path=":product" element={<ItemDetailContainer />} />
+                        </Route>
+                        <Route path="/category" element={<Home />}>
+                            <Route path=":id" element={<ItemListContainer />} />
+                        </Route>
+                        <Route path="/aboutus" element={<About />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/products" element={<ItemListContainer />}>
+                            <Route path=":product" element={<ItemDetailContainer />} />          
+                        </Route>
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </Layout>
+            </Provider>
+        </>
     );
 };
-
-export default Portfolio;

@@ -1,15 +1,20 @@
 import "./CartData.css"
 
-import {CARTPRODUCTS} from "../../../Services/cart";
+import Context from "../../../Context/Context";
+import { useContext } from "react";
 
 export default function CartData() {
 
+    const {store} = useContext(Context)
+
+    const {cart} = store
+
     return(
-        CARTPRODUCTS.length ? (
+        !cart.length ? (
             <p className="emptyCartDrp">Your cart is empty</p>            
         ) : (
             <ul className="cartDropmenu">
-                {CARTPRODUCTS.map( (product) => {
+                {cart.map( (product) => {
                     <li>
                         {product.name}
                         {product.amount}

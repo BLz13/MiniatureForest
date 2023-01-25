@@ -1,14 +1,19 @@
 import "./NavDropdown.css"
 
-import {CATEGORIES} from "../../../Services/items"
+import Context from "../../../Context/Context";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
 
 export default function SidebarCategories(props) {
+    
+    const {store} = useContext(Context)
+
+    const {categories} = store
 
     const {onClickAction, reference} = props;
 
     return(
-        CATEGORIES.map( (category) => (
+        categories.map( (category) => (
             <li key={`${category.id}-category`}>
                 <NavLink 
                     ref={reference}

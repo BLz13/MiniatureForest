@@ -1,7 +1,7 @@
 import "./Layout.css";
 
 import Footer from "../Footer/Footer";
-import NavBar from "../NavBar/NavBar";
+import Navbar from "../Navbar/Navbar";
 
 export default function Layout(props) {
 
@@ -9,7 +9,7 @@ export default function Layout(props) {
 
   return (
     <div className="layout" >
-      <NavBar />
+      <Navbar />
       {children}
       <Footer />
     </div>

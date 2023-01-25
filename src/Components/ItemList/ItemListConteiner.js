@@ -1,37 +1,17 @@
 import "./ItemListContainer.css";
 
 import { NavLink, Outlet } from "react-router-dom";
-import{
-    QuerySnapshot,
-    collection,
-    getDocs
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-import { fireDatabase } from "../../Firebase/config";
+import Context from "../../Context/Context";
 
 export default function ItemListContainer() {
 
-    const [products, setProducts] = useState([]);
+    const {store} = useContext(Context)
 
-    const [categoryFilter, setCategoryFilter] = useState(null); 
+    const {products} = store
 
-    useEffect(() => {
-        const productsList = [];
-        const productsCollection = collection(fireDatabase, "/products");
-        getDocs(productsCollection)
-            .then ((QuerySnapshot) => {
-                QuerySnapshot.forEach( product => {
-                    const productData=product.data()
-                    productData.address=product.id
-                    productsList.push(productData);
-                });
-            setProducts(productsList)
-        })
-        .catch ((error) => {
-            console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
-        })            
-    }, []);
+    const [categoryFilter, setCategoryFilter] = useState(null);
 
     return (
         (products.length) ? (

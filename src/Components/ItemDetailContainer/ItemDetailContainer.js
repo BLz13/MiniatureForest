@@ -1,15 +1,13 @@
 import "./ItemDetailContainer.css";
 
 import{
-    QuerySnapshot,
-    collection,
     doc,
     getDoc,
-    getDocs
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
-import {CARTPRODUCTS} from "../../Services/cart"
+import AddCartBtn from "../AddCartBtn/AddCartBtn"
+import CartAmountSelection from "../CartAmountSelection/CartAmountSelection"
 import { fireDatabase } from "../../Firebase/config";
 import {useParams} from "react-router-dom";
 
@@ -17,20 +15,29 @@ export default function ItemDetailContainer() {
 
     const [productData, setProductData] = useState(null);
 
+    const [amountCartSelect, setAmountSelected] = useState(0);
+
     const {product} = useParams();
 
-    function buttonClickHandler() {
-        if ( CARTPRODUCTS.find( (item) => (item.id === productData.id) ) === undefined ) {
-            const newCartProduct = {};
-            newCartProduct.id = productData.id;
-            newCartProduct.name = productData.name;
-            newCartProduct.stock = 0;
-            CARTPRODUCTS.push(newCartProduct);
-            console.log(CARTPRODUCTS);
-        } {
-            const productIndex = CARTPRODUCTS.findIndex( (item) => (item.id === productData.id) )
-            CARTPRODUCTS[productIndex].stock ++;
-        } 
+    const onChangeAmountSelected = (event) => {
+        setAmountSelected(event.target.value);
+    }
+    
+
+    const buttonClickHandler = () => {
+
+
+        // if ( CARTPRODUCTS.find( (item) => (item.id === productData.id) ) === undefined ) {
+        //     const newCartProduct = {};
+        //     newCartProduct.id = productData.id;
+        //     newCartProduct.name = productData.name;
+        //     newCartProduct.stock = 0;
+        //     CARTPRODUCTS.push(newCartProduct);
+        //     console.log(CARTPRODUCTS);
+        // } {
+        //     const productIndex = CARTPRODUCTS.findIndex( (item) => (item.id === productData.id) )
+        //     CARTPRODUCTS[productIndex].stock ++;
+        // } 
     }
 
     useEffect( () => {
@@ -43,7 +50,7 @@ export default function ItemDetailContainer() {
         .catch ((error) => {
             console.error(`ERROR on {ItemDetailContainer} searching product - ${error}`);
         });
-    },[product])
+    },[product]);
 
     return(
         productData===null ? (
@@ -57,7 +64,11 @@ export default function ItemDetailContainer() {
                     productData.stock ? (
                         <div>
                             <div>{`${productData.price} $usd`}</div>
-                            <button onClick={buttonClickHandler}>Add To Cart</button>
+                            <CartAmountSelection 
+                                productsAmount={productData.stock}
+                                onChange={onChangeAmountSelected}
+                            />
+                            <AddCartBtn onClick={buttonClickHandler} label="Add To Cart"/>
                         </div>
                     ) : (
                         <div>Out of Stock</div>

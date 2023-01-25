@@ -1,4 +1,4 @@
-import "./NavBar.css"
+import "./Navbar.css"
 
 import { useEffect, useRef, useState } from "react"
 
@@ -7,7 +7,7 @@ import Logo from "./Logo/MainLogo"
 import MenuIcon from "./MenuIcon/MenuIcon"
 import SideBar from "./SideBar/SideBar"
 
-function NavBar() {
+export default function Navbar() {
 
     const sidebarRef = useRef();
 
@@ -80,7 +80,7 @@ function NavBar() {
     },[navbarStatus,sidebarStatus])
 
     return(
-        <nav className={navbarStatus ? "navBar transOn" : "navBar transOff"}>
+        <nav className={navbarStatus ? "navbar transOn" : "navbar transOff"}>
             <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} menuClick={menuClickHandler}/>
             <ul className="items">
                 <li className="menuBox"> <MenuIcon reference={menuIconRef} onClick={menuClickHandler} /> </li>
@@ -91,5 +91,3 @@ function NavBar() {
 
     );
 };
-
-export default NavBar;
