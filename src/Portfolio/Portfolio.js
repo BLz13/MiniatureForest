@@ -22,14 +22,13 @@ export default function Portfolio() {
                         <Route path="/home" element={<Home />}>
                             <Route path=":product" element={<ItemDetailContainer />} />
                         </Route>
-                        <Route path="/category" element={<Home />}>
-                            <Route path=":id" element={<ItemListContainer />} />
+                        <Route path="/categories">
+                            <Route path=":id" element={<ItemListContainer />}>
+                                <Route path=":product" element={<ItemDetailContainer />} />
+                            </Route>
                         </Route>
                         <Route path="/aboutus" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/products" element={<ItemListContainer />}>
-                            <Route path=":product" element={<ItemDetailContainer />} />          
-                        </Route>
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>

@@ -32,4 +32,6 @@
 .sidebarElements{
     list-style: none;
     position: relative;
+    color: var(--cream);
+    font-weight: 300;
 }

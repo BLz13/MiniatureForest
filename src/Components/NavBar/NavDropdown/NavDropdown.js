@@ -18,7 +18,7 @@ export default function SidebarCategories(props) {
                 <NavLink 
                     ref={reference}
                     onClick={onClickAction}
-                    to={`/category/${category.id}`}
+                    to={`/categories/${category.id}`}
                     className={
                         ( {isActive} ) => isActive ? "sidebarCategories link is-active" : "link sidebarCategories"
                     }

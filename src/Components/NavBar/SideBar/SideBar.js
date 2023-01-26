@@ -17,7 +17,7 @@ function SideBar (props) {
     return (
         <ul ref={reference} className={`sideBar ${sidebarClass}`}>
             {PAGES.map( (page) => (
-                (page.id !== "products") ? (
+                (page.id !== "categories") ? (
                     <li key={`${page.id}-page`} className="sidebarElements" >
                         <NavLink onClick={menuClick} to={page.path} className={( {isActive} ) => isActive ? "link is-active" : "link"} >
                             {page.name}
@@ -25,9 +25,7 @@ function SideBar (props) {
                     </li>
                 ) : (
                     <li key={`${page.id}-page`} className="sidebarElements" > 
-                        <NavLink onClick={menuClick} to={page.path} className={( {isActive} ) => isActive ? "link is-active" : "link"} >
-                            Categories
-                        </NavLink>
+                        {page.name}
                         <NavDropdownContainer>
                             <NavDropdown onClick={menuClick} reference={sideCategoriesRef} />
                         </NavDropdownContainer>

@@ -1,47 +1,57 @@
 import "./ItemListContainer.css";
 
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import Context from "../../Context/Context";
 
 export default function ItemListContainer() {
 
-    const {store} = useContext(Context)
+    const {store} = useContext(Context);
 
-    const {products} = store
+    const {products, categories} = store;
 
-    const [categoryFilter, setCategoryFilter] = useState(null);
+    const categoryParam = useParams();
+
+    const categoryFilter = categories.find( (category) => (category.id === categoryParam.id) );
+    
+    function useForceUpdate(){
+        const [value, setValue] = useState(0);
+        return () => setValue(value => value + 1);
+    }
+
+   setTimeout(useForceUpdate(),300);
 
     return (
-        (products.length) ? (
+        products.length === 0  ? (
+            <p>Loading...</p>
+        ) : (
             <>
                 <ul className="productsList">
-                    {products.map( (product) => (
-                        ((categoryFilter === null) || (categoryFilter === ("home")) || (categoryFilter === ("category")) || (categoryFilter === ("products"))) ? (
+                    {( categoryFilter === undefined ) ? (
+                        products.map( (product) => (
                             <li className="productsItems" key={product.id}>
                                 <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
                                     {product.name}
                                 </NavLink>
                             </li>
-                        ) : (
-                            (categoryFilter === product.category) ? (
+                        ))
+                    ) : (
+                        products.map( (product) => (
+                            ( product.category === categoryFilter.name ) ? (
                                 <li className="productsItems" key={product.id}>
-                                    <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")} to={product.address}>
+                                    <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
                                         {product.name}
                                     </NavLink>
                                 </li>
                             ) : null
-                        )
-                    ))}
+                        ))
+                    )}
                     <li className="productDetail">
                         <Outlet />
                     </li>
                 </ul>
             </>
-        ) :(
-            <p>Loading...</p>
-
         )
     )
 }
