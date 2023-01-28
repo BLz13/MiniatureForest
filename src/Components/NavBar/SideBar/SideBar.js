@@ -1,10 +1,11 @@
 import "./SideBar.css";
 
-import NavDropdown from "../NavDropdown/NavDropdown";
+import { useEffect, useRef, useState } from "react";
+
 import NavDropdownContainer from "../NavDropdown/NavDropdownContainer";
 import { NavLink } from "react-router-dom";
 import {PAGES} from "../../../Utils/main-pages"
-import { useRef } from "react";
+import SidebarCategories from "../NavDropdown/SidebarCategories";
 
 function SideBar (props) {
 
@@ -27,7 +28,7 @@ function SideBar (props) {
                     <li key={`${page.id}-page`} className="sidebarElements" > 
                         {page.name}
                         <NavDropdownContainer>
-                            <NavDropdown onClick={menuClick} reference={sideCategoriesRef} />
+                            <SidebarCategories onClick={menuClick} reference={sideCategoriesRef} />
                         </NavDropdownContainer>
                     </li>
                 )

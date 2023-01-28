@@ -1,7 +1,8 @@
 import "./CartData.css"
 
+import { useContext, useEffect, useState } from "react";
+
 import Context from "../../../Context/Context";
-import { useContext } from "react";
 
 export default function CartData() {
 
@@ -9,19 +10,32 @@ export default function CartData() {
 
     const {cart} = store
 
+    const [cartList, setCartList] = useState([]);
+
+    const [render, setRender] = useState(<p className="emptyCartDrp">Your cart is empty</p>);
+
+    useEffect( () => {
+        if ( cart !== undefined ) {
+            setCartList(cart.items);
+        };
+    },[cart])
+
+    useEffect( () => {
+        setRender(
+                <ul className="cartDropmenu">
+                    {cartList.map( (product) => {
+                        <li>
+                            <span>{product.name}</span>
+                            <span>{product.amount}</span>
+                        </li>
+                    })}
+                </ul>
+            );
+    },[cartList])
+
+    console.log(cartList);
+
     return(
-        !cart.length ? (
-            <p className="emptyCartDrp">Your cart is empty</p>            
-        ) : (
-            <ul className="cartDropmenu">
-                {cart.map( (product) => {
-                    <li>
-                        {product.name}
-                        {product.amount}
-                    </li>
-                })}
-            </ul>
-        )
-        
+        render
     )
 }

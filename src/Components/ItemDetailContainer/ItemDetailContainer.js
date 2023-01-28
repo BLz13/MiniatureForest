@@ -1,59 +1,54 @@
 import "./ItemDetailContainer.css";
 
-import{
-    doc,
-    getDoc,
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AddCartBtn from "../AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../CartAmountSelection/CartAmountSelection"
-import { fireDatabase } from "../../Firebase/config";
+import Context from '../../Context/Context'
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
 
-    const [productData, setProductData] = useState(null);
+    const [productData, setProductData] = useState();
 
-    const [amountCartSelect, setAmountSelected] = useState(0);
+    const [amountCartSelect, setAmountSelected] = useState(1);
 
-    const {product} = useParams();
+    const {dispatch, store} = useContext(Context)
+
+    const {products} = store;
+
+    const productAddressParam = useParams();
 
     const onChangeAmountSelected = (event) => {
         setAmountSelected(event.target.value);
-    }
-    
+    }    
 
     const buttonClickHandler = () => {
+        const {id, name, price} = productData;
+        const amount = amountCartSelect;
+        const subTotal = amount * price;
 
-
-        // if ( CARTPRODUCTS.find( (item) => (item.id === productData.id) ) === undefined ) {
-        //     const newCartProduct = {};
-        //     newCartProduct.id = productData.id;
-        //     newCartProduct.name = productData.name;
-        //     newCartProduct.stock = 0;
-        //     CARTPRODUCTS.push(newCartProduct);
-        //     console.log(CARTPRODUCTS);
-        // } {
-        //     const productIndex = CARTPRODUCTS.findIndex( (item) => (item.id === productData.id) )
-        //     CARTPRODUCTS[productIndex].stock ++;
-        // } 
+        dispatch({
+            type:"addItemsToCart",
+            payload: {
+                id,
+                name,
+                price,
+                amount,
+                subTotal
+            }
+        });
     }
 
     useEffect( () => {
-        const docRef = doc(fireDatabase, "/products", product);
-        getDoc(docRef)
-        .then((docSnapshot) => {
-            if (docSnapshot.exists()) {
-                setProductData(docSnapshot.data());
-            }})
-        .catch ((error) => {
-            console.error(`ERROR on {ItemDetailContainer} searching product - ${error}`);
-        });
-    },[product]);
+        if (products !== undefined) {
+            const productIndex = products.findIndex( (product) => (product.address === productAddressParam.product) );
+            setProductData(products[productIndex]);
+        }
+    },[productAddressParam]);
 
     return(
-        productData===null ? (
+        (productData === undefined) ? (
             <p>Loading....</p>
         ) : (
             <div>

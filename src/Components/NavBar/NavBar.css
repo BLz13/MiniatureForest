@@ -41,6 +41,28 @@
     height: 100%;
 }
 
-.cartBox{
+.cartContainer{
     justify-self: flex-end;
+    position: relative;
+    height: inherit;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+.cartContainer:hover .cartImg{
+    transform: scale(1.1) rotate(-7deg);
+}
+
+.cartContainer:hover ul{
+    top: 3rem;
+    right: -2rem;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.cartContainer:hover .emptyCartDrp{
+    top: 3rem;
+    right: -2rem;
+    opacity: 1;
+    transform: scale(1);
 }

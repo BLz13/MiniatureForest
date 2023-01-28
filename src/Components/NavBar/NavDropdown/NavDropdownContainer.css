@@ -50,3 +50,9 @@
 .openNavArrow:hover{
     fill: var(--grey);
 }
+
+.sidebarCategories{
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}

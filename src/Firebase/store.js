@@ -7,7 +7,11 @@ import{
 import { fireDatabase } from "./config";
 
 const store = {
-    cart: [],
+    cart: {
+        items:[],
+        total:0
+    },
+    purchased:[],
     products: [],
     categories: []
 };
@@ -39,7 +43,5 @@ getDocs(categoriesCollection)
     .catch ((error) => {
         console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
     })
-
-    console.log(store);
 
 export default store;

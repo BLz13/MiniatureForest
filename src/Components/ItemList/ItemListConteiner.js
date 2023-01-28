@@ -13,45 +13,50 @@ export default function ItemListContainer() {
 
     const categoryParam = useParams();
 
-    const categoryFilter = categories.find( (category) => (category.id === categoryParam.id) );
+    const [productsList, setProductsList] = useState(undefined);
     
-    function useForceUpdate(){
-        const [value, setValue] = useState(0);
-        return () => setValue(value => value + 1);
-    }
+    const [categoryFilter, setCategoryFilter] = useState(undefined);
 
-   setTimeout(useForceUpdate(),300);
+    useEffect( () => {
+        if ( products !== undefined ) {
+            setProductsList(products);
+        }
+        if ( categories !== undefined ) {
+            setCategoryFilter(categories.find( (category) => (category.id === categoryParam.id) ));
+        }
+    },[categoryParam])
 
     return (
-        products.length === 0  ? (
+        (productsList === undefined) ? (
             <p>Loading...</p>
         ) : (
             <>
-                <ul className="productsList">
-                    {( categoryFilter === undefined ) ? (
-                        products.map( (product) => (
-                            <li className="productsItems" key={product.id}>
-                                <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
-                                    {product.name}
-                                </NavLink>
-                            </li>
-                        ))
-                    ) : (
-                        products.map( (product) => (
-                            ( product.category === categoryFilter.name ) ? (
+                <ul className="productsList"> {
+                        ( categoryFilter === undefined ) ? (
+                            productsList.map( (product) => (
                                 <li className="productsItems" key={product.id}>
                                     <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
                                         {product.name}
                                     </NavLink>
                                 </li>
-                            ) : null
-                        ))
-                    )}
-                    <li className="productDetail">
-                        <Outlet />
-                    </li>
+                            ))
+                        ) : (
+                            productsList.map( (product) => (
+                                ( product.category === categoryFilter.name ) ? (
+                                    <li className="productsItems" key={product.id}>
+                                        <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
+                                            {product.name}
+                                        </NavLink>
+                                    </li>
+                                ) : null
+                            ))
+                        )
+                    }
+                        <li className="productDetail">
+                            <Outlet />
+                        </li>
                 </ul>
             </>
-        )
+        ) 
     )
 }

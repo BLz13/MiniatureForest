@@ -85,7 +85,7 @@ export default function Navbar() {
             <ul className="items">
                 <li className="menuBox"> <MenuIcon reference={menuIconRef} onClick={menuClickHandler} /> </li>
                 <li> <Logo navbarStatus={navbarStatus} /> </li>
-                <li className="cartBox"> <CartWidget navbarStatus={navbarStatus} /> </li>
+                <li className="cartContainer"> <CartWidget navbarStatus={navbarStatus} /> </li>
             </ul>
         </nav>
 

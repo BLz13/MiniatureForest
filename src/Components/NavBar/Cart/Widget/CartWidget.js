@@ -1,31 +1,57 @@
 import "./CartWidget.css";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Badge from "./Badge";
 import CartData from "../CartData";
 import {ReactComponent as CartIcon} from "../../../../Assets/Images/CartIcon.svg";
+import Context from "../../../../Context/Context";
 import DropdownMenuContainer from "../../../DropdownMenuContainer/DropdownMenuContainer";
 
 function CartWidget (props) {
 
+    const {store} = useContext(Context)
+
+    const {cart} = store
+
     const {navbarStatus} = props;
 
+    const [badgeNumber, setBadgeNumber] = useState(0);
+
+    const [classBadge, setClassBadge] = useState("");
+
+    const [classIcon, setClassIcon] = useState("");
+
+    function badgeClassNavStatus() {
+        const class1 = (badgeNumber === 0) ? "badge noBadge" : "badge";
+        const class2 = !navbarStatus ? "navOpenBadge" : null;
+        setClassBadge(`${class1} ${class2}`)
+    }
+
+    function iconClassNavStatus() {
+        const class1 = !navbarStatus ? "navOpenCart" : null;
+        setClassIcon(`${class1} cartImg`)
+    }
+
     useEffect( () => {
-        const cartIcon = document.querySelector(".cartImg")
-        const cartBadge = document.querySelector(".badge")
-        cartIcon.classList.toggle("navOpenCart")
-        cartBadge.classList.toggle("navOpenBadge")
-    },[navbarStatus]);
+        if ( cart !== undefined ) {
+            setBadgeNumber(cart.items.length);
+        }
+    })
+
+    useEffect( () => {
+        iconClassNavStatus();
+        badgeClassNavStatus();
+    })
 
     return (
-        <div className="cartContainer">
-            <CartIcon className="cartImg" />
-            <Badge amountItems="0" className="badge" />
+        <>
+            <CartIcon className={classIcon} />
+            <Badge amountItems={badgeNumber} className={classBadge} />
             <DropdownMenuContainer>
                 <CartData />
             </DropdownMenuContainer>
-        </div>
+        </>
     );
 };
 
