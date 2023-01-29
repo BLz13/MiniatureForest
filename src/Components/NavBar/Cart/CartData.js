@@ -1,41 +1,34 @@
 import "./CartData.css"
 
-import { useContext, useEffect, useState } from "react";
+import FinishOrderBtn from "../../Buttons/FinishOrderBtn/FinishOrderBtn"
 
-import Context from "../../../Context/Context";
+export default function CartData(props) {
 
-export default function CartData() {
+    const {cartList} = props;
 
-    const {store} = useContext(Context)
-
-    const {cart} = store
-
-    const [cartList, setCartList] = useState([]);
-
-    const [render, setRender] = useState(<p className="emptyCartDrp">Your cart is empty</p>);
-
-    useEffect( () => {
-        if ( cart !== undefined ) {
-            setCartList(cart.items);
-        };
-    },[cart])
-
-    useEffect( () => {
-        setRender(
-                <ul className="cartDropmenu">
-                    {cartList.map( (product) => {
-                        <li>
-                            <span>{product.name}</span>
-                            <span>{product.amount}</span>
-                        </li>
-                    })}
-                </ul>
-            );
-    },[cartList])
-
-    console.log(cartList);
+    const children = (cartList.map( (product) => {
+        return(
+            <li className="itemCart" key={`item-cart-${product.id}`}>
+                <span>{`${product.name}`}</span>
+                <span>{`x${product.amount}`}</span>
+                <span>{`${product.subTotal}$`}</span>
+            </li>
+        )
+    }))
 
     return(
-        render
+        (cartList.length === 0) ? (
+            <p className="emptyCartDrp">Your cart is empty</p>
+        ) : (
+            <ul className="cartDropmenu">
+                <li className="titlesCart">
+                    <span>Items:</span>
+                    <span>Qty:</span>
+                    <span>Total:</span>
+                </li>
+                {children}
+                <FinishOrderBtn name="Go To Cart"/>
+            </ul>
+        )
     )
 }

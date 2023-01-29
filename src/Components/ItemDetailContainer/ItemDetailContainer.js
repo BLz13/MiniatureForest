@@ -2,8 +2,8 @@ import "./ItemDetailContainer.css";
 
 import { useContext, useEffect, useState } from "react";
 
-import AddCartBtn from "../AddCartBtn/AddCartBtn"
-import CartAmountSelection from "../CartAmountSelection/CartAmountSelection"
+import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
+import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
 import Context from '../../Context/Context'
 import {useParams} from "react-router-dom";
 

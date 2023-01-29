@@ -1,22 +1,22 @@
 .cartDropmenu{
     position: absolute;
     overflow-y: auto;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: space-evenly;
+    display: grid;
     background-color: whitesmoke;
-    color: var(--green);
-    transition: opacity 1s, top 1s, right 1s, transform 1s;
+    cursor: default;
+    justify-items: stretch;
+    align-content: flex-start;
+    row-gap: 1rem;
     transition-delay: 100ms;
     border-radius: 1rem;
-    height: 18rem;
-    width: 10rem;
-    padding: 2rem;
-    top: -10rem;
-    right: -6rem;
+    border: 2rem solid whitesmoke;
+    height: 20rem;
+    top: -11rem;
+    right: -9rem;
     opacity: 0;
     transform: scale(0.1);
+    color: var(--green);
+    transition: opacity 1s, top 1s, right 1s, transform 1s;
 }
 
 .emptyCartDrp{
@@ -25,6 +25,7 @@
     display: grid;
     text-align: center;
     align-items: center;
+    cursor: default;
     color: var(--darkGreen);
     transition: opacity 1s, top 1s, right 1s, transform 1s;
     transition-delay: 100ms;
@@ -36,4 +37,28 @@
     right: -6rem;
     opacity: 0;
     transform: scale(0.1);
+}
+
+.titlesCart{
+    list-style: none;
+    display: grid;
+    text-transform: capitalize;
+    padding: 0rem 1rem;
+    font-weight: 300;
+    grid-template-columns: 4fr 1fr 1fr;
+    column-gap: 2rem;
+    font-size: 1.2rem;
+    border: 0px solid;
+    border-bottom: 1px solid;
+    border-color: var(--grey);
+    color: var(--darkGrey);
+}
+
+.itemCart{
+    list-style: none;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    column-gap: 3rem;
+    padding: 0rem 1rem;
+    color: var(--black);
 }

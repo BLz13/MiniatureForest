@@ -1,0 +1,20 @@
+.finishOrderBtn{
+    width: 50%;
+    height: 2rem;
+    bottom: 0rem;
+    right: 0rem;
+    transition: 300ms;
+    border-radius: 1rem;
+    padding: 0rem 0.5rem;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    color: var(--black);
+    background-color: var(--cream);
+}
+
+.finishOrderBtn:hover{
+    background-color: var(--darkCream);
+}
