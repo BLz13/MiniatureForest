@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import About from "../Pages/AboutUs/AboutUsContainer";
+import Cart from "../Pages/Cart/Cart"
 import Contact from "../Pages/Contact/Contact";
 import Home from "../Pages/Home/Home";
 import ItemDetailContainer from "../Components/ItemDetailContainer/ItemDetailContainer"
@@ -29,6 +30,7 @@ export default function Portfolio() {
                         </Route>
                         <Route path="/aboutus" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/cart" element={<Cart />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>

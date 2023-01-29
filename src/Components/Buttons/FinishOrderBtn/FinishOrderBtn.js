@@ -1,5 +1,7 @@
 import "./FinishOrderBtn.css"
 
+import { NavLink } from "react-router-dom";
+
 export default function FinishOrderBtn(props) {
 
     const {name} = props;
@@ -9,7 +11,9 @@ export default function FinishOrderBtn(props) {
             className="finishOrderBtn"
             type="button"
         >
-            {name}
+            <NavLink to="/cart" >
+                {name}
+            </NavLink>
         </button>
     )
 }

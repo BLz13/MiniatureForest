@@ -13,7 +13,9 @@
     height: 20rem;
     top: -11rem;
     right: -9rem;
+    padding-bottom: 3rem;
     opacity: 0;
+    z-index: 10;
     transform: scale(0.1);
     color: var(--green);
     transition: opacity 1s, top 1s, right 1s, transform 1s;

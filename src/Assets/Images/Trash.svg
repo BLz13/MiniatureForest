@@ -1,0 +1,14 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="500" height="500" fill="none"/>
+    <g id="Trash">
+        <g id="Lid" class="lid">
+            <path id="Vector" d="M437.5 124.583C368.125 117.708 298.333 114.166 228.75 114.166C187.5 114.166 146.25 116.25 105 120.416L62.5 124.583" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_2" d="M177.083 103.542L181.667 76.25C185 56.4583 187.5 41.6667 222.708 41.6667H277.292C312.5 41.6667 315.208 57.2917 318.333 76.4583L322.917 103.542" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g id="Can">
+            <path id="Vector_3" d="M392.708 190.417L379.167 400.208C376.875 432.917 375 458.333 316.875 458.333H183.125C125 458.333 123.125 432.917 120.834 400.208L107.292 190.417" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_4" d="M215.208 343.75H284.583" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Vector_5" d="M197.917 260.417H302.083" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
+</svg>

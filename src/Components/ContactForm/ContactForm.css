@@ -37,7 +37,7 @@
 
 .formInput{
     outline: none;
-    width: 50%;
+    width: 85%;
     height: 1.8rem;
     padding: 0.2rem 1rem;
     font-size: 0.9rem;
@@ -77,14 +77,14 @@
     border-radius: 1rem;
     border-top-left-radius: 0%;
     border-bottom-right-radius: 0%;
-    width: 50%;
+    width: 100%;
     height: 8rem;
     padding: 1rem 1rem;
     font-size: 0.9rem;
     transition: 0.5s;
     font-size: 0.8rem;
     resize: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     outline: none;
     border: none;
     color: var(--darkGrey);

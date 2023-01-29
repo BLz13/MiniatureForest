@@ -11,10 +11,14 @@
     position: absolute;
     border: none;
     cursor: pointer;
-    color: var(--black);
     background-color: var(--cream);
 }
 
 .finishOrderBtn:hover{
     background-color: var(--darkCream);
+}
+
+.finishOrderBtn a{
+    color: var(--black);
+    text-decoration: none;
 }
