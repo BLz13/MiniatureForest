@@ -7,8 +7,8 @@ export default function CartData(props) {
 
     const children = (cartList.map( (product) => {
         return(
-            <li ref={itemRef} className="itemCart" key={`item-cart-${product.id}`}>
-                <span>{`${product.name}`}</span>
+            <li className="itemCart" key={`item-cart-${product.id}`}>
+                <span ref={itemRef}>{`${product.name}`}</span>
                 <span>{`x${product.amount}`}</span>
                 <span>{`${product.subTotal}$`}</span>
                 <DeleteItemBtn onClick={trashOnClick}/>

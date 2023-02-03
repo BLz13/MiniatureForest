@@ -14,6 +14,8 @@ export default function CartDropdown(props) {
     const {cart} = orders
 
     const {navbarStatus} = props;
+    
+    const itemRef = useRef();
 
     const [cartList, setCartList] = useState([]);
 
@@ -25,7 +27,9 @@ export default function CartDropdown(props) {
 
     const trashOnClickHandler = () => {
 
-        const {id, name, amount, price, subTotal} = cartList;
+        const cartItem = itemRef.current.innerText;
+
+        const {id, name, amount, price, subTotal} = cart.items.find( product => product.name === cartItem );
 
         dispatch({
             type:"removeItemFromCart",
@@ -71,6 +75,7 @@ export default function CartDropdown(props) {
             <CartIcon className={classIcon} />
             <Badge amountItems={badgeNumber} className={classBadge} />
             <CartData
+                itemRef={itemRef}
                 cartList={cartList}
                 trashOnClick={trashOnClickHandler}
             />
