@@ -1,7 +1,7 @@
 import {isEmpty} from '../Utils/functions'
 import {removeElementFromArray} from "../Utils/functions"
 
-export default function cartReducer(orders, action) {
+export default function reducer(orders, action) {
 
     const {type, payload} = action;
 
@@ -33,8 +33,8 @@ export default function cartReducer(orders, action) {
                 cart.items.push(item);
                 cart.total = cart.total + item.subTotal;
             } {
-                cart.items[productIndexCart].amount = cart.items[productIndexCart].amount + item.amount;
-                cart.items[productIndexCart].subTotal = cart.items[productIndexCart].subTotal + item.subTotal;
+                cart.items[productIndexCart].amount += item.amount;
+                cart.items[productIndexCart].subTotal += item.subTotal;
                 cart.total = cart.total + item.subTotal;
             };
     

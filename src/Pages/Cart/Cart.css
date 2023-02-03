@@ -63,34 +63,6 @@ h1{
     text-align: left;
 }
 
-.cartPageItems svg{
-    height: 1.2rem;
-    width: 1.2rem;
-    transition: 200ms;
-    stroke: var(--darkGrey);
-    cursor: pointer;
-    position: relative;
-}
-
-.cartPageItems svg:hover{
-    transform: rotate(-10deg);
-    stroke: red;
-}
-
-.cartPageItems svg:hover .lid{
-    transform: translateY(-3rem);
-    stroke: red;
-}
-
-.cartPageItems .lid{
-    stroke: var(--black);
-}
-
-.cartPageItems svg{
-    height: 1.2rem;
-    width: 1.2rem;
-}
-
 .cartTotalBox{
     position: absolute;
     display: flex;

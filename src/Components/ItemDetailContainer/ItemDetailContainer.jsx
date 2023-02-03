@@ -11,10 +11,13 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
+import Context from "../../Context/Context";
 import { fireDatabase } from "../../Firebase/config";
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
+
+    const {dispatch, orders} = useContext(Context);
 
     const refAmountItems = useRef();
 
@@ -22,7 +25,34 @@ export default function ItemDetailContainer() {
 
     const [productData, setProductData] = useState();
 
-    console.log(productAddressParam.product)
+    const addToCartClickHandler = (event) => {
+
+        event.stopPropagation();
+        
+        const {id, name, price} = productData;
+        const amount = (+refAmountItems.current.innerText);
+        const subTotal = amount * price;
+
+        console.log({
+            id,
+            name,
+            price,
+            amount,
+            subTotal
+        })
+
+        dispatch({
+            type:"addItemsToCart",
+            payload: {
+                id,
+                name,
+                price,
+                amount,
+                subTotal
+            }
+        });
+
+    };
 
     useEffect( () => {
         if (Boolean(productAddressParam)) { 
@@ -60,9 +90,7 @@ export default function ItemDetailContainer() {
                                     reference={refAmountItems}
                                 />
                                 <AddCartBtn
-                                    productData={productData}
-                                    // dispatch={dispatch}
-                                    refAmountItems={refAmountItems}
+                                    buttonClickHandler={addToCartClickHandler}
                                     label="Add To Cart"
                                 />
                             </div>

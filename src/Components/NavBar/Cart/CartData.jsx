@@ -1,6 +1,5 @@
-import "./CartData.css"
-
-import FinishOrderBtn from "../../Buttons/FinishOrderBtn/FinishOrderBtn"
+import DeleteItemBtn from "../../Buttons/DeleteItem/DeleteItem";
+import FinishOrderBtn from "../../Buttons/FinishOrderBtn/FinishOrderBtn";
 
 export default function CartData(props) {
 
@@ -12,6 +11,7 @@ export default function CartData(props) {
                 <span>{`${product.name}`}</span>
                 <span>{`x${product.amount}`}</span>
                 <span>{`${product.subTotal}$`}</span>
+                <DeleteItemBtn />
             </li>
         )
     }))

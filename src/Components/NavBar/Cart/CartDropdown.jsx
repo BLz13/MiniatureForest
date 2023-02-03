@@ -1,12 +1,11 @@
-import "./CartWidget.css";
+import "./CartDropdown.css";
 
 import { useContext, useEffect, useState } from "react";
 
 import Badge from "./Badge";
-import CartContext from "../../../../Context/CartContext";
-import CartData from "../CartData";
-import {ReactComponent as CartIcon} from "../../../../Assets/Images/CartIcon.svg";
-import DropdownMenuContainer from "../../../DropdownMenuContainer/DropdownMenuContainer";
+import CartContext from "../../../Context/Context";
+import CartData from "./CartData";
+import {ReactComponent as CartIcon} from "../../../Assets/Images/CartIcon.svg";
 
 function CartWidget (props) {
 
@@ -54,9 +53,7 @@ function CartWidget (props) {
         <>
             <CartIcon className={classIcon} />
             <Badge amountItems={badgeNumber} className={classBadge} />
-            <DropdownMenuContainer>
-                <CartData cartList={cartList}/>
-            </DropdownMenuContainer>
+            <CartData cartList={cartList}/>
         </>
     );
 };

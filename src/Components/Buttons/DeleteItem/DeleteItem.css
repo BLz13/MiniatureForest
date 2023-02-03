@@ -1,0 +1,25 @@
+
+.trashCan{
+    height: 1.2rem;
+    width: 1.2rem;
+    transition: 200ms;
+    stroke: var(--darkGrey);
+    cursor: pointer;
+    overflow: visible;
+}
+
+.trashCan:hover{
+    transform: rotate(-20deg);
+    stroke: red;
+}
+
+.trashCan:hover .lid{
+    transform: rotate(45deg);
+    stroke: red;
+}
+
+.trashCan .lid{
+    stroke: var(--black);
+    transform-origin: 85% 35%;
+    transition: 200ms;
+}

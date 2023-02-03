@@ -2,15 +2,15 @@ import "./Cart.css"
 
 import { useContext, useEffect, useState } from "react";
 
-import CartContext from "../../Context/CartContext";
 import ContactForm from "../../Components/ContactForm/ContactForm"
-import { ReactComponent as Trash } from "../../Assets/Images/Trash.svg"
+import Context from "../../Context/Context";
+import DeleteItemBtn from "../../Components/Buttons/DeleteItem/DeleteItem"
 
 export default function Cart() {
 
-    const {dispatch, store} = useContext(CartContext);
+    const {dispatch, orders} = useContext(Context);
 
-    const {cart} = store;
+    const {cart} = orders;
 
     const [cartItems, setCartItems] = useState([]);
 
@@ -37,7 +37,7 @@ export default function Cart() {
                 <span className="productName">{`${item.name}`}</span>
                 <span>{`x${item.amount}`}</span>
                 <span>{`${item.subTotal}$`}</span>
-                <Trash onClick={trashClickHandler}/>
+                <DeleteItemBtn onClick={trashClickHandler}/>
             </li>
         )}
     );

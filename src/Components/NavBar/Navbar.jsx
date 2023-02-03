@@ -2,7 +2,7 @@ import "./Navbar.css"
 
 import { useEffect, useRef, useState } from "react"
 
-import CartWidget from "./Cart/Widget/CartWidget"
+import CartDropdown from "./Cart/CartDropdown"
 import Logo from "./Logo/MainLogo"
 import MenuIcon from "./MenuIcon/MenuIcon"
 import SideBar from "./SideBar/SideBar"
@@ -83,9 +83,15 @@ export default function Navbar() {
         <nav className={navbarStatus ? "navbar transOn" : "navbar transOff"}>
             <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} menuClick={menuClickHandler}/>
             <ul className="items">
-                <li className="menuBox"> <MenuIcon reference={menuIconRef} onClick={menuClickHandler} /> </li>
-                <li> <Logo navbarStatus={navbarStatus} /> </li>
-                <li className="cartContainer"> <CartWidget navbarStatus={navbarStatus} /> </li>
+                <li className="menuBox">
+                    <MenuIcon reference={menuIconRef} onClick={menuClickHandler} />
+                </li>
+                <li>
+                    <Logo navbarStatus={navbarStatus} />
+                </li>
+                <li className="cartContainer">
+                    <CartDropdown navbarStatus={navbarStatus} />
+                </li>
             </ul>
         </nav>
 
