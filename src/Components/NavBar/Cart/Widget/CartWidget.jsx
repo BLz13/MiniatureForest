@@ -3,16 +3,16 @@ import "./CartWidget.css";
 import { useContext, useEffect, useState } from "react";
 
 import Badge from "./Badge";
+import CartContext from "../../../../Context/CartContext";
 import CartData from "../CartData";
 import {ReactComponent as CartIcon} from "../../../../Assets/Images/CartIcon.svg";
-import Context from "../../../../Context/Context";
 import DropdownMenuContainer from "../../../DropdownMenuContainer/DropdownMenuContainer";
 
 function CartWidget (props) {
 
-    const {store} = useContext(Context)
+    const {orders} = useContext(CartContext)
 
-    const {cart} = store
+    const {cart} = orders
 
     const {navbarStatus} = props;
 

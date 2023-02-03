@@ -2,34 +2,49 @@ import "./Cart.css"
 
 import { useContext, useEffect, useState } from "react";
 
+import CartContext from "../../Context/CartContext";
 import ContactForm from "../../Components/ContactForm/ContactForm"
-import Context from "../../Context/Context";
 import { ReactComponent as Trash } from "../../Assets/Images/Trash.svg"
 
 export default function Cart() {
 
-    const {store} = useContext(Context);
+    const {dispatch, store} = useContext(CartContext);
 
     const {cart} = store;
 
     const [cartItems, setCartItems] = useState([]);
 
     const [cartTotal, setCartTotal] = useState(0);
+    
+    const trashClickHandler = () => {
+        const {id, name, amount, price, subTotal} = cartItems;
+
+        dispatch({
+            type:"removeItemFromCart",
+            payload: {
+                id,
+                name,
+                price,
+                amount,
+                subTotal
+            }
+        });
+    }
 
     const children = cartItems.map( (item) => {
         return(
-            <li className="cartPageItems" key={`item-cartPage-${item.id}`}>
+            <li value={item} className="cartPageItems" key={`item-cartPage-${item.id}`}>
                 <span className="productName">{`${item.name}`}</span>
                 <span>{`x${item.amount}`}</span>
                 <span>{`${item.subTotal}$`}</span>
-                <Trash />
+                <Trash onClick={trashClickHandler}/>
             </li>
         )}
     );
 
     useEffect( () => {
         setCartItems(cart.items);
-    });
+    },[cart]);
 
     useEffect( () => {
         cartItems.map( (item) => {setCartTotal( item.subTotal )} )

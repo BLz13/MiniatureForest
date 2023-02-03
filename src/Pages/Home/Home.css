@@ -1,3 +1,11 @@
+.homeContainer{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 10vh;
+    min-height: 87vh;
+}
+
 .homeBox{
     position: relative;
     display: grid;
@@ -5,8 +13,9 @@
 }
 
 .heroBox{
-    background-image:   linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)),
-                        url("../../Assets/Images/hero.jpg")
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)),
+        url("../../Assets/Images/hero.jpg")
     ;
     background-blend-mode:luminosity;
     font-family: var(--hero);

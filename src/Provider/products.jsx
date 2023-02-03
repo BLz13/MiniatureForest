@@ -4,14 +4,9 @@ import{
     getDocs
 } from "firebase/firestore";
 
-import { fireDatabase } from "./config";
+import { fireDatabase } from "../Firebase/config";
 
 const store = {
-    cart: {
-        items:[],
-        total:0
-    },
-    purchased:[],
     products: [],
     categories: []
 };
@@ -27,6 +22,7 @@ getDocs(productsCollection)
             productData.address=product.id
             store.products.push(productData);
         });
+        console.log(`Products successfully loaded from firebase`);
     })
     .catch ((error) => {
         console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
@@ -39,6 +35,7 @@ getDocs(categoriesCollection)
             categoryData.address=category.id
             store.categories.push(categoryData);
         });
+        console.log(`Categories successfully loaded from firebase`);
     })
     .catch ((error) => {
         console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);

@@ -1,3 +1,21 @@
 .addToCartBtn{
-    color: var(--cyan);
+    color: var(--cream);
+    width: max-content;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid var(--cream);
+    height: 1rem;
+    padding: 0.5rem;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: 300ms;
+}
+
+.addToCartBtn:hover{
+    color: var(--darkCream);
+    border-color: var(--darkCream);
+    transform: scale(1.03);
+    border-radius: 1rem;
+    border-top-left-radius: 0rem;
+    border-bottom-right-radius: 0rem;
 }

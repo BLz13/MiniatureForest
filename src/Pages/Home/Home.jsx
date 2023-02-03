@@ -1,16 +1,16 @@
 import "./Home.css"
 
-import {HeroText} from "../../Services/homeData"
+import {HeroText} from "../../Utils/homeData"
 import ItemListContainer from "../../Components/ItemList/ItemListConteiner"
 
-export default function HomeData() {
-    
+export default function Home() {
+
     const homeBoxClass="homeBox"
     const heroBoxClass="heroBox"
     const heroTextBoxClass="heroTextBox"
     const heroTitleClass="heroTitle"
     const heroTextClass="heroText"
-
+    
     return(
         <div className={homeBoxClass} >
             {HeroText.map( (text) => (

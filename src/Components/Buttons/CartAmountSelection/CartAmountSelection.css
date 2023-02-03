@@ -1,3 +1,39 @@
-.amountCartSelect{
-    width: 3rem;
+.amountContainer{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    grid-template-columns: repeat(3, 1fr);
+    width: 30%;
+    margin: 1rem;
+    margin-left: 0rem;
+}
+
+.amount{
+    color: var(--cream);
+    font-size: 1.3rem;
+    padding-bottom: 0.5rem;
+    transition: 200ms;
+}
+
+.buttons svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: 200ms;
+    stroke: var(--cream);
+    cursor: pointer;
+}
+
+.buttons svg:hover{
+    transform: scale(1.1);
+    stroke: var(--darkCream);
+}
+
+.icon{
+    transition: 250ms;
+    transform-origin: 50% 50%;
+}
+
+.buttons svg:hover .icon{
+    transform: rotate(180deg);
 }
