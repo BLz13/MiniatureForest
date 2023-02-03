@@ -3,15 +3,15 @@ import FinishOrderBtn from "../../Buttons/FinishOrderBtn/FinishOrderBtn";
 
 export default function CartData(props) {
 
-    const {cartList} = props;
+    const {cartList, trashOnClick, itemRef} = props;
 
     const children = (cartList.map( (product) => {
         return(
-            <li className="itemCart" key={`item-cart-${product.id}`}>
+            <li ref={itemRef} className="itemCart" key={`item-cart-${product.id}`}>
                 <span>{`${product.name}`}</span>
                 <span>{`x${product.amount}`}</span>
                 <span>{`${product.subTotal}$`}</span>
-                <DeleteItemBtn />
+                <DeleteItemBtn onClick={trashOnClick}/>
             </li>
         )
     }))

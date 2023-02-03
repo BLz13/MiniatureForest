@@ -1,15 +1,15 @@
 import "./CartDropdown.css";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import Badge from "./Badge";
-import CartContext from "../../../Context/Context";
 import CartData from "./CartData";
 import {ReactComponent as CartIcon} from "../../../Assets/Images/CartIcon.svg";
+import Context from "../../../Context/Context";
 
-function CartWidget (props) {
+export default function CartDropdown(props) {
 
-    const {orders} = useContext(CartContext)
+    const {dispatch, orders} = useContext(Context)
 
     const {cart} = orders
 
@@ -22,6 +22,23 @@ function CartWidget (props) {
     const [classBadge, setClassBadge] = useState("");
 
     const [classIcon, setClassIcon] = useState("");
+
+    const trashOnClickHandler = () => {
+
+        const {id, name, amount, price, subTotal} = cartList;
+
+        dispatch({
+            type:"removeItemFromCart",
+            payload: {
+                id,
+                name,
+                price,
+                amount,
+                subTotal
+            }
+        });
+
+    }
 
     function badgeClassNavStatus() {
         const class1 = (badgeNumber === 0) ? "badge noBadge" : "badge";
@@ -53,9 +70,10 @@ function CartWidget (props) {
         <>
             <CartIcon className={classIcon} />
             <Badge amountItems={badgeNumber} className={classBadge} />
-            <CartData cartList={cartList}/>
+            <CartData
+                cartList={cartList}
+                trashOnClick={trashOnClickHandler}
+            />
         </>
     );
 };
-
-export default CartWidget;
