@@ -1,28 +1,44 @@
 import "./ItemDetailContainer.css";
 
+import{
+    QuerySnapshot,
+    collection,
+    doc,
+    getDoc,
+    getDocs
+} from "firebase/firestore";
 import { useContext, useEffect, useRef, useState } from "react";
 
 import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
-import ProductsContext from '../../Context/ProductsContext'
+import { fireDatabase } from "../../Firebase/config";
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
 
-    const [productData, setProductData] = useState();
-
     const refAmountItems = useRef();
-
-    const {dispatch, store} = useContext(ProductsContext)
-
-    const {products} = store;
 
     const productAddressParam = useParams();
 
+    const [productData, setProductData] = useState();
+
+    console.log(productAddressParam.product)
+
     useEffect( () => {
-        if (products !== undefined) {
-            const productIndex = products.findIndex( (product) => (product.address === productAddressParam.product) );
-            setProductData(products[productIndex]);
+        if (Boolean(productAddressParam)) { 
+            const productsRef = doc(fireDatabase, "/products", productAddressParam.product);
+            (getDoc(productsRef)
+                .then((docSnapshot) => {
+                    if (docSnapshot.exists()) {
+                        console.log(`The filtered product is: ${docSnapshot.data()}`);
+                        setProductData(docSnapshot.data());
+                        console.log(`Product loaded from useParams: ${productAddressParam}`);
+                    }
+                })
+                .catch ((error) => {
+                    console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
+                })
+            );
         }
     },[productAddressParam]);
 
@@ -45,7 +61,7 @@ export default function ItemDetailContainer() {
                                 />
                                 <AddCartBtn
                                     productData={productData}
-                                    dispatch={dispatch}
+                                    // dispatch={dispatch}
                                     refAmountItems={refAmountItems}
                                     label="Add To Cart"
                                 />
