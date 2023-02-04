@@ -15,6 +15,12 @@ export default function Cart() {
     const [cartItems, setCartItems] = useState([]);
 
     const [cartTotal, setCartTotal] = useState(0);
+
+    const [lockPurchaseBtn, setLockPurchaseBtn] = useState("true");
+    
+    const inputNameRef = useRef();
+
+    const inputMailRef = useRef();
     
     const trashClickHandler = () => {
         const {id, name, amount, price, subTotal} = cartItems;
@@ -70,12 +76,30 @@ export default function Cart() {
         cartItems.map( (item) => {setCartTotal( item.subTotal )} )
     },[cartItems]);
 
+    const onBlurInputHandler = ( () => {
+        const inputName = inputNameRef.current.value;
+        const inputMail = inputMailRef.current.value;
+        if ( ( Boolean(inputName)) && (Boolean(inputMail) ) ) {
+            console.log("unlocking btn")
+            setLockPurchaseBtn(false)
+        } {
+            console.log("locking btn")
+            setLockPurchaseBtn(true)
+        }
+    });
+
     return(
         <div className="cartPage">
             <div className="column1">
                 <h1>Your Order</h1>
                 <p>We'll contact you as soon as your order is ready to arrange the payment</p>
-                <ContactForm onClick={makeOrderClickHandler} />
+                <ContactForm
+                    onClick={makeOrderClickHandler}
+                    inputMailRef={inputMailRef}
+                    inputNameRef={inputNameRef}
+                    lockBtn={lockPurchaseBtn}
+                    onBlur={onBlurInputHandler}
+                />
             </div>
             <div className="cartBox">
                 <div className="cartTitlesBox">
