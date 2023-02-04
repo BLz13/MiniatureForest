@@ -1,6 +1,6 @@
 import "./Cart.css"
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import ContactForm from "../../Components/ContactForm/ContactForm"
 import Context from "../../Context/Context";
@@ -31,13 +31,33 @@ export default function Cart() {
         });
     }
 
+    const makeOrderClickHandler = (event) => {
+
+        event.preventDefault();
+
+        console.log("tocaste")
+        
+        // const {id, name, amount, price, subTotal} = cartItems;
+
+        // dispatch({
+        //     type:"confirmOrder",
+        //     payload: {
+        //         id,
+        //         name,
+        //         price,
+        //         amount,
+        //         subTotal
+        //     }
+        // });
+    }
+
     const children = cartItems.map( (item) => {
         return(
             <li value={item} className="cartPageItems" key={`item-cartPage-${item.id}`}>
                 <span className="productName">{`${item.name}`}</span>
                 <span>{`x${item.amount}`}</span>
                 <span>{`${item.subTotal}$`}</span>
-                <DeleteItemBtn onClick={trashClickHandler}/>
+                <DeleteItemBtn onClick={trashClickHandler} />
             </li>
         )}
     );
@@ -55,7 +75,7 @@ export default function Cart() {
             <div className="column1">
                 <h1>Your Order</h1>
                 <p>We'll contact you as soon as your order is ready to arrange the payment</p>
-                <ContactForm />
+                <ContactForm onClick={makeOrderClickHandler} />
             </div>
             <div className="cartBox">
                 <div className="cartTitlesBox">

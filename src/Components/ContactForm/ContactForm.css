@@ -10,8 +10,7 @@
     color: var(--darkGrey);
 }
 
-.button{
-    border: none;
+.buttonON{
     transition: 1s;
     grid-row: 4;
     border-radius: 1rem;
@@ -25,7 +24,21 @@
     border: 0.1rem double var(--grey);
 }
 
-.button:hover{
+.buttonOFF{
+    border: none;
+    transition: 1s;
+    grid-row: 4;
+    border-radius: 1rem;
+    padding: 0rem 0.5rem;
+    width: 25%;
+    height: 1.5rem;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    border-radius: 1rem;
+    color: var(--darkGrey);
+}
+
+.buttonON:hover{
     background-color: var(--cream);
     border: none;
 }
