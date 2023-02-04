@@ -44,6 +44,15 @@ export default function CartDropdown(props) {
 
     }
 
+    const clearCartClick = () => {
+
+        dispatch({
+            type:"clearCart",
+            payload: {}
+        });
+
+    }
+
     function badgeClassNavStatus() {
         const class1 = (badgeNumber === 0) ? "badge noBadge" : "badge";
         const class2 = !navbarStatus ? "navOpenBadge" : null;
@@ -79,6 +88,7 @@ export default function CartDropdown(props) {
                 itemRef={itemRef}
                 cartList={cartList}
                 trashOnClick={trashOnClickHandler}
+                clearCartClick={clearCartClick}
             />
         </>
     );

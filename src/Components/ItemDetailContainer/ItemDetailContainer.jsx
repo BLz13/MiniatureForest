@@ -25,9 +25,7 @@ export default function ItemDetailContainer() {
 
     const [productData, setProductData] = useState();
 
-    const addToCartClickHandler = (event) => {
-
-        event.stopPropagation();
+    function addToCartClickHandler() {
 
         const {id, name, price} = productData;
         const amount = (+refAmountItems.current.innerText);

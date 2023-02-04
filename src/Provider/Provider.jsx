@@ -11,9 +11,6 @@ export default function Provider(props) {
     
     const value = { orders: cartOrders, dispatch };
     
-    return (
-        <Context.Provider value={value}>
-            {children}
-        </Context.Provider>
-    );
+    return <Context.Provider value={value}> {children} </Context.Provider>;
+    
 }

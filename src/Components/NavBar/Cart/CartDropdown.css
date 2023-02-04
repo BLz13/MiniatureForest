@@ -107,3 +107,15 @@
     padding: 0rem 1rem;
     color: var(--black);
 }
+
+.buttonsBox{
+    width: 95%;
+    height: 2.5rem;
+    bottom: 0rem;
+    right: 0rem;
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}

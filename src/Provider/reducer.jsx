@@ -4,17 +4,14 @@ import {removeElementFromArray} from "../Utils/functions"
 export default function reducer(orders, action) {
 
     const {type, payload} = action;
-
-    const {id, amount, subTotal} = payload;
-
-    const cart = orders.cart;
-
-    console.log(payload);
-    console.log(cart);
     
     switch (type) {
 
         case "addItemsToCart": {
+            
+            const {id, amount, subTotal} = payload;
+            
+            const cart = orders.cart;
 
             // cart structure = {
             //     items : [array with the individual items],
@@ -29,48 +26,46 @@ export default function reducer(orders, action) {
             if (productIndexCart === -1) {
                 cart.items.push(item);
             } {
-                cart.items[productIndexCart].amount += amount;
-                cart.items[productIndexCart].subTotal += subTotal;
+                if (cart !== undefined) {
+                    cart.items[productIndexCart].amount += amount;
+                    cart.items[productIndexCart].subTotal += subTotal;
+                }
             };
             
             cart.total += subTotal;
 
-            console.log(payload);
-            console.log(cart);
-    
-            return{cart};
+            return { cart };
         };
 
         case "removeItemFromCart": {
             
+            const {id, subTotal} = payload;
+            
+            const cart = orders.cart;
+            
             const productIndexCart = cart.items.findIndex( (item) => (item.id === id));
 
-            cart.items = removeElementFromArray({
-                array: cart.items,
-                index : productIndexCart
-            })
+            cart.items = removeElementFromArray(cart.items, productIndexCart)
 
             cart.total -= subTotal;
 
-            console.log(payload);
-            console.log(cart);
-    
-            return{orders};
+            return { cart };
         };
 
         case "clearCart": {
 
-            cart = []
+            const cart = {
+                    items:[],
+                    total:0
+            }
 
-            orders.cart = cart;
-            orders.total = 0;
-
-            return{orders}
+            return { cart }
         };
 
         default: {
-            return{orders};
+            throw Error(`Unknown action: ${type}`);
         };
+        
     };
     
 };

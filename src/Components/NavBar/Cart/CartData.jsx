@@ -1,9 +1,9 @@
+import CartDropdownBtn from "../../Buttons/CartDropdownBtn/CartDropdownBtn";
 import DeleteItemBtn from "../../Buttons/DeleteItem/DeleteItem";
-import FinishOrderBtn from "../../Buttons/FinishOrderBtn/FinishOrderBtn";
 
 export default function CartData(props) {
 
-    const {cartList, trashOnClick, itemRef} = props;
+    const {cartList, trashOnClick, itemRef, clearCartClick} = props;
 
     const children = (cartList.map( (product) => {
         return(
@@ -27,7 +27,18 @@ export default function CartData(props) {
                     <span>Total:</span>
                 </li>
                 {children}
-                <FinishOrderBtn name="Go To Cart"/>
+                <div className="buttonsBox">
+                    <CartDropdownBtn
+                        name="Clear Cart"
+                        btnClass="clearCartBtn"
+                        oncClick={clearCartClick}
+                    />
+                    <CartDropdownBtn
+                        name="Go To Cart"
+                        action="goToCart"
+                        btnClass="finishOrderBtn"
+                    />
+                </div>
             </ul>
         )
     )

@@ -1,14 +1,11 @@
 .finishOrderBtn{
-    width: 50%;
+    width: 40%;
     height: 2rem;
-    bottom: 0rem;
-    right: 0rem;
     transition: 300ms;
     border-radius: 1rem;
     padding: 0rem 0.5rem;
     opacity: 0.8;
     font-size: 0.8rem;
-    position: absolute;
     border: none;
     cursor: pointer;
     background-color: var(--cream);
@@ -21,4 +18,22 @@
 .finishOrderBtn a{
     color: var(--black);
     text-decoration: none;
+}
+
+.clearCartBtn{
+    width: 40%;
+    height: 2rem;
+    transition: 300ms;
+    border-radius: 1rem;
+    padding: 0rem 0.5rem;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    background-color: var(--darkGreen);
+    color: var(--cream);
+}
+
+.clearCartBtn:hover{
+    background-color: var(--green);
 }
