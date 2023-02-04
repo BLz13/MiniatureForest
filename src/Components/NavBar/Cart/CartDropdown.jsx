@@ -67,6 +67,7 @@ export default function CartDropdown(props) {
     });
 
     useEffect( () => {
+        if (cart !== undefined)
         setCartList(cart.items);
     });
 

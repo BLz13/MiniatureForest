@@ -28,18 +28,10 @@ export default function ItemDetailContainer() {
     const addToCartClickHandler = (event) => {
 
         event.stopPropagation();
-        
+
         const {id, name, price} = productData;
         const amount = (+refAmountItems.current.innerText);
         const subTotal = amount * price;
-
-        console.log({
-            id,
-            name,
-            price,
-            amount,
-            subTotal
-        })
 
         dispatch({
             type:"addItemsToCart",
@@ -89,10 +81,9 @@ export default function ItemDetailContainer() {
                                     productsAmount={productData.stock}
                                     reference={refAmountItems}
                                 />
-                                <AddCartBtn
-                                    buttonClickHandler={addToCartClickHandler}
-                                    label="Add To Cart"
-                                />
+                                <span onClick={addToCartClickHandler}>
+                                    <AddCartBtn label="Add To Cart" />
+                                </span>
                             </div>
                         </>
                     ) : (

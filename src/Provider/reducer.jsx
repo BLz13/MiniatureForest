@@ -5,9 +5,12 @@ export default function reducer(orders, action) {
 
     const {type, payload} = action;
 
-    const {id, name, amount, price, subTotal} = payload;
+    const {id, amount, subTotal} = payload;
 
     const cart = orders.cart;
+
+    console.log(payload);
+    console.log(cart);
     
     switch (type) {
 
@@ -18,38 +21,27 @@ export default function reducer(orders, action) {
             //     total: total amount to pay 
             // }
 
-            const item = {
-                id: id,
-                name: name,
-                amount: amount,
-                price: price,
-                subTotal: subTotal,
-            }
+            const item = payload;
             
             //checks if the product is already on the cart
             const productIndexCart = cart.items.findIndex( (item) => (item.id === id));
 
             if (productIndexCart === -1) {
                 cart.items.push(item);
-                cart.total = cart.total + item.subTotal;
             } {
-                cart.items[productIndexCart].amount += item.amount;
-                cart.items[productIndexCart].subTotal += item.subTotal;
-                cart.total = cart.total + item.subTotal;
+                cart.items[productIndexCart].amount += amount;
+                cart.items[productIndexCart].subTotal += subTotal;
             };
+            
+            cart.total += subTotal;
+
+            console.log(payload);
+            console.log(cart);
     
             return{cart};
-        }
+        };
 
         case "removeItemFromCart": {
-
-            const item = {
-                id: id,
-                name: name,
-                amount: amount,
-                price: price,
-                subTotal: subTotal,
-            }
             
             const productIndexCart = cart.items.findIndex( (item) => (item.id === id));
 
@@ -57,12 +49,28 @@ export default function reducer(orders, action) {
                 array: cart.items,
                 index : productIndexCart
             })
-            cart.total = cart.total - item.subTotal;
+
+            cart.total -= subTotal;
+
+            console.log(payload);
+            console.log(cart);
     
             return{orders};
-        }
+        };
+
+        case "clearCart": {
+
+            cart = []
+
+            orders.cart = cart;
+            orders.total = 0;
+
+            return{orders}
+        };
+
         default: {
             return{orders};
-        }
-    }
-}
+        };
+    };
+    
+};

@@ -7,7 +7,8 @@ import{
     doc,
     getDoc,
     getDocs,
-    query
+    query,
+    where
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,7 @@ import { fireDatabase } from "../../Firebase/config";
 
 export default function ItemListContainer() {
 
-    const productsCollection = collection(fireDatabase, "/products");
+    const productsCollection = collection(fireDatabase, "products");
 
     const categoryParam = useParams(undefined);
 
@@ -24,25 +25,18 @@ export default function ItemListContainer() {
 
     const [categoryFilter, setCategoryFilter] = useState();
 
+    const [categoryQuery, setCategoryQuery] = useState(productsCollection);
+
     useEffect( () => {
 
         const  products = [];
-        
-        getDocs(productsCollection)
+
+        getDocs(categoryQuery)
             .then ((QuerySnapshot) => {
                 QuerySnapshot.forEach( product => {
-                    if (categoryParam.id === undefined) {
-                        const productData = product.data();
-                        productData.address = product.id;
-                        products.push(productData);
-                    } {
-                        if (product.data().category === categoryFilter) {
-                            console.log(product.data().category);
-                            const productData = product.data();
-                            productData.address = product.id;
-                            products.push(productData);
-                        }
-                    }
+                    const productData = product.data();
+                    productData.address = product.id;
+                    products.push(productData);
                 });
             console.log(`Products successfully loaded from firebase`);
             console.log(`Products loaded on ProductsList:`);
@@ -53,23 +47,31 @@ export default function ItemListContainer() {
                 console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
             })
 
-    },[categoryFilter]);
+    },[categoryQuery]);
 
     useEffect( () => {
 
         if (categoryParam.id !== undefined) {
+            let categoryFilter;
             const categoryRef = doc(fireDatabase, "/categories", categoryParam.id);
             getDoc(categoryRef)
                 .then((docSnapshot) => {
                     if (docSnapshot.exists()) {
-                        console.log(`The category is: ${docSnapshot.data()}`);
-                        setCategoryFilter(docSnapshot.data().name);
+                        console.log(`The category is:`);
+                        categoryFilter = (docSnapshot.data().name);
+                        console.log(categoryFilter);
+                        setCategoryQuery( 
+                            query(
+                                productsCollection,
+                                where( "category", "==", categoryFilter )
+                            )
+                        );
                     }
                 })
                 .catch ((error) => {
                     console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
                 })
-        }
+            }
 
     },[categoryParam])
 
