@@ -1,8 +1,8 @@
 import "./MainLogo.css";
 
-import {ReactComponent as Circle} from "../../../Assets/Images/Circle.svg"
-import {ReactComponent as Icon1} from "../../../Assets/Images/Logo1.svg";
-import {ReactComponent as Icon2} from "../../../Assets/Images/Logo2.svg";
+import {ReactComponent as Circle} from "../../../assets/images/Circle.svg"
+import {ReactComponent as Icon1} from "../../../assets/images/Logo1.svg";
+import {ReactComponent as Icon2} from "../../../assets/images/Logo2.svg";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 

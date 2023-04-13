@@ -4,14 +4,14 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import Badge from "./Badge";
 import CartData from "./CartData";
-import {ReactComponent as CartIcon} from "../../../Assets/Images/CartIcon.svg";
+import {ReactComponent as CartIcon} from "../../../assets/images/CartIcon.svg";
 import Context from "../../../Context/Context";
 
 export default function CartDropdown(props) {
 
-    const {dispatch, orders} = useContext(Context)
+    const {dispatch, products} = useContext(Context)
 
-    const {cart} = orders
+    const {cart} = products
 
     const {navbarStatus} = props;
     

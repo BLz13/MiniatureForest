@@ -1,6 +1,6 @@
 import "./NavDropdownContainer.css";
 
-import { ReactComponent as Arrow } from "../../../Assets/Images/Arrow.svg";
+import { ReactComponent as Arrow } from "../../../assets/images/Arrow.svg";
 import { useState } from "react";
 
 export default function NavDropdownContainer(props) {

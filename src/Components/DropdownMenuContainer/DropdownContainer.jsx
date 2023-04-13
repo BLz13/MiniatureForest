@@ -1,6 +1,6 @@
 import "./DropDownMenuContainer.css";
 
-import { ReactComponent as Arrow } from "../../Assets/Images/Arrow.svg";
+import { ReactComponent as Arrow } from "../../assets/images/Arrow.svg";
 
 export default function DropdownMenuContainer(props) {
 

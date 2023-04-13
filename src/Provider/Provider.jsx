@@ -1,5 +1,5 @@
 import Context from "../Context/Context";
-import orders from "./orders";
+import products from "./products";
 import reducer from "./reducer"
 import { useReducer } from "react";
 
@@ -7,9 +7,9 @@ export default function Provider(props) {
     
     const {children} = props;
 
-    const [cartOrders, dispatch] = useReducer(reducer, orders);
+    const [initialProducts, dispatch] = useReducer(reducer, products);
     
-    const value = { orders: cartOrders, dispatch };
+    const value = { products: initialProducts, dispatch };
     
     return <Context.Provider value={value}> {children} </Context.Provider>;
     

@@ -1,18 +1,10 @@
 import "./ItemDetailContainer.css";
 
-import{
-    QuerySnapshot,
-    collection,
-    doc,
-    getDoc,
-    getDocs
-} from "firebase/firestore";
 import { useContext, useEffect, useRef, useState } from "react";
 
 import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
 import Context from "../../Context/Context";
-import { fireDatabase } from "../../Firebase/config";
 import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
@@ -43,24 +35,6 @@ export default function ItemDetailContainer() {
         });
 
     };
-
-    useEffect( () => {
-        if (Boolean(productAddressParam)) { 
-            const productsRef = doc(fireDatabase, "/products", productAddressParam.product);
-            (getDoc(productsRef)
-                .then((docSnapshot) => {
-                    if (docSnapshot.exists()) {
-                        console.log(`The filtered product is: ${docSnapshot.data()}`);
-                        setProductData(docSnapshot.data());
-                        console.log(`Product loaded from useParams: ${productAddressParam}`);
-                    }
-                })
-                .catch ((error) => {
-                    console.error(`ERROR on {ItemListContainer} firebase call - ${error}`);
-                })
-            );
-        }
-    },[productAddressParam]);
 
     return(
         (productData === undefined) ? (

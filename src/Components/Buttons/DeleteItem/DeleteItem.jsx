@@ -1,6 +1,6 @@
 import "./DeleteItem.css"
 
-import { ReactComponent as Trash } from "../../../Assets/Images/Trash.svg";
+import { ReactComponent as Trash } from "../../../assets/images/Trash.svg";
 
 export default function DeleteItemBtn(props) {
 

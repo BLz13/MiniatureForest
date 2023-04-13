@@ -2,8 +2,8 @@ import "./CartAmountSelection.css"
 
 import { useEffect, useState } from "react";
 
-import {ReactComponent as Minus} from "../../../Assets/Images/Minus.svg"
-import {ReactComponent as Plus} from "../../../Assets/Images/Plus.svg"
+import {ReactComponent as Minus} from "../../../assets/images/Minus.svg"
+import {ReactComponent as Plus} from "../../../assets/images/Plus.svg"
 
 export default function CartAmountSelection(props){
 
