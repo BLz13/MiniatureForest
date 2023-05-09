@@ -23,7 +23,7 @@ export default function ItemDetailContainer() {
 
     useEffect( () => { setProductsList(stock) },[stock]);
 
-    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.product))) },[productAddressParam])
+    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.product) )) });
 
     function addToCartClickHandler() {
 
@@ -48,15 +48,15 @@ export default function ItemDetailContainer() {
         (productData === undefined) ? (
             <p>Loading....</p>
         ) : (
-            <>
-                <p>{productData.name}</p>      
-                <p>{productData.category}</p>
-                <p>{productData.description}</p>
+            <div className="productDetails" >
+                <p className="productName">Name: {productData.name}</p>      
+                <p className="productSpecies">Species: {productData.category}</p>
+                <p className="productDescription">{productData.description}</p>
                 {
                     productData.stock ? (
                         <>
-                            <p>{`${productData.price} $usd`}</p>
-                            <div>
+                            <p className="productPrice">{productData.price} $usd</p>
+                            <div className="addToCartBox">
                                 <CartAmountSelection 
                                     productsAmount={productData.stock}
                                     reference={refAmountItems}
@@ -67,10 +67,10 @@ export default function ItemDetailContainer() {
                             </div>
                         </>
                     ) : (
-                        <div>Out of Stock</div>
+                        <div className="productPrice">Out of Stock</div>
                     )
                 }
-            </>
+            </div>
         )
     )
 }

@@ -1,10 +1,10 @@
 import "./ItemListContainer.css";
 
-import { Outlet, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import Context from "../../Context/Context";
 import ItemList from "./ItemList"
+import { useParams } from "react-router-dom";
 
 export default function ItemListContainer() {
     
@@ -12,26 +12,25 @@ export default function ItemListContainer() {
 
     const { stock } = products
 
-    const categoryParam = useParams(undefined);
+    const productParam = useParams();
 
     const [productsList, setProductsList] = useState([]);
 
-    const [categoryFilter, setCategoryFilter] = useState();
+    const [showProductDetail, setShowProductDetail] = useState(false);
 
-    useEffect( () => { setProductsList(stock) },[stock])
+    useEffect( () => { setProductsList(stock) },[stock]);
+
+    useEffect( () => { 
+        productsList.find((product) => (product.id === productParam.product)) ? setShowProductDetail(true) : setShowProductDetail(false)
+    });
     
     return (
         <div className="mainPageBox">
             { !(productsList.length) ? (
                 <p>Loading....</p>
             ) : (
-                <ul className="productsList">
-                    <div className="imagesGallery">
-                        <ItemList productsList={productsList} />
-                    </div>
-                    <li className="productDetail">
-                        <Outlet />
-                    </li>
+                <ul className={ showProductDetail ? "imagesGallery productsListOpen" : "imagesGallery productsListClose" }>
+                    <ItemList productsList={productsList} />
                 </ul>
             )}
         </div>
