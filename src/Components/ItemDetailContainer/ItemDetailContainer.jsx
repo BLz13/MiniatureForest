@@ -9,13 +9,21 @@ import {useParams} from "react-router-dom";
 
 export default function ItemDetailContainer() {
 
-    const {dispatch, orders} = useContext(Context);
+    const {dispatch, products, orders} = useContext(Context);
 
     const refAmountItems = useRef();
 
     const productAddressParam = useParams();
 
-    const [productData, setProductData] = useState();
+    const [productData, setProductData] = useState({});
+
+    const { stock } = products
+
+    const [productsList, setProductsList] = useState([]);
+
+    useEffect( () => { setProductsList(stock) },[stock]);
+
+    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.product))) },[productAddressParam])
 
     function addToCartClickHandler() {
 
@@ -62,7 +70,6 @@ export default function ItemDetailContainer() {
                         <div>Out of Stock</div>
                     )
                 }
-                 {/* <ImageGallery></ImageGallery> */}
             </>
         )
     )

@@ -15,7 +15,7 @@ export default function ItemList(props) {
             {productsList.map( (product) => {
                     return(
                         <li className="productsItems" key={product.id}>
-                            <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.address}>
+                            <NavLink className={ ({isActive}) => isActive ? ("link product"):("product link is-active")}  to={product.id}>
                                 <img className="productImage" src={require(`../../assets/images/products/${product.id+getRandomInteger()}.jpg`)}/>
                             </NavLink>
                         </li>

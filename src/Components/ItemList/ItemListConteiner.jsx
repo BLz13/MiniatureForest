@@ -26,7 +26,9 @@ export default function ItemListContainer() {
                 <p>Loading....</p>
             ) : (
                 <ul className="productsList">
-                    <ItemList productsList={productsList} />
+                    <div className="imagesGallery">
+                        <ItemList productsList={productsList} />
+                    </div>
                     <li className="productDetail">
                         <Outlet />
                     </li>
