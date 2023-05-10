@@ -34,7 +34,13 @@
 
 .menuBox{
     justify-self: flex-start;
+    cursor: pointer;
+    transition: transform 500ms;
     width: 1.7rem;
+}
+
+.menuBox:hover{
+    transform: scale(1.1);
 }
 
 .mainLogoBox a{
