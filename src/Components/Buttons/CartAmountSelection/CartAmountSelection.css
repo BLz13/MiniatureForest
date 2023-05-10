@@ -4,7 +4,7 @@
     justify-items: center;
     user-select: none;
     grid-template-columns: repeat(3, 1fr);
-    width: 30%;
+    width: 100%;
     margin: 1rem;
     margin-left: 0rem;
 }

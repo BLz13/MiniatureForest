@@ -49,8 +49,8 @@ export default function ItemDetailContainer() {
             <p>Loading....</p>
         ) : (
             <div className="productDetails" >
-                <p className="productName">Name: {productData.name}</p>      
-                <p className="productSpecies">Species: {productData.category}</p>
+                <p className="productName">{productData.name}</p>      
+                <p className="productSpecies">{productData.category}</p>
                 <p className="productDescription">{productData.description}</p>
                 {
                     productData.stock ? (

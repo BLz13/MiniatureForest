@@ -29,9 +29,12 @@ export default function ItemListContainer() {
             { !(productsList.length) ? (
                 <p>Loading....</p>
             ) : (
-                <ul className={ showProductDetail ? "imagesGallery productsListOpen" : "imagesGallery productsListClose" }>
-                    <ItemList productsList={productsList} />
-                </ul>
+                <>
+                    <h1>Our Products</h1>
+                    <ul className={ showProductDetail ? "imagesGallery productsListOpen" : "imagesGallery productsListClose" }>
+                        <ItemList productsList={productsList} />
+                    </ul>
+                </>
             )}
         </div>
     );
