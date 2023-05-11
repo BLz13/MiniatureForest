@@ -1,7 +1,8 @@
 import "./SideBar.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
+import Context from '../../../Context/Context'
 import NavDropdownContainer from "./NavDropdownContainer";
 import { NavLink } from "react-router-dom";
 import {PAGES} from "../../../Utils/main-pages"
@@ -9,13 +10,31 @@ import SidebarCategories from "./SidebarCategories";
 
 function SideBar (props) {
 
-    const {sideCategoriesRef} = useRef();
-
     const {menuClick, sidebarStatus, reference} = props;
 
-    const sidebarClass = sidebarStatus ? "hideSidebar" : "showSidebar";
+    const {products} = useContext(Context)
 
-    const [categoriesList, setCategoriesList] = useState();
+    const { stock } = products
+    
+    const [categoriesList, setCategoriesList] = useState([]);
+
+    const {sideCategoriesRef} = useRef();
+
+    const sidebarClass = sidebarStatus ? "showSidebar" : "hideSidebar" ;
+
+    function createList() {
+        const categories = [];
+        stock.map( product => {
+            if ( categories.find( category => (category === product.category) ) === undefined ) {
+                categories.push(product.category);
+            };
+        });
+        return(categories);
+    };
+
+    useEffect( () => {
+        setCategoriesList(createList())
+    },[stock]);
 
     return (
         <ul ref={reference} className={`sideBar ${sidebarClass}`}>

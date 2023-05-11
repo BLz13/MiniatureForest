@@ -7,7 +7,7 @@ export default function NavDropdownContainer(props) {
 
   const {children, title} = props;
 
-  const [arrowState, setArrowState] = useState(true);
+  const [arrowState, setArrowState] = useState(false);
   
   const arrowClass = arrowState ? "openNavArrow" : "closeNavArrow";
 

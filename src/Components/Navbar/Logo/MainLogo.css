@@ -12,30 +12,78 @@
     top: -1.9rem;
     left: 2.4rem;
     max-height: 3.7rem;
-    opacity: 1;
+    animation-iteration-count: 2;
+    animation-duration: 1000ms;
     position: absolute;
     width: auto;
-    fill: var(--darkGreen);
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    fill: var(--green);
+    animation-name: animationCircle;
+}
+
+@keyframes animationCircle {
+    from{
+        opacity: 0;
+    }   
+    to{
+        opacity: 1;
+        transform: rotate(360deg);
+    }
 }
 
 .icon1{
     top: -1.9rem;
     left: 2.4rem;
     max-height: 3.7rem;
-    opacity: 1;
+    animation-iteration-count: 2;
+    animation-duration: 1500ms;
+    animation-delay: 500ms;
+    animation-name: animationIcon1;
     position: absolute;
     width: auto;
-    fill: var(--darkGreen);
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+
+@keyframes animationIcon1 {
+    from{
+        opacity: 0;
+        fill: var(--green);
+    } 
+    to{
+        opacity: 1;
+        transform: rotate(360deg);
+        fill: var(--darkGreen);
+    }
 }
 
 .icon2{
     top: -1.9rem;
     left: 2.4rem;
     max-height: 3.7rem;
-    opacity: 1;
+    animation-delay: 2000ms;
+    animation-duration: 1000ms;
     position: absolute;
     width: auto;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
     fill: var(--darkGreen);
+    animation-name: animationIcon2;
+}
+
+@keyframes animationIcon2 {
+    from{
+        fill: var(--green);
+        opacity: 0;
+    } 
+    to{
+        opacity: 1;
+        fill: var(--darkGreen);
+        transform: rotate(-360deg);
+    }
 }
 
 .text1{
@@ -57,75 +105,11 @@
     left: 5.78rem;
 }
 
-.logoOpenNav{
-    transition: fill 500ms, color 500ms !important;
-    fill: white !important;
-    color: white !important;
-}
-
-.hide{
-    opacity: 0;
-}
-
-.showCircle{
-    animation-name: animationCircle;
-    animation-duration: 1000ms;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
-    animation-iteration-count: 2;
-}
-
-@keyframes animationCircle {
-    from{
-        opacity: 0;
-    }   
-    to{
-        opacity: 1;
-        transform: rotate(360deg);
-    }
-}
-
-.showIcon1{
-    animation-name: animationIcon1;
-    animation-duration: 1000ms;
-    animation-fill-mode: forwards;
-    animation-direction: alternate;
-    animation-iteration-count: 2;
-}
-
-@keyframes animationIcon1 {
-    from{
-        opacity: 0;
-    } 
-    to{
-        opacity: 1;
-        transform: rotate(360deg);
-    }
-}
-
-.showIcon2{
-    animation-name: animationIcon2;
-    opacity: 0;
-    animation-delay: 2000ms;
-    animation-duration: 2000ms;
-    animation-fill-mode: forwards;
-}
-
-@keyframes animationIcon2 {
-    from{
-        fill: var(--green);
-    } 
-    to{
-        opacity: 1;
-        fill: var(--darkGreen);
-        transform: rotate(-360deg);
-    }
-}
-
 .showText{
     animation-name: animationText;
     opacity: 0;
-    animation-duration: 1000ms;
+    animation-delay: 2500ms;
+    animation-duration: 500ms;
     animation-fill-mode: forwards;
 }
 
@@ -137,4 +121,17 @@
         opacity: 1;
         font-size: 0.9rem;
     }
+}
+
+.logoOpenNav{
+    transition: fill 500ms, color 500ms !important;
+    fill: white !important;
+    color: white !important;
+}
+
+.hide{
+    opacity: 0 !important;
+    height: 0px !important;
+    width: 0px !important;
+    z-index: -3;
 }

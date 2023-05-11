@@ -9,16 +9,16 @@ export default function SidebarCategories(props) {
             <p>Loading....</p>
         ) : (
             categoriesList.map( (category) => (
-                <li key={`${category.id}-category`}>
+                <li key={`${category}-category`}>
                     <NavLink 
                         ref={reference}
                         onClick={onClickAction}
-                        to={`/categories/${category.address}`}
+                        to={`/categories/${category}`}
                         className={
                             ( {isActive} ) => isActive ? "sidebarCategories link is-active" : "link sidebarCategories"
                         }
                     >
-                        {category.name}
+                        {category}
                     </NavLink>
                 </li>
             ))

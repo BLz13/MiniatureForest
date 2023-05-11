@@ -13,9 +13,9 @@ export default function Navbar() {
 
     const menuIconRef = useRef();
 
-    const [sidebarStatus, setSidebar] = useState(true);
+    const [sidebarStatus, setSidebar] = useState(false);
 
-    const [navbarStatus, setNavbar] = useState(true);
+    const [navbarStatus, setNavbar] = useState(false);
     
     const menuIconHandlerNavOff = () => {
         const filler = document.getElementById("Filler");
@@ -24,8 +24,8 @@ export default function Navbar() {
         let fillerClass;
         let linesClass;
         let iconClass;
-        linesClass = sidebarStatus ? "hide" : "closeNavON";
-        fillerClass = sidebarStatus ? "open" : "hide";
+        linesClass = !sidebarStatus ? "hide" : "closeNavON";
+        fillerClass = !sidebarStatus ? "open" : "hide";
         iconClass="menuIconNavON"
         filler.setAttribute("class", fillerClass);
         lines.setAttribute("class", linesClass);
@@ -39,8 +39,8 @@ export default function Navbar() {
         let fillerClass;
         let linesClass;
         let iconClass;
-        fillerClass = !sidebarStatus ? "hide" : "close";
-        linesClass = !sidebarStatus ? "open" : "hide";
+        fillerClass = sidebarStatus ? "hide" : "close";
+        linesClass = sidebarStatus ? "open" : "hide";
         iconClass="menuIcon"
         filler.setAttribute("class", fillerClass);
         lines.setAttribute("class", linesClass);
@@ -50,7 +50,7 @@ export default function Navbar() {
     const menuClickHandler = () => {
         setSidebar(!sidebarStatus);
         (window.scrollY >= 50) ? (
-            setNavbar(false)
+            setNavbar(true)
         ) : (
             setNavbar(!navbarStatus)
         )
@@ -58,30 +58,25 @@ export default function Navbar() {
 
     const onScrollHandler = () => {
         (window.scrollY >= 50) ? (
-            setNavbar(false)
+            setNavbar(true)
         ) : (
-            (sidebarStatus===true) ? (setNavbar(true)) : (setNavbar(false))            
+            sidebarStatus === true ? setNavbar(true) : setNavbar(false)
         )
     };
+    
+    useEffect( () => { !navbarStatus ? menuIconHandlerNavOn() : menuIconHandlerNavOff() },[navbarStatus,sidebarStatus]);
 
     window.addEventListener("scroll", onScrollHandler);
     
-    useEffect(() => {
-        document.onmousedown = (event) =>{
-            if ( (sidebarStatus === false) && (!sidebarRef.current.contains(event.target)) && (!menuIconRef.current.contains(event.target)) ){
-                menuClickHandler();
-                setSidebar(true);
-            }
+    document.onmousedown = (event) =>{
+        if ( (sidebarStatus === true) && (!sidebarRef.current.contains(event.target)) && (!menuIconRef.current.contains(event.target)) ){
+            menuClickHandler();
+            setSidebar(false);
         }
-    })
-
-    useEffect( () => {
-        navbarStatus ? menuIconHandlerNavOn() : menuIconHandlerNavOff(); 
-    },[navbarStatus,sidebarStatus])
+    }
 
     return(
-        <nav className={navbarStatus ? "navbar transOn" : "navbar transOff"}>
-            <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} menuClick={menuClickHandler}/>
+        <nav className={ navbarStatus ? "navbar transOff" : "navbar transOn" }>
             <ul className="items">
                 <li className="menuBox">
                     <MenuIcon reference={menuIconRef} onClick={menuClickHandler} />
@@ -93,6 +88,7 @@ export default function Navbar() {
                     <CartDropdown navbarStatus={navbarStatus} />
                 </li>
             </ul>
+            <SideBar reference={sidebarRef} sidebarStatus={sidebarStatus} menuClick={menuClickHandler}/>
         </nav>
 
     );

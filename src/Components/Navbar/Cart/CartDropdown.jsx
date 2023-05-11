@@ -21,9 +21,9 @@ export default function CartDropdown(props) {
 
     const [badgeNumber, setBadgeNumber] = useState(0);
 
-    const [classBadge, setClassBadge] = useState("");
+    const [classBadge, setClassBadge] = useState("badge noBadge");
 
-    const [classIcon, setClassIcon] = useState("");
+    const [classIcon, setClassIcon] = useState("cartImg");
 
     const trashOnClickHandler = () => {
 
@@ -60,8 +60,7 @@ export default function CartDropdown(props) {
     };
 
     function iconClassNavStatus() {
-        const class1 = !navbarStatus ? "navOpenCart" : null;
-        setClassIcon(`${class1} cartImg`)
+        setClassIcon(`cartImg ${ navbarStatus ? "navOpenCart" : null }`)
     };
 
     useEffect( () => {
