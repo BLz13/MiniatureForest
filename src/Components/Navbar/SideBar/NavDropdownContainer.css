@@ -34,21 +34,25 @@
 
 .openNavArrow{
     transform: rotate(180deg);
-    fill: var(--darkGrey);
+    fill: var(--cream);
     bottom: -1rem;
 }
 
 .closeNavArrow{
-    fill: var(--grey);
+    fill: var(--cream);
     bottom: 0.3rem;
 }
 
 .navArrow:hover{
-    fill: var(--Darkgrey);
+    fill: whitesmoke !important;
 }
 
 .openNavArrow:hover{
-    fill: var(--grey);
+    transform: scale(1.3) rotate(180deg) !important;
+}
+
+.closeNavArrow:hover{
+    transform: scale(1.3);
 }
 
 .sidebarCategories{

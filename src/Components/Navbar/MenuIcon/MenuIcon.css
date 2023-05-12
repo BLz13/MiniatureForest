@@ -1,7 +1,7 @@
 .menuIcon{
     transition: fill 500ms;
     height: inherit;
-    fill: var(--darkGrey);
+    fill: var(--green);
     margin: 0px;
     padding: 0px;
 }
@@ -10,22 +10,22 @@
     margin: 0px;
     padding: 0px;
     transition: fill 500ms;
-    fill: white;
+    fill: var(--cream);
 }
 
 .open{
     transition: fill 500ms;
-    fill: white;
+    fill: var(--cream);
 }
 
 .close{
     transition: fill 500ms;
-    fill: var(--darkGrey);
+    fill: var(--green);
 }
 
 .closeNavON{
     transition: fill 500ms;
-    fill: white;
+    fill: var(--cream);
 }
 
 .hide{

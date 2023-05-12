@@ -22,15 +22,15 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />}>
-              <Route path=":product" element={<ItemDetailContainer />} />
+              <Route path=":id" element={<ItemDetailContainer />} />
             </Route>
             <Route path="/home" element={<Home />}>
-              <Route path=":product" element={<ItemDetailContainer />} />
-            </Route>
-            <Route path="/categories">
+              <Route path=":id" element={<ItemDetailContainer />} />
               <Route path=":id" element={<ItemListContainer />}>
-                <Route path=":product" element={<ItemDetailContainer />} />
-              </Route>
+                <Route path=":id" element={<ItemListContainer />}>
+                  <Route path=":id" element={<ItemDetailContainer />} />
+                </Route>
+            </Route>
             </Route>
             <Route path="/aboutus" element={<About />} />
             <Route path="/contact" element={<Contact />} />

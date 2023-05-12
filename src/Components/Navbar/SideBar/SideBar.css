@@ -14,7 +14,7 @@
     position: absolute;
     overflow-y: auto;
     scroll-behavior: smooth;
-    background-color: var(--grey);
+    background-color: var(--green);
 }
 
 .hideSidebar{

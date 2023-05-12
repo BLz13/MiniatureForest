@@ -22,7 +22,7 @@ function SideBar (props) {
 
     const sidebarClass = sidebarStatus ? "showSidebar" : "hideSidebar" ;
 
-    function createList() {
+    function createCategoriesList() {
         const categories = [];
         stock.map( product => {
             if ( categories.find( category => (category === product.category) ) === undefined ) {
@@ -33,7 +33,7 @@ function SideBar (props) {
     };
 
     useEffect( () => {
-        setCategoriesList(createList())
+        setCategoriesList(createCategoriesList())
     },[stock]);
 
     return (
@@ -47,7 +47,9 @@ function SideBar (props) {
                     </li>
                 ) : (
                     <li key={`${page.id}-page`} className="sidebarElements" > 
-                        {page.name}
+                        <NavLink onClick={menuClick} to={page.path} className={( {isActive} ) => isActive ? "link is-active" : "link"} >
+                            {page.name}
+                        </NavLink>
                         <NavDropdownContainer>
                             <SidebarCategories
                                 onClick={menuClick}

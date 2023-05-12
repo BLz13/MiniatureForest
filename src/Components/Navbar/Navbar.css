@@ -19,7 +19,7 @@
 
 .transOff{
     transition: background-color 1s;
-    background-color:var(--darkGrey);
+    background-color:var(--darkGreen);
 }
 
 .items{

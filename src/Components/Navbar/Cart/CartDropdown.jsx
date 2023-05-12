@@ -1,4 +1,4 @@
-import "./CartDropdown.css";
+import "./Cart.css";
 
 import { useContext, useEffect, useRef, useState } from "react";
 

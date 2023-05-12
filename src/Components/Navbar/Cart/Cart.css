@@ -2,7 +2,7 @@
     width: 2.5rem;
     height: inherit;
     transition: transform 500ms, fill 500ms;
-    fill: var(--darkGreen);
+    fill: var(--green);
 }
 
 .badge{
@@ -30,12 +30,12 @@
 
 .navOpenCart{
     transition: 500ms;
-    fill: white;
+    fill: var(--cream);
 }
 
 .navOpenBadge{
     transition: 500ms;
-    background-color: white;
+    background-color: var(--cream);
     font-weight: bolder;
     color: var(--darkGrey);
 }

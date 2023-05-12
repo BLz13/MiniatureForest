@@ -12,20 +12,35 @@ export default function ItemListContainer() {
 
     const { stock } = products
 
-    const productParam = useParams();
+    const urlParam = useParams();
 
     const [productsList, setProductsList] = useState([]);
 
     const [showProductDetail, setShowProductDetail] = useState(false);
 
-    useEffect( () => { setProductsList(stock) },[stock]);
+    function createCategoriesList() {
+        const categories = [];
+        stock.map( product => {
+            if ( categories.find( category => (category === product.category) ) === undefined ) {
+                categories.push(product.category);
+            };
+        });
+        return(categories);
+    };
 
     useEffect( () => { 
-        productsList.find((product) => (product.id === productParam.product)) ? setShowProductDetail(true) : setShowProductDetail(false)
-    });
+        setProductsList(stock) 
+    },[stock]);
+
+    useEffect( () => {
+        productsList.find((product) => (product.id === urlParam.id)) ? 
+            setShowProductDetail(true)
+        : 
+            setShowProductDetail(false);
+    },[urlParam]);
     
     return (
-        <div className="mainPageBox">
+        <div className="itemListContainerBox">
             { !(productsList.length) ? (
                 <p>Loading....</p>
             ) : (

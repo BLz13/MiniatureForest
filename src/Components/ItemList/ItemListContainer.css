@@ -1,8 +1,9 @@
-.mainPageBox{
+.itemListContainerBox{
     min-height: 90vh;
-    display: grid;
+    max-width: 85vw;
+    display: flex;
+    flex-flow: column nowrap;
     align-items: center;
-    justify-items: center;
 }
 
 h1{
@@ -19,7 +20,6 @@ h1{
 }
 
 .imagesGallery{
-    width: 85vw;
     border-radius: 2rem;
     padding: 2%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
