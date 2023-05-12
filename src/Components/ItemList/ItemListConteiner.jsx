@@ -14,40 +14,44 @@ export default function ItemListContainer() {
 
     const urlParam = useParams();
 
-    const [productsList, setProductsList] = useState([]);
+    const [categoriesList, setCategoriesList] = useState([]);
 
     const [showProductDetail, setShowProductDetail] = useState(false);
 
     function createCategoriesList() {
         const categories = [];
-        stock.map( product => {
-            if ( categories.find( category => (category === product.category) ) === undefined ) {
-                categories.push(product.category);
-            };
+        stock.forEach( product => {
+            const index = categories.findIndex( object => (object.id === product.category) );
+            if ( index === -1 ) {
+                const objectProduct = {
+                    id: product.category,
+                    products: [product]
+                };
+                categories.push(objectProduct);
+            } {
+                if ( categories[index] !== undefined ) { categories[index].products = [...categories[index].products, product] };
+            }
         });
         return(categories);
     };
 
     useEffect( () => { 
-        setProductsList(stock) 
+        setCategoriesList(createCategoriesList()) 
     },[stock]);
 
     useEffect( () => {
-        productsList.find((product) => (product.id === urlParam.id)) ? 
-            setShowProductDetail(true)
-        : 
-            setShowProductDetail(false);
+        categoriesList.find((product) => (product.id === urlParam.id)) ? setShowProductDetail(true) : setShowProductDetail(false);
     },[urlParam]);
     
     return (
         <div className="itemListContainerBox">
-            { !(productsList.length) ? (
+            { !(categoriesList.length) ? (
                 <p>Loading....</p>
             ) : (
                 <>
-                    <h1>Our Products</h1>
-                    <ul className={ showProductDetail ? "imagesGallery productsListOpen" : "imagesGallery productsListClose" }>
-                        <ItemList productsList={productsList} />
+                    <h1>Categories</h1>
+                    <ul className={ showProductDetail ? "categoriesList categoriesListOpen" : "categoriesList" }>
+                        <ItemList categoriesList={categoriesList} />
                     </ul>
                 </>
             )}

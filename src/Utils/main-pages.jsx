@@ -6,7 +6,7 @@ export const PAGES = [
     },
     {
         id:"categories",
-        path:"/home/categories",
+        path:"/categories",
         name:"Categories",
     },
     {
@@ -14,43 +14,4 @@ export const PAGES = [
         path:"/contact",
         name:"Contact",
     },
-];
-
-export const CATEGORIES = [
-    {
-        id: "citrus",
-        name: "Citrus"
-    },
-    {
-        id: "ceratonia",
-        name: "Ceratonia"
-    },
-    {
-        id: "prunus",
-        name: "Prunus"
-    },
-    {
-        id: "ceiba",
-        name: "Ceiba"
-    },
-    {
-        id: "erythrina",
-        name: "Erythrina"
-    },
-    {
-        id: "pinus",
-        name: "Pinus"
-    },
-    {
-        id: "myrtaceae",
-        name: "Myrtaceae"
-    },
-    {
-        id: "luma",
-        name: "Luma"
-    },
-    {
-        id: "jacaranda",
-        name: "Jacaranda"
-    }
 ];

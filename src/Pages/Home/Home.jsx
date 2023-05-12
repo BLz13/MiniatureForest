@@ -1,7 +1,7 @@
 import "./Home.css"
 
 import {HeroText} from "../../Utils/homeData"
-import ItemListContainer from "../../Components/ItemList/ItemListConteiner"
+import ImageGallery from "../../Components/ImageGallery/ImageGallery"
 
 export default function Home() {
 
@@ -21,7 +21,7 @@ export default function Home() {
                     </div>
                 </div>
             ))}
-            <ItemListContainer/>
+            <ImageGallery />
         </div>
     );
 }

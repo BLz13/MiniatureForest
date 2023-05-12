@@ -5,9 +5,11 @@ import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelect
 import Context from "../../Context/Context";
 import {useParams} from "react-router-dom";
 
-export default function ItemDetailContainer() {
+export default function ProductDetail() {
 
     const {dispatch, products, orders} = useContext(Context);
+
+    const { stock } = products;
 
     const refAmountItems = useRef();
 
@@ -15,13 +17,11 @@ export default function ItemDetailContainer() {
 
     const [productData, setProductData] = useState({});
 
-    const { stock } = products
-
     const [productsList, setProductsList] = useState([]);
 
     useEffect( () => { setProductsList(stock) },[stock]);
 
-    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.product) )) });
+    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.id) )) });
 
     function addToCartClickHandler() {
 
@@ -43,17 +43,17 @@ export default function ItemDetailContainer() {
     };
 
     return(
-        (productData === undefined) ? (
-            <p className="productDetails" >Loading....</p>
+        !productData ? (
+            <p className="imageDetails">Loading....</p>
         ) : (
-            <div className="productDetails" >
-                <p className="productName">{productData.name}</p>      
-                <p className="productSpecies">{productData.category}</p>
-                <p className="productDescription">{productData.description}</p>
+            <div className="imageDetails" >
+                <p className="imageName">{productData.name}</p>      
+                <p className="imageSpecies">{productData.category}</p>
+                <p className="imageDescription">{productData.description}</p>
                 {
                     productData.stock ? (
                         <>
-                            <p className="productPrice">{productData.price} $usd</p>
+                            <p className="imagePrice">{productData.price} $usd</p>
                             <div className="addToCartBox">
                                 <CartAmountSelection 
                                     productsAmount={productData.stock}
@@ -65,7 +65,7 @@ export default function ItemDetailContainer() {
                             </div>
                         </>
                     ) : (
-                        <div className="productPrice">Out of Stock</div>
+                        <div className="imagePrice">Out of Stock</div>
                     )
                 }
             </div>

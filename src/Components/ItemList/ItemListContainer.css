@@ -1,5 +1,5 @@
 .itemListContainerBox{
-    min-height: 90vh;
+    height: 300vh;
     max-width: 85vw;
     display: flex;
     flex-flow: column nowrap;
@@ -11,96 +11,113 @@ h1{
     font-family: var(--serif);
 }
 
-.productsListClose{
-    height: 50vh;
-}
-
-.productsListOpen{
-    height: 75vh;
-}
-
-.imagesGallery{
+.categoriesList{
     border-radius: 2rem;
-    padding: 2%;
+    padding: 5%;
+    width: 30vw;
+    height: 90%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: height 1s;
+    transition: transform 1s;
     background-color: white;
-    overflow: hidden;
+    overflow: show;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     list-style: none;
 }
 
+.categoriesListOpen{
+    transform: translateX(-50%);
+}
+
 .productsItems{
-    height: 100%;
-    width: calc(100%/11);
-    transition: width 1s;
-    background-image: linear-gradient(#0000, #000);
+    transition: height 1s, box-shadow 1s;
+    background-image: #000;
     overflow: hidden;
 }
 
 .productsItemsClose{
-    height: 100%;
-    width: calc(100%/11);
-    transition: width 1s;
+    transition: height 1s, box-shadow 1s;
     overflow: hidden;
 }
 
 .productsItemsOpen{
-    height: 100%;
-    width: 30rem;
-    transition: width 1s;
-    background-image: linear-gradient(#0000, #000, #000);
-    overflow: hidden;
+    transition: height 1s, box-shadow 1s;
+    height: 30rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: relative;
 }
 
-.productsItemsClose:hover{
-    width: 30rem;
+.productsItems:hover{
+    height: 30rem !important;
 }
 
 .productImage{
-    height: 100%;
-    width: 100%;
     object-fit: cover;
 }
 
-.imageBox{
+.multipleImagesProduct{
+    height: 100%;
+    width: 50%;
+    object-fit: cover;
+}
+
+.productImageBox{
     transition: opacity 1s;
 }
 
-.openImage{
+.openProductImageBox{
+    opacity: 1;
+}
+
+.closeProductImageBox{
     opacity: 0.3;
 }
 
-.closeImage{
+.closeProductImageBox:hover{
+    opacity: 1;
+}
+
+.notImageOpen{
+    opacity: 0.5;
+}
+
+.notImageOpen:hover{
     opacity: 1;
 }
 
 .productDetails{
-    animation-name: showData;
+    animation-name: showDataCategories;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-out;
     display: grid;
     align-items: flex-end;
     justify-items: flex-start;
     position: absolute;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 2%;
     grid-template-columns: 13rem auto;
     grid-template-rows: 2rem 2rem 2rem auto;
-    height: 94%;
-    bottom: 0rem;
-    left: 0rem;
+    height: 26rem;
+    width: 40vw;
+    top: 0rem;
+    z-index: -5;
     padding: 2% 5% 4% 5%;
     column-gap: 15%;
 }
 
-@keyframes showData {
-    from{
+@keyframes showDataCategories {
+    0%{
         opacity: 0;
+        right: 0vw;
+        transform: scale(0.1);
     }
-    to{
+    100%{
         opacity: 1;
+        right: -45vw;
+        transform: scale(1);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 }
 

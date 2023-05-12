@@ -10,6 +10,7 @@ import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailCont
 import ItemListContainer from "./Components/ItemList/ItemListConteiner";
 import Layout from "./Components/Layout/Layout";
 import NotFound from "./Pages/NotFound/NotFound";
+import ProductDetail from './Components/ImageGallery/ProductDetail';
 import Provider from "./Provider/Provider";
 import React from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
@@ -22,15 +23,13 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />}>
-              <Route path=":id" element={<ItemDetailContainer />} />
+              <Route path=":id" element={<ProductDetail />} />
             </Route>
             <Route path="/home" element={<Home />}>
-              <Route path=":id" element={<ItemDetailContainer />} />
-              <Route path=":id" element={<ItemListContainer />}>
-                <Route path=":id" element={<ItemListContainer />}>
-                  <Route path=":id" element={<ItemDetailContainer />} />
-                </Route>
+              <Route path=":id" element={<ProductDetail />} />
             </Route>
+            <Route path="/categories" element={<ItemListContainer />}>
+              <Route path=":id" element={<ItemDetailContainer />} />
             </Route>
             <Route path="/aboutus" element={<About />} />
             <Route path="/contact" element={<Contact />} />

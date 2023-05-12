@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function ItemList(props) {
 
-    const {productsList} = props;
+    const {categoriesList} = props;
     
     const productParam = useParams();
     
@@ -15,27 +15,62 @@ export default function ItemList(props) {
         setRandomInteger(Math.floor(Math.random()*(max - min)+min));
     },[]);
 
+    console.log(categoriesList);
+
     return(
-        <>
-            {productsList.map( (product) => {
-                return(
-                    (product.id === productParam.product) ? (
-                        <li className="productsItemsOpen" key={product.id}>
-                            <NavLink className={ ({isActive}) => isActive  ? "openImage imageBox" : "closeImage imageBox"} to={product.id}>
-                                <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
-                            </NavLink>
-                            <Outlet />
-                        </li>
-                    ) : (
-                        <li className={ (productParam.product !== undefined) ? "productsItems" : "productsItemsClose" } key={product.id}>
-                            <NavLink to={product.id}>
-                                <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
-                            </NavLink>                            
-                        </li>
+        <> 
+            { categoriesList.map( (category) => {
+                    return(
+                        (category.products.length === 1) ? (
+                            (category.id === productParam.id) ? (
+                                <li className="productsItemsOpen" key={category.id}>
+                                    <NavLink className="openProductImageBox productImageBox" to={category.id}>
+                                        <img className="productImage" src={require(`../../assets/images/products/${category.products[0].id + randomInteger}.jpg`)}/>
+                                    </NavLink>
+                                    <Outlet />
+                                </li>
+                            ) : (
+                                <li
+                                    className={ (productParam.id === undefined) ? "productsItems" : "productsItemsClose" }
+                                    style={ {
+                                        height: `calc(100%/${ categoriesList.length })`
+                                    } }
+                                    key={category.id}
+                                >
+                                    <NavLink className={ !productParam.id  ? "notImageOpen productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
+                                        <img className="productImage" src={require(`../../assets/images/products/${category.products[0].id + randomInteger}.jpg`)}/>
+                                    </NavLink>                            
+                                </li>
+                            )
+                        ) : (
+                            (category.id === productParam.id) ? (
+                                <li className="productsItemsOpen" key={category.id}>
+                                    <NavLink className={ ({isActive}) => isActive  ? "openProductImageBox productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
+                                        { category.products.map( product => (
+                                            <img className="multipleImagesProduct" src={require(`../../assets/images/products/${product.id + randomInteger}.jpg`)}/>
+                                        ))}
+                                    </NavLink>
+                                    <Outlet />
+                                </li>
+                            ) : (
+                                <li
+                                    className={ (productParam.id === undefined) ? "productsItems" : "productsItemsClose" }
+                                    style={ {
+                                        height: `calc(100%/${ categoriesList.length })`
+                                    } }
+                                    key={category.id}
+                                >
+                                    <NavLink className={ !productParam.id  ? "notImageOpen productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
+                                        { category.products.map( product => (
+                                            <img className="multipleImagesProduct" src={require(`../../assets/images/products/${product.id + randomInteger}.jpg`)}/>
+                                        ))}
+                                    </NavLink>                            
+                                </li>
+                            )
+                        )
                     )
-                )
-            })}
+            } ) }
         </>
     );
 
-}
+};
