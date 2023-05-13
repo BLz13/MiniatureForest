@@ -1,4 +1,4 @@
-import  { NavLink, Outlet, useParams } from "react-router-dom";
+import  { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function ItemList(props) {
@@ -24,10 +24,10 @@ export default function ItemList(props) {
                         (category.products.length === 1) ? (
                             (category.id === productParam.id) ? (
                                 <li className="productsItemsOpen" key={category.id}>
+                                    <p className="categoryTitle"> {category.id} </p>
                                     <NavLink className="openProductImageBox productImageBox" to={category.id}>
                                         <img className="productImage" src={require(`../../assets/images/products/${category.products[0].id + randomInteger}.jpg`)}/>
                                     </NavLink>
-                                    <Outlet />
                                 </li>
                             ) : (
                                 <li
@@ -37,6 +37,7 @@ export default function ItemList(props) {
                                     } }
                                     key={category.id}
                                 >
+                                    <p className="categoryTitle"> {category.id} </p>
                                     <NavLink className={ !productParam.id  ? "notImageOpen productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
                                         <img className="productImage" src={require(`../../assets/images/products/${category.products[0].id + randomInteger}.jpg`)}/>
                                     </NavLink>                            
@@ -45,12 +46,12 @@ export default function ItemList(props) {
                         ) : (
                             (category.id === productParam.id) ? (
                                 <li className="productsItemsOpen" key={category.id}>
+                                    <p className="categoryTitle"> {category.id} </p>
                                     <NavLink className={ ({isActive}) => isActive  ? "openProductImageBox productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
                                         { category.products.map( product => (
                                             <img className="multipleImagesProduct" src={require(`../../assets/images/products/${product.id + randomInteger}.jpg`)}/>
                                         ))}
                                     </NavLink>
-                                    <Outlet />
                                 </li>
                             ) : (
                                 <li
@@ -60,6 +61,7 @@ export default function ItemList(props) {
                                     } }
                                     key={category.id}
                                 >
+                                    <p className="categoryTitle"> {category.id} </p>
                                     <NavLink className={ !productParam.id  ? "notImageOpen productImageBox" : "closeProductImageBox productImageBox"} to={category.id}>
                                         { category.products.map( product => (
                                             <img className="multipleImagesProduct" src={require(`../../assets/images/products/${product.id + randomInteger}.jpg`)}/>

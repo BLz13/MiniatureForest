@@ -1,10 +1,10 @@
 import "./ItemListContainer.css";
 
+import { Outlet, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
 import Context from "../../Context/Context";
 import ItemList from "./ItemList"
-import { useParams } from "react-router-dom";
 
 export default function ItemListContainer() {
     
@@ -53,6 +53,7 @@ export default function ItemListContainer() {
                     <ul className={ showProductDetail ? "categoriesList categoriesListOpen" : "categoriesList" }>
                         <ItemList categoriesList={categoriesList} />
                     </ul>
+                    <Outlet />
                 </>
             )}
         </div>
