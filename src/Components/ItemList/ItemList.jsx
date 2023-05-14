@@ -15,8 +15,6 @@ export default function ItemList(props) {
         setRandomInteger(Math.floor(Math.random()*(max - min)+min));
     },[]);
 
-    console.log(categoriesList);
-
     return(
         <> 
             { categoriesList.map( (category) => {
