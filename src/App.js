@@ -6,7 +6,7 @@ import About from "./Pages/AboutUs/AboutUsContainer";
 import Cart from "./Pages/Cart/Cart"
 import Contact from "./Pages/Contact/Contact";
 import Home from "./Pages/Home/Home";
-import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer"
+import ItemDetailContainer from "./Components/ItemList/ItemDetailContainer"
 import ItemListContainer from "./Components/ItemList/ItemListConteiner";
 import Layout from "./Components/Layout/Layout";
 import NotFound from "./Pages/NotFound/NotFound";

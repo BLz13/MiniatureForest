@@ -60,7 +60,7 @@ export default function ImageGallery() {
                                     </NavLink>                            
                                 </li>
                             ) )
-                        })};
+                        })}
                     </ul>
                 </>
             )}

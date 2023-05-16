@@ -54,7 +54,7 @@ export default function ProductDetail() {
                     productData.stock ? (
                         <>
                             <p className="imagePrice">{productData.price} $usd</p>
-                            <div className="addToCartBox">
+                            <div className="addToCartBoxProduct">
                                 <CartAmountSelection 
                                     productsAmount={productData.stock}
                                     reference={refAmountItems}

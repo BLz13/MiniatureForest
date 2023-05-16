@@ -56,7 +56,7 @@ export default function ItemDetailContainer() {
                             categoryData[0].stock ? (
                                 <>
                                     <p className="categoryPrice">{categoryData[0].price} $usd</p>
-                                    <div className="addToCartBox">
+                                    <div className="addToCartBoxCategory">
                                         <CartAmountSelection 
                                             productsAmount={categoryData[0].stock}
                                             reference={refAmountItems}
@@ -74,7 +74,7 @@ export default function ItemDetailContainer() {
                 </div>
             ) : (
                 <div className="categoryMultipleDetails" >
-                    <p className="speciesTitle"> {categoryData[0].category} </p>
+                    <p className="speciesTitle"> {categoryParam.id} </p>
                         { categoryData.map( (product) => (
                             <div className="categoryProductBox" key={product.id}>
                                     <p className="categoryProductName">{product.name}</p>
@@ -82,7 +82,7 @@ export default function ItemDetailContainer() {
                                         { product.stock ? (
                                             <>
                                                 <p className="categoryPrice">{product.price} $usd</p>
-                                                <div className="addToCartBox">
+                                                <div className="addToCartBoxCategory">
                                                     <CartAmountSelection 
                                                         productsAmount={product.stock}
                                                         reference={refAmountItems}
