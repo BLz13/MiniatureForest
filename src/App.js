@@ -11,7 +11,7 @@ import ItemListContainer from "./Components/ItemList/ItemListConteiner";
 import Layout from "./Components/Layout/Layout";
 import NotFound from "./Pages/NotFound/NotFound";
 import ProductDetail from './Components/ImageGallery/ProductDetail';
-import Provider from "./Provider/Provider";
+import { Provider } from "./Provider/Provider";
 import React from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 

@@ -41,7 +41,7 @@ export default function ItemListContainer() {
 
     useEffect( () => {
         categoriesList.find((product) => (product.id === urlParam.id)) ? setShowProductDetail(true) : setShowProductDetail(false);
-    },[urlParam]);
+    },[categoriesList]);
     
     return (
         <div className="itemListContainerBox">

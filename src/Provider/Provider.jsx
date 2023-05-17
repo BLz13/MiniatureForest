@@ -3,7 +3,7 @@ import products from "./products";
 import reducer from "./reducer"
 import { useReducer } from "react";
 
-export default function Provider(props) {
+export function Provider(props) {
     
     const {children} = props;
 
@@ -11,6 +11,6 @@ export default function Provider(props) {
     
     const value = { products: initialProducts, dispatch };
     
-    return <Context.Provider value={value}> {children} </Context.Provider>;
+    return (<Context.Provider value={value}> {children} </Context.Provider>);
     
 }

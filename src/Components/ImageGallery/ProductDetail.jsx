@@ -23,30 +23,23 @@ export default function ProductDetail() {
 
     useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.id) )) });
 
-    function addToCartClickHandler() {
+    function addToCartClickHandler(action) {
 
+        action.preventDefault();
         const {id, name, price} = productData;
         const amount = (+refAmountItems.current.innerText);
         const subTotal = amount * price;
-        const payload = {
-            id,
-            name,
-            price,
-            amount,
-            subTotal
-        }
-        console.log(payload);
 
-        // dispatch({
-        //     type:"addItemsToCart",
-        //     payload: {
-        //         id,
-        //         name,
-        //         price,
-        //         amount,
-        //         subTotal
-        //     }
-        // });
+        dispatch({
+            type:"addItemsToCart",
+            payload: {
+                id,
+                name,
+                price,
+                amount,
+                subTotal
+            }
+        });
 
     };
 
@@ -73,7 +66,7 @@ export default function ProductDetail() {
                             </div>
                         </>
                     ) : (
-                        <div className="imagePrice">Out of Stock</div>
+                        <div className="outStockP">Out of Stock</div>
                     )
                 }
             </div>

@@ -87,6 +87,7 @@ h1{
     grid-template-columns: 13rem auto;
     grid-template-rows: 2rem 2rem 2rem auto;
     height: 94%;
+    width: 90%;
     bottom: 0rem;
     left: 0rem;
     padding: 2% 5% 4% 5%;
@@ -135,5 +136,15 @@ h1{
 .addToCartBoxProduct{
     grid-row: 4;
     grid-column: 2;
+    display: flex;
+    flex-flow: column nowrap;
+    align-self: flex-end;
+}
+
+.outStockP{
+    grid-row: 4;
+    grid-column: 2;
+    width: 100%;
+    color: var(--cream);
     align-self: flex-end;
 }

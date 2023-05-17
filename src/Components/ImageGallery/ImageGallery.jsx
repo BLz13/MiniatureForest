@@ -17,7 +17,7 @@ export default function ImageGallery() {
     
     const [productsList, setProductsList] = useState([]);
 
-    const [showProductDetail, setShowProductDetail] = useState(false);
+    const [showProductDetail, setShowProductDetail] = useState(true);
 
     useEffect( () => { setProductsList(stock) },[stock]);
 
@@ -29,7 +29,7 @@ export default function ImageGallery() {
     
     useEffect( () => {
         productsList.find((product) => (product.id === urlParam.id)) ? setShowProductDetail(true) : setShowProductDetail(false);
-    },[urlParam]);
+    },[productsList,urlParam]);
     
     return (
         <div className="imageGalleryBox">

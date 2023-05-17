@@ -1,5 +1,6 @@
 import {isEmpty} from '../Utils/functions'
 import {removeElementFromArray} from "../Utils/functions"
+import { useEffect } from 'react';
 
 export default function reducer(products, action) {
 
@@ -13,6 +14,14 @@ export default function reducer(products, action) {
             
             const cart = products.cart;
 
+            console.log(`Cart:`);
+
+            console.log(products.cart);
+
+            console.log(`Payload:`);
+
+            console.log(payload);
+
             const item = payload;
             
             //checks if the product is already on the cart
@@ -21,7 +30,7 @@ export default function reducer(products, action) {
             if (productIndexCart === -1) {
                 cart.items.push(item);
             } {
-                if (cart !== undefined) {
+                if (productIndexCart !== -1) {
                     cart.items[productIndexCart].amount += amount;
                     cart.items[productIndexCart].subTotal += subTotal;
                 }
@@ -31,6 +40,10 @@ export default function reducer(products, action) {
 
             products.cart = cart;
 
+            console.log(`Cart after action:`);
+            
+            console.log(products.cart);
+            
             return (products);
         };
 
@@ -64,9 +77,8 @@ export default function reducer(products, action) {
         };
 
         default: {
-            throw Error(`Unknown action: ${type}`);
+            break
         };
-        
-    };
-    
+
+        }
 };

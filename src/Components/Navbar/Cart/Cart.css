@@ -20,8 +20,8 @@
     font-size: 0.7rem;
     z-index: 5;
     transition: 500ms;
-    background-color: var(--darkGrey);
-    color: var(--cream);
+    background-color: var(--lightGrey);
+    color: var(--darkGreen);
 }
 
 .noBadge{

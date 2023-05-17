@@ -1,9 +1,29 @@
+import { useContext, useEffect, useState } from "react";
+
+import Context from "../../../Context/Context";
+
 function Badge (props) {
 
-    const {amountItems, className} = props;
+    const {navbarStatus} = props;
+    
+    const {products} = useContext(Context);
+    
+    const [badgeNumber, setBadgeNumber] = useState(products.cart.items.length);
+
+    useEffect( () => setBadgeNumber(products.cart.items.length) )
 
     return (
-        <p className={className}> {amountItems} </p>
+        <p
+            className={
+                !navbarStatus ? (
+                    badgeNumber === 0 ? "badge noBadge navOpenBadge" : "navOpenBadge badge"
+                ) : (
+                    badgeNumber === 0 ? "badge noBadge" : "badge"
+                )
+            }
+        >
+            {badgeNumber}
+        </p>
     );
 };
 

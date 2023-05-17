@@ -25,7 +25,7 @@ export default function ItemDetailContainer() {
 
     useEffect( () => { setProductsList(stock) },[stock]);
 
-    useEffect( () => { setCategoryData( productsList.filter( (product) => ( product.category === categoryParam.id ) ) ) },[categoryParam]);
+    useEffect( () => { setCategoryData( productsList.filter( (product) => ( product.category === categoryParam.id ) ) ) },[productsList,categoryParam]);
 
     function addToCartClickHandler() {
 
