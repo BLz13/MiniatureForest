@@ -11,6 +11,10 @@ export default function ItemDetailContainer() {
 
     const refAmountItems = useRef();
 
+    const refNameItem = useRef();
+
+    const refPriceItems = useRef();
+
     const categoryParam = useParams();
 
     const [categoryData, setCategoryData] = useState([]);
@@ -25,8 +29,10 @@ export default function ItemDetailContainer() {
 
     function addToCartClickHandler() {
 
-        const {id, name, price} = categoryData;
+        const name = refNameItem.current.innerText;
         const amount = (+refAmountItems.current.innerText);
+        const price = Number((refPriceItems.current.innerText).replace(" $usd",""));
+        const id = (name.charAt(0).toLowerCase() + name.slice(1)).replace(" ","");
         const subTotal = amount * price;
 
         dispatch({
@@ -50,12 +56,12 @@ export default function ItemDetailContainer() {
                 <div className="categoryDetails" >
                     <p className="speciesTitle">{categoryData[0].category}</p>
                     <div className="categoryProductBox">
-                        <p className="categoryProductName">{categoryData[0].name}</p>
+                        <p className="categoryProductName" ref={refNameItem}>{categoryData[0].name}</p>
                         <p className="categoryDescription">{categoryData[0].description}</p>
                         {
                             categoryData[0].stock ? (
                                 <>
-                                    <p className="categoryPrice">{categoryData[0].price} $usd</p>
+                                    <p className="categoryPrice" ref={refPriceItems}>{categoryData[0].price} $usd</p>
                                     <div className="addToCartBoxCategory">
                                         <CartAmountSelection 
                                             productsAmount={categoryData[0].stock}
@@ -73,15 +79,15 @@ export default function ItemDetailContainer() {
                     </div>
                 </div>
             ) : (
-                <div className="categoryMultipleDetails" >
-                    <p className="speciesTitle"> {categoryParam.id} </p>
+                <ul className="categoryMultipleDetails" >
+                    <li className="speciesTitle" value={0}> {categoryParam.id} </li>
                         { categoryData.map( (product) => (
-                            <div className="categoryProductBox" key={product.id}>
-                                    <p className="categoryProductName">{product.name}</p>
+                            <li className="categoryProductBox" key={product.id}>
+                                    <p className="categoryProductName" ref={refNameItem}>{product.name}</p>
                                     <p className="categoryDescription">{product.description}</p>
                                         { product.stock ? (
                                             <>
-                                                <p className="categoryPrice">{product.price} $usd</p>
+                                                <p className="categoryPrice" ref={refPriceItems}>{product.price} $usd</p>
                                                 <div className="addToCartBoxCategory">
                                                     <CartAmountSelection 
                                                         productsAmount={product.stock}
@@ -95,10 +101,9 @@ export default function ItemDetailContainer() {
                                         ) : (
                                             <div className="categoryPrice">Out of Stock</div>
                                         ) }
-                                </div>
-                            )
-                        ) }
-                </div>
+                            </li>   
+                        ) ) }
+                </ul>
             )
         )
     )

@@ -1,23 +1,30 @@
 .itemListContainerBox{
     height: 300vh;
-    max-width: 85vw;
-    display: flex;
-    flex-flow: column nowrap;
+    grid-template-rows: 10vh auto;
+    grid-template-columns: 50vw 35vw;
+    display: grid;
     align-items: center;
+    justify-items: center;
 }
 
 h1{
     font-size: 3rem;
     font-family: var(--serif);
+    grid-row: 1;
+    grid-column: 1 / 3;
+    margin: 0%;
 }
 
 .categoriesList{
     border-radius: 2rem;
-    padding: 5%;
-    width: 30vw;
+    padding: 2%;
+    width: 60%;
     height: 90%;
+    grid-row: 2;
+    grid-column: 1;
+    transform: translate(56%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: transform 1s;
+    transition: transform 1s, width 1s, padding 1s;
     background-color: white;
     overflow: hidden;
     display: flex;
@@ -26,7 +33,9 @@ h1{
 }
 
 .categoriesListOpen{
-    transform: translateX(-50%);
+    grid-column: 1;
+    padding: 5%;
+    transform: translate(0%);
 }
 
 .productsItems{
@@ -96,27 +105,34 @@ h1{
 }
 
 .categoryTitle{
-    height: 50%;
-    width: 100%;
     top: 50%;
-    text-align: center;
+    font-size: 2rem;
+    opacity: 1;
+    z-index: 5;
+    color: var(--darkGreen);
+    text-shadow: 2px 2px  5px var(--cream);
+    transition: opacity 1s, z-index 1s;
+    justify-self: center;
     position: absolute;
+    cursor: pointer;
 }
 
-.productsItemsOpen ~ .categoryTitle{
-    opacity: 0 !important;
+.productsItems:hover .categoryTitle{
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s, z-index 1s;
 }
 
-.closeProductImageBox:hover ~ .categoryTitle{
-    opacity: 0 !important;
+ .productsItemsOpen .categoryTitle{
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s, z-index 1s;
 }
 
-.notImageOpen:hover ~ .categoryTitle{
-    opacity: 0 !important;
-}
-
-.productsItems:hover ~ .categoryTitle{
-    opacity: 0 !important;
+.productsItemsClose:hover .categoryTitle{
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s, z-index 1s;
 }
 
 .categoryDetails{
@@ -133,28 +149,14 @@ h1{
     gap: 2rem;
     border-radius: 2rem;
     width: 25vw;
-    right: 10vw;
-    z-index: -5;
+    z-index: 1;
     padding: 2% 5% 4% 5%;
-}
-
-@keyframes showDataCategories {
-    0%{
-        opacity: 0;
-        right: -30vw;
-        transform: scale(0.1);
-    }
-    100%{
-        opacity: 1;
-        top: 30vh;
-        transform: scale(1);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+    right: 10vw;
+    top: 25.5vh;
 }
 
 .categoryMultipleDetails{
-    animation-name: showDataMultipleCategories;
-    animation-duration: 1s;
+    animation-name: showDataCategories;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
     overflow: auto;
@@ -162,25 +164,26 @@ h1{
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-content: center;
+    list-style-type: none;
     position: fixed;
     background-color: var(--green);
+    animation-duration: 1s;
     gap: 2rem;
     border-radius: 2rem;
-    width: 25vw;
-    right: 10vw;
-    z-index: -5;
+    width: 30vw;
+    z-index: 1;
     padding: 2% 5% 4% 5%;
+    top: 25.5vh;
+    right: 5vw;
 }
 
-@keyframes showDataMultipleCategories {
+@keyframes showDataCategories {
     0%{
         opacity: 0;
-        right: -30vw;
         transform: scale(0.1);
     }
     100%{
         opacity: 1;
-        top: 10vh;
         transform: scale(1);
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }

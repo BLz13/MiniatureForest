@@ -28,17 +28,25 @@ export default function ProductDetail() {
         const {id, name, price} = productData;
         const amount = (+refAmountItems.current.innerText);
         const subTotal = amount * price;
+        const payload = {
+            id,
+            name,
+            price,
+            amount,
+            subTotal
+        }
+        console.log(payload);
 
-        dispatch({
-            type:"addItemsToCart",
-            payload: {
-                id,
-                name,
-                price,
-                amount,
-                subTotal
-            }
-        });
+        // dispatch({
+        //     type:"addItemsToCart",
+        //     payload: {
+        //         id,
+        //         name,
+        //         price,
+        //         amount,
+        //         subTotal
+        //     }
+        // });
 
     };
 

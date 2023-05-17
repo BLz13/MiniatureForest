@@ -95,7 +95,6 @@ const products = {
         total:0
     },
     purchased:[],
-    
 };
 
 export default products;
