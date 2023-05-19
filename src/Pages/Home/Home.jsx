@@ -1,24 +1,9 @@
 import "./Home.css"
 
-import { useContext, useEffect } from "react"
-
-import { Context } from "../../Context/Context"
 import { HeroText } from "../../Utils/homeData"
 import ImageGallery from "../../Components/ImageGallery/ImageGallery"
-import { STOCK } from "../../Utils/stock"
 
-export default function Home() {   
-
-    const {dispatch} = useContext(Context)
-
-    useEffect( () => (
-        dispatch({
-            type:"loadStock",
-            payload: {
-                stock: STOCK
-            }
-        })
-    ),[])
+export default function Home() {
 
     const homeBoxClass="homeBox"
     const heroBoxClass="heroBox"

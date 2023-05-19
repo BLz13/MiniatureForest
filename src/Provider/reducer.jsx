@@ -4,10 +4,7 @@ export default function reducer(products, action) {
     
     switch (type) {
 
-        case "loadStock": {
-
-            console.log("Stock loaded");
-            console.log(products);
+        case "reloadStock": {
             
             return {
                 ...products,
@@ -26,9 +23,9 @@ export default function reducer(products, action) {
             const item = payload;
             
             //checks if the product is already on the cart
-            const productIndexCart = cart.items.findIndex( (item) => (item.id === id));
+            const productIndexCart = cart.items.findIndex( (item) => (item.id === id) );
             
-            const productIndexStock = stock.findIndex( (item) => (item.id === id));
+            const productIndexStock = stock.findIndex( (item) => (item.id === id) );
 
             if (productIndexCart === -1) {
                 cart.items.push(item);
@@ -39,16 +36,15 @@ export default function reducer(products, action) {
                 }
             };
 
-            stock[productIndexStock].stock -= amount;
+            if (productIndexStock !== -1) {
+                stock[productIndexStock].stock -= amount;
+            }
             
             cart.total += subTotal;
-
-            console.log("Item added to cart");
-            console.log(products);
             
             return {
                 ...products,
-                stock:  stock,
+                stock: stock,
                 cart: cart
             };
         };
@@ -63,14 +59,11 @@ export default function reducer(products, action) {
 
             const cart = products.cart;
             
-            cart.items.filter( (item) => (item.id !== id));
+            cart.items = cart.items.filter( item => item.id !== id);
 
             stock[indexStockItem].stock = amount;
 
             cart.total -= subTotal;
-
-            console.log("Item removed from cart");
-            console.log(products);
 
             return {
                 ...products,
@@ -88,19 +81,18 @@ export default function reducer(products, action) {
 
             const cartItems = products.cart.items;
 
-            const stock = products.stock;
-            
-            stock.forEach( product => { 
-                product.stock += cartItems[cartItems.find( item => (item.id === product.id) )].amount;
+            const stock = products.stock.forEach( product => { 
+
+                const index = cartItems.findIndex( item => ( item.id === (product.id) ) );
+                if ( index !== -1 ) { product.stock += cartItems[index].amount }
+                
             } );
 
-            console.log("Cart cleared");
-            console.log(products);
 
             return {
                 ...products,
+                cart: cart,
                 stock: stock,
-                cart: cart
             };
         };
 

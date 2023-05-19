@@ -28,43 +28,51 @@ export default function ImageGallery() {
     },[]);
     
     useEffect( () => {
-        productsList.find((product) => (product.id === urlParam.id)) ? setShowProductDetail(true) : setShowProductDetail(false);
+        if ( productsList !== undefined ) {
+            productsList.find((product) => (product.id === urlParam.id)) ? 
+                setShowProductDetail(true)
+            : 
+                setShowProductDetail(false)
+        }
     },[productsList,urlParam]);
     
-    return (
-        <div className="imageGalleryBox">
-            { !(productsList.length) ? (
-                <p>Loading....</p>
-            ) : (
-                <>
-                    <h1>Our Products</h1>
-                    <ul className={ showProductDetail ? "imagesGallery galleryOpen" : "imagesGallery galleryClose" }>
-                        { productsList.map( (product) => {
-                            return ( (product.id === urlParam.id) ? (
-                                <li className="detailsOpen" key={product.id}>
-                                    <NavLink className={ ({isActive}) => isActive  ? "openImage imageBox" : "closeImage imageBox"} to={product.id}>
-                                        <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
-                                    </NavLink>
-                                    <Outlet />
-                                </li>
-                            ) : (
-                                <li
-                                    className={ (urlParam.id !== undefined) ? "itemsDetails" : "detailsClose" }
-                                    style={ {
-                                        width: `calc(100%/${ productsList.length })`
-                                    } }
-                                    key={product.id}
-                                >
-                                    <NavLink to={product.id}>
-                                        <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
-                                    </NavLink>                            
-                                </li>
-                            ) )
-                        })}
-                    </ul>
-                </>
-            )}
-        </div>
-    );
+    
+    if ( productsList !== undefined ) {
+        return (
+            <div className="imageGalleryBox">
+                { (productsList.length === 0) ? (
+                    <p>Loading....</p>
+                ) : (
+                    <>
+                        <h1>Our Products</h1>
+                        <ul className={ showProductDetail ? "imagesGallery galleryOpen" : "imagesGallery galleryClose" }>
+                            { productsList.map( (product) => {
+                                return ( (product.id === urlParam.id) ? (
+                                    <li className="detailsOpen" key={product.id}>
+                                        <NavLink className={ ({isActive}) => isActive  ? "openImage imageBox" : "closeImage imageBox"} to={product.id}>
+                                            <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
+                                        </NavLink>
+                                        <Outlet />
+                                    </li>
+                                ) : (
+                                    <li
+                                        className={ (urlParam.id !== undefined) ? "itemsDetails" : "detailsClose" }
+                                        style={ {
+                                            width: `calc(100%/${ productsList.length })`
+                                        } }
+                                        key={product.id}
+                                    >
+                                        <NavLink to={product.id}>
+                                            <img className="productImage" src={require(`../../assets/images/products/${product.id+randomInteger}.jpg`)}/>
+                                        </NavLink>                            
+                                    </li>
+                                ) )
+                            })}
+                        </ul>
+                    </>
+                )}
+            </div>
+        );
+    }
 
 }

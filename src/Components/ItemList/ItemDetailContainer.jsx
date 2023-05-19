@@ -46,6 +46,8 @@ export default function ItemDetailContainer() {
             }
         });
 
+        console.log(products);
+
     };
 
     return(

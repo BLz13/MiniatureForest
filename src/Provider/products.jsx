@@ -1,6 +1,8 @@
+import {STOCK} from '../Utils/stock'
+
 const products = {
 
-    stock: [],
+    stock: STOCK,
     cart: {
         items:[],
         total:0

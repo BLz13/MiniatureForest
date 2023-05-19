@@ -35,9 +35,7 @@ export default function ItemListContainer() {
         return(categories);
     };
 
-    useEffect( () => { 
-        setCategoriesList(createCategoriesList()) 
-    },[stock]);
+    useEffect( () => setCategoriesList( createCategoriesList() ) ,[]);
 
     useEffect( () => {
         categoriesList.find((product) => (product.id === urlParam.id)) ? setShowProductDetail(true) : setShowProductDetail(false);
@@ -45,7 +43,7 @@ export default function ItemListContainer() {
     
     return (
         <div className="itemListContainerBox">
-            { !(categoriesList.length) ? (
+            { ( categoriesList.length === 0 ) ? (
                 <p>Loading....</p>
             ) : (
                 <>

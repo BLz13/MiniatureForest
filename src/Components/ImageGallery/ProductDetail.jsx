@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 
 export default function ProductDetail() {
 
-    const {dispatch, products, orders} = useContext(Context);
+    const {dispatch, products} = useContext(Context);
 
     const { stock } = products;
 
@@ -23,12 +23,7 @@ export default function ProductDetail() {
 
     useEffect( () => {
         setProductData(productsList.find( (product) => (product.id === productAddressParam.id) ));
-        console.log("productDetail component rendered");
     });
-
-    useEffect( () => {
-        console.log("Context updated");
-    },[Context]);
 
     function addToCartClickHandler(action) {
 
@@ -47,6 +42,8 @@ export default function ProductDetail() {
                 subTotal
             }
         });
+
+        console.log(products);
 
     };
 

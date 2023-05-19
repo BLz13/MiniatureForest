@@ -5,12 +5,13 @@ import { useContext, useEffect, useRef, useState } from "react";
 import ContactForm from "../../Components/ContactForm/ContactForm"
 import { Context } from "../../Context/Context";
 import DeleteItemBtn from "../../Components/Buttons/DeleteItem/DeleteItem"
+import products from '../../Provider/products'
 
 export default function Cart() {
 
-    const {dispatch, orders} = useContext(Context);
+    const {dispatch, products} = useContext(Context);
 
-    const {cart} = orders;
+    const {cart} = products.cart;
 
     const [cartItems, setCartItems] = useState([]);
 
@@ -23,6 +24,7 @@ export default function Cart() {
     const inputMailRef = useRef();
     
     const trashClickHandler = () => {
+        
         const {id, name, amount, price, subTotal} = cartItems;
 
         dispatch({
@@ -35,6 +37,9 @@ export default function Cart() {
                 subTotal
             }
         });
+
+        console.log(products);
+
     }
 
     const makeOrderClickHandler = (event) => {

@@ -9,7 +9,7 @@ export function Provider(props) {
 
     const [initialProducts, dispatch] = useReducer(reducer, products);
     
-    const value = { products: initialProducts, dispatch };
+    const value = {products: initialProducts, dispatch };
     
     return (<Context.Provider value={value}> {children} </Context.Provider>);
     

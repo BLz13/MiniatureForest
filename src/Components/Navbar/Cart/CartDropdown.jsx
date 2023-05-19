@@ -16,44 +16,36 @@ export default function CartDropdown(props) {
     const [cartList, setCartList] = useState(products.cart.items);
     
     const [badgeNumber, setBadgeNumber] = useState(products.cart.items.length);
-    
-    const itemRef = useRef();
 
     function reRenderData () {
         setCartList(products.cart.items)
         setBadgeNumber(products.cart.items.length)
-        console.log("Data Updated");
     }
 
-    const trashOnClickHandler = () => {
+    const trashOnClickHandler = (eventItem) => {
 
-        const cartItem = itemRef.current.innerText;
+        console.log(eventItem);
 
-        const {id, name, amount, price, subTotal} = products.cart.items.find( product => product.name === cartItem );
+        // const cartItem = itemRef.current.innerText;
 
-        dispatch({
-            type:"removeItemFromCart",
-            payload: {
-                id,
-                name,
-                price,
-                amount,
-                subTotal
-            }
-        });
+        // const {id, name, amount, price, subTotal} = products.cart.items.find( product => product.name === cartItem );
+
+        // dispatch({
+        //     type:"removeItemFromCart",
+        //     payload: {
+        //         id,
+        //         name,
+        //         price,
+        //         amount,
+        //         subTotal
+        //     }
+        // });
+
+        // console.log(products);
 
     }
 
-    const clearCartClick = () => {
-
-        dispatch({
-            type:"clearCart",
-            payload: {}
-        });
-        
-    }
-
-    useEffect( () => {reRenderData()})
+    useEffect( () => {reRenderData()},[products])
 
     return (
         <>
@@ -64,9 +56,7 @@ export default function CartDropdown(props) {
             />
             <CartData
                 cartList={cartList}
-                itemRef={itemRef}
                 trashOnClick={trashOnClickHandler}
-                clearCartClick={clearCartClick}
             />
         </>
     );

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function CartDropdownBtn(props) {
 
-    const {name, action, btnClass, onClick} = props;
+    const {name, action, btnClass, clearCartClick} = props;
 
     if (action === "goToCart") {
         return (
@@ -22,7 +22,7 @@ export default function CartDropdownBtn(props) {
             <button
                 className={btnClass}
                 type="button"
-                onClick={onClick}
+                onClick={clearCartClick}
             >
                 {name}
             </button>

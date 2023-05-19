@@ -24,11 +24,13 @@ function SideBar (props) {
 
     function createCategoriesList() {
         const categories = [];
-        stock.map( product => {
-            if ( categories.find( category => (category === product.category) ) === undefined ) {
-                categories.push(product.category);
-            };
-        });
+        if ( stock !== undefined) {
+            stock.map( product => {
+                if ( categories.find( category => (category === product.category) ) === undefined ) {
+                    categories.push(product.category);
+                };
+            });
+        };
         return(categories);
     };
 
