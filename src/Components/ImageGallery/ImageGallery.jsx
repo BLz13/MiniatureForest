@@ -3,7 +3,7 @@ import "./ImageGallery.css";
 import  { NavLink, Outlet, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
-import Context from "../../Context/Context";
+import { Context } from "../../Context/Context";
 
 export default function ImageGallery() {
 

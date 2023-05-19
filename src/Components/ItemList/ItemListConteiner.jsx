@@ -3,7 +3,7 @@ import "./ItemListContainer.css";
 import { Outlet, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 
-import Context from "../../Context/Context";
+import { Context } from "../../Context/Context";
 import ItemList from "./ItemList"
 
 export default function ItemListContainer() {

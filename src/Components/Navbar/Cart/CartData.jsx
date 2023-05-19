@@ -1,23 +1,17 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import CartDropdownBtn from "../../Buttons/CartDropdownBtn/CartDropdownBtn";
-import Context from "../../../Context/Context";
 import DeleteItemBtn from "../../Buttons/DeleteItem/DeleteItem";
 
 export default function CartData(props) {
 
-    const {trashOnClick, itemRef, clearCartClick} = props;
+    const {cartList, trashOnClick, itemRef, clearCartClick} = props;
 
-    const {products} = useContext(Context);
-    
-    const [cartList, setCartList] = useState(products.cart.items);
-
-    const [renderObject, setRenderObject] = useState(<p className="emptyCartDrp">Your cart is empty</p>)
+    const [renderObject, setRenderObject] = useState();
 
     useEffect( () => {
-        setCartList(products.cart.items)
-        setRenderObject(
-            (cartList.length > 0) ? (
+        setTimeout( () => {
+            setRenderObject(
                 <ul className="cartDropmenu">
                     <li className="titlesCart">
                         <span>Items:</span>
@@ -46,9 +40,17 @@ export default function CartData(props) {
                         />
                     </li>
                 </ul>
-            ) : null
-        )
-    },[products]);
+            )
+        },5000)
+    },[cartList]);
 
-    return(renderObject)
+    return (
+        <>
+            { cartList.length === 0 ? (
+                <p className="emptyCartDrp">Your cart is empty</p>
+            ) : (
+                renderObject
+            ) }
+        </>
+    )
 }

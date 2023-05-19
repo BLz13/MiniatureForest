@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
-import Context from "../../Context/Context";
+import { Context } from "../../Context/Context";
 import {useParams} from "react-router-dom";
 
 export default function ProductDetail() {
@@ -21,7 +21,14 @@ export default function ProductDetail() {
 
     useEffect( () => { setProductsList(stock) },[stock]);
 
-    useEffect( () => { setProductData(productsList.find( (product) => (product.id === productAddressParam.id) )) });
+    useEffect( () => {
+        setProductData(productsList.find( (product) => (product.id === productAddressParam.id) ));
+        console.log("productDetail component rendered");
+    });
+
+    useEffect( () => {
+        console.log("Context updated");
+    },[Context]);
 
     function addToCartClickHandler(action) {
 

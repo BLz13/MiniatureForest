@@ -1,16 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-
-import Context from "../../../Context/Context";
-
 function Badge (props) {
 
-    const {navbarStatus} = props;
-    
-    const {products} = useContext(Context);
-    
-    const [badgeNumber, setBadgeNumber] = useState(products.cart.items.length);
-
-    useEffect( () => setBadgeNumber(products.cart.items.length) )
+    const {badgeNumber, navbarStatus} = props;
 
     return (
         <p

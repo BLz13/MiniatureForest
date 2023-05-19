@@ -2,7 +2,7 @@ import "./SideBar.css";
 
 import { useContext, useEffect, useRef, useState } from "react";
 
-import Context from '../../../Context/Context'
+import { Context } from '../../../Context/Context'
 import NavDropdownContainer from "./NavDropdownContainer";
 import { NavLink } from "react-router-dom";
 import {PAGES} from "../../../Utils/main-pages"

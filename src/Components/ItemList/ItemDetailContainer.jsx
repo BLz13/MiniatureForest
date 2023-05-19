@@ -2,8 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import AddCartBtn from "../Buttons/AddCartBtn/AddCartBtn"
 import CartAmountSelection from "../Buttons/CartAmountSelection/CartAmountSelection"
-import Context from "../../Context/Context";
-import {useParams} from "react-router-dom";
+import { Context } from "../../Context/Context";
+import { useParams } from "react-router-dom";
 
 export default function ItemDetailContainer() {
 

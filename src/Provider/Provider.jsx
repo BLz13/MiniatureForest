@@ -1,4 +1,4 @@
-import Context from "../Context/Context";
+import { Context } from "../Context/Context";
 import products from "./products";
 import reducer from "./reducer"
 import { useReducer } from "react";

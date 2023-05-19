@@ -3,7 +3,7 @@ import "./Cart.css"
 import { useContext, useEffect, useRef, useState } from "react";
 
 import ContactForm from "../../Components/ContactForm/ContactForm"
-import Context from "../../Context/Context";
+import { Context } from "../../Context/Context";
 import DeleteItemBtn from "../../Components/Buttons/DeleteItem/DeleteItem"
 
 export default function Cart() {
